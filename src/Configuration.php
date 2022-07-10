@@ -32,7 +32,7 @@ class Configuration
         return $this;
     }
 
-    public function getApiKey($apiKeyIdentifier): string|null
+    public function getApiKey($apiKeyIdentifier): ?string
     {
         return $this->apiKeys[$apiKeyIdentifier] ?? null;
     }
@@ -44,7 +44,7 @@ class Configuration
         return $this;
     }
 
-    public function getApiKeyPrefix($apiKeyIdentifier): string|null
+    public function getApiKeyPrefix($apiKeyIdentifier): ?string
     {
         return isset($this->apiKeyPrefixes[$apiKeyIdentifier]) ?? null;
     }
@@ -175,7 +175,7 @@ class Configuration
         return $report;
     }
 
-    public function getApiKeyWithPrefix($apiKeyIdentifier): string | null
+    public function getApiKeyWithPrefix($apiKeyIdentifier): ?string
     {
         $prefix = $this->getApiKeyPrefix($apiKeyIdentifier);
         $apiKey = $this->getApiKey($apiKeyIdentifier);
