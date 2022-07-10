@@ -2,11 +2,12 @@
 
 namespace NetsCore;
 
-use InvalidArgumentException;
+use NetsCore\Enums\ClientType;
 
 class Configuration
 {
     private static Configuration $defaultConfiguration;
+    protected ClientType $clientType;
 
     protected array $apiKeys = [];
     protected array $apiKeyPrefixes = [];
@@ -25,31 +26,41 @@ class Configuration
         $this->tempFolderPath = sys_get_temp_dir();
     }
 
-    public function setApiKey($apiKeyIdentifier, $key): Configuration
+    public function setClientType(ClientType $clientType): Configuration {
+        $this->clientType = $clientType;
+        return $this;
+    }
+
+    public function getClientType(): ClientType
+    {
+        return $this->clientType;
+    }
+
+    public function setApiKey(string $apiKeyIdentifier, string $key): Configuration
     {
         $this->apiKeys[$apiKeyIdentifier] = $key;
 
         return $this;
     }
 
-    public function getApiKey($apiKeyIdentifier): ?string
+    public function getApiKey(string $apiKeyIdentifier): ?string
     {
         return $this->apiKeys[$apiKeyIdentifier] ?? null;
     }
 
-    public function setApiKeyPrefix($apiKeyIdentifier, $prefix): Configuration
+    public function setApiKeyPrefix(string $apiKeyIdentifier, string $prefix): Configuration
     {
         $this->apiKeyPrefixes[$apiKeyIdentifier] = $prefix;
 
         return $this;
     }
 
-    public function getApiKeyPrefix($apiKeyIdentifier): ?string
+    public function getApiKeyPrefix(string $apiKeyIdentifier): ?string
     {
         return isset($this->apiKeyPrefixes[$apiKeyIdentifier]) ?? null;
     }
 
-    public function setAccessToken($accessToken): Configuration
+    public function setAccessToken(string $accessToken): Configuration
     {
         $this->accessToken = $accessToken;
 
@@ -61,7 +72,7 @@ class Configuration
         return $this->accessToken;
     }
 
-    public function setUsername($username): Configuration
+    public function setUsername(string $username): Configuration
     {
         $this->username = $username;
 
@@ -73,7 +84,7 @@ class Configuration
         return $this->username;
     }
 
-    public function setPassword($password): Configuration
+    public function setPassword(string $password): Configuration
     {
         $this->password = $password;
 
@@ -85,7 +96,7 @@ class Configuration
         return $this->password;
     }
 
-    public function setHost($host): Configuration
+    public function setHost(string $host): Configuration
     {
         $this->host = $host;
 
@@ -97,14 +108,9 @@ class Configuration
         return $this->host;
     }
 
-    public function setUserAgent($userAgent): Configuration
+    public function setUserAgent(string $userAgent): Configuration
     {
-        if (!is_string($userAgent)) {
-            throw new InvalidArgumentException('User-agent must be a string.');
-        }
-
         $this->userAgent = $userAgent;
-
         return $this;
     }
 
@@ -113,7 +119,7 @@ class Configuration
         return $this->userAgent;
     }
 
-    public function setDebug($debug): Configuration
+    public function setDebug(string $debug): Configuration
     {
         $this->debug = $debug;
 
@@ -125,7 +131,7 @@ class Configuration
         return $this->debug;
     }
 
-    public function setDebugFile($debugFile): Configuration
+    public function setDebugFile(string $debugFile): Configuration
     {
         $this->debugFile = $debugFile;
 
@@ -137,7 +143,7 @@ class Configuration
         return $this->debugFile;
     }
 
-    public function setTempFolderPath($tempFolderPath): Configuration
+    public function setTempFolderPath(string $tempFolderPath): Configuration
     {
         $this->tempFolderPath = $tempFolderPath;
 
@@ -175,7 +181,7 @@ class Configuration
         return $report;
     }
 
-    public function getApiKeyWithPrefix($apiKeyIdentifier): ?string
+    public function getApiKeyWithPrefix(string $apiKeyIdentifier): ?string
     {
         $prefix = $this->getApiKeyPrefix($apiKeyIdentifier);
         $apiKey = $this->getApiKey($apiKeyIdentifier);

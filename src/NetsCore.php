@@ -18,7 +18,7 @@ class NetsCore
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
-    public function createPayment($body = null) {
+    public function createPayment() {
 
     }
 
