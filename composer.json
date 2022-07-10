@@ -1,0 +1,22 @@
+{
+    "name": "nets/paymentcore",
+    "description": "Core for EasyNets and NextAccept payments plugin",
+    "type": "package",
+    "license": "MIT",
+    "version": "0.0.1",
+    "autoload": {
+        "psr-4": {
+            "NetsCore\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Piotr Staszewski"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "minimum-stability": "dev"
+}
