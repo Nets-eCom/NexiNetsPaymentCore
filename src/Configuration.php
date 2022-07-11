@@ -17,7 +17,6 @@ class Configuration
     protected string $username = '';
     protected string $password = '';
     protected string $debugFile = 'php://output';
-    protected string $host;
     protected string $userAgent;
     protected string $tempFolderPath;
     protected bool $debug = false;
@@ -28,17 +27,22 @@ class Configuration
         $this->tempFolderPath = sys_get_temp_dir();
     }
 
-    public function setClient(ClientType $client): Configuration {
+    public function setClient(ClientType $client): Configuration
+    {
         $this->client = new ('Clients\\' . ClientType::from($client));
+
         return $this;
     }
 
-    public function getClient(): BaseClient {
+    public function getClient(): BaseClient
+    {
         return $this->client;
     }
 
-    public function setClientType(ClientType $clientType): Configuration {
+    public function setClientType(ClientType $clientType): Configuration
+    {
         $this->clientType = $clientType;
+
         return $this;
     }
 
@@ -107,21 +111,10 @@ class Configuration
         return $this->password;
     }
 
-    public function setHost(string $host): Configuration
-    {
-        $this->host = $host;
-
-        return $this;
-    }
-
-    public function getHost(): string
-    {
-        return $this->host;
-    }
-
     public function setUserAgent(string $userAgent): Configuration
     {
         $this->userAgent = $userAgent;
+
         return $this;
     }
 
