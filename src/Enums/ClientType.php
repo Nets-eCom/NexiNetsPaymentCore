@@ -2,7 +2,9 @@
 
 namespace NetsCore\Enums;
 
-abstract class ClientType
+use MyCLabs\Enum\Enum;
+
+final class ClientType extends Enum
 {
     const EasyNets = 'NetsEasyClient';
     const NextAccept = 'NextAcceptClient';

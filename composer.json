@@ -16,7 +16,8 @@
     ],
     "require": {
         "php": ">=7.4",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.2",
+        "myclabs/php-enum": "dev-master"
     },
     "minimum-stability": "dev"
 }

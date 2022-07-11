@@ -7,13 +7,13 @@ use GuzzleHttp\ClientInterface;
 
 class NetsCore
 {
-    private ClientInterface $client;
+    private ClientInterface $httpClient;
     private Configuration $configuration;
     private HeaderSelector $headerSelector;
 
-    public function __construct(ClientInterface $client = null, Configuration $configuration = null, HeaderSelector $selector = null)
+    public function __construct(ClientInterface $httpClient = null, Configuration $configuration = null, HeaderSelector $selector = null)
     {
-        $this->client = $client ?: new Client();
+        $this->httpClient = $httpClient ?: new Client();
         $this->configuration = $configuration ?: new Configuration();
         $this->headerSelector = $selector ?: new HeaderSelector();
     }

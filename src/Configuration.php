@@ -2,12 +2,14 @@
 
 namespace NetsCore;
 
+use NetsCore\Clients\BaseClient;
 use NetsCore\Enums\ClientType;
 
 class Configuration
 {
     private static Configuration $defaultConfiguration;
     protected ClientType $clientType;
+    protected BaseClient $client;
 
     protected array $apiKeys = [];
     protected array $apiKeyPrefixes = [];
@@ -24,6 +26,15 @@ class Configuration
     public function __construct()
     {
         $this->tempFolderPath = sys_get_temp_dir();
+    }
+
+    public function setClient(ClientType $client): Configuration {
+        $this->client = new ('Clients\\' . ClientType::from($client));
+        return $this;
+    }
+
+    public function getClient(): BaseClient {
+        return $this->client;
     }
 
     public function setClientType(ClientType $clientType): Configuration {
