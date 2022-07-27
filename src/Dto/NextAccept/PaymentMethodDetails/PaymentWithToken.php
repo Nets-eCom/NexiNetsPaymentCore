@@ -11,13 +11,4 @@ class PaymentWithToken implements PaymentMethodDetailsInterface
     public bool $isRecurring;
     public string $type;
 
-    public function getDetails(): object
-    {
-        return (object) [
-          'token' => $this->token,
-          'secret' => $this->secret,
-          'isRecurring' => $this->isRecurring,
-          'type' => $this->type,
-        ];
-    }
 }

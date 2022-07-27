@@ -2,6 +2,6 @@
 
 namespace NetsCore\Interfaces;
 
-interface CustomerInterface
+interface PaymentObjectInterface
 {
 }

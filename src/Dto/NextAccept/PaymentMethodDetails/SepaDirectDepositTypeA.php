@@ -10,12 +10,4 @@ class SepaDirectDepositTypeA implements PaymentMethodDetailsInterface
     public string $customerEmail;
     public string $type;
 
-    public function getDetails(): object
-    {
-        return (object) [
-            'iban' => $this->iban,
-            'customerEmail' => $this->customerEmail,
-            'type' => $this->type,
-        ];
-    }
 }

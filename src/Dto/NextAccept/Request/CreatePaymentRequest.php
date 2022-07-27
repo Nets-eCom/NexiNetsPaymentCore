@@ -6,8 +6,9 @@ use NetsCore\Dto\NextAccept\BasketItem;
 use NetsCore\Dto\NextAccept\PayPageConfiguration;
 use NetsCore\Interfaces\CustomerInterface;
 use NetsCore\Interfaces\PaymentMethodDetailsInterface;
+use NetsCore\Interfaces\PaymentObjectInterface;
 
-class CreatePaymentRequest
+class CreatePaymentRequest implements PaymentObjectInterface
 {
     public string $type;
     public string $orderNumber;

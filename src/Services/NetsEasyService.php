@@ -4,17 +4,21 @@ namespace NetsCore\Services;
 
 use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
+use NetsCore\Interfaces\PaymentObjectInterface;
 
 class NetsEasyService implements ClientServiceInterface
 {
+
+    private APIClientInterface $client;
+    private LogsService $logsService;
 
     public function __construct(APIClientInterface $client)
     {
     }
 
-    function createPayment()
+    function createPayment(PaymentObjectInterface $paymentObject)
     {
-        // TODO: Implement createPayment() method.
+        return $this->client->createPayment($paymentObject);
     }
 
     function getPaymentDetails()

@@ -13,17 +13,4 @@ class IndividualCustomer implements CustomerInterface
     public Address $address;
     public string $email;
     public string $phone;
-
-    public function getCustomerInformation(): object
-    {
-        return (object) [
-            'firstName' => $this->firstName,
-            'lastName' => $this->lastName,
-            'type' => $this->type,
-            'customerNumber' => $this->customerNumber,
-            'address' => $this->address,
-            'email' => $this->email,
-            'phone' => $this->phone,
-        ];
-    }
 }

@@ -4,7 +4,7 @@ namespace NetsCore\Interfaces;
 
 interface ClientServiceInterface
 {
-    function createPayment();
+    function createPayment(PaymentObjectInterface $paymentObject);
     function getPaymentDetails();
     function cancelPayment();
     function authorizePayment();

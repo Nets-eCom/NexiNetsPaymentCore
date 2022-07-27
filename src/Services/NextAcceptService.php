@@ -4,6 +4,7 @@ namespace NetsCore\Services;
 
 use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
+use NetsCore\Interfaces\PaymentObjectInterface;
 
 class NextAcceptService implements ClientServiceInterface
 {
@@ -12,7 +13,7 @@ class NextAcceptService implements ClientServiceInterface
     {
     }
 
-    function createPayment()
+    function createPayment(PaymentObjectInterface $paymentObject)
     {
         // TODO: Implement createPayment() method.
     }
