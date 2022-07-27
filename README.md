@@ -5,7 +5,7 @@
 |Author | `Piotr Staszewski`
 |Version | `0.0.3`
 |License | `MIT License`
-|------|----------
+
 ## INSTALLATION
 
 ### Download / Installation
