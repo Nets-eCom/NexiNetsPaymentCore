@@ -3,7 +3,7 @@
     "description": "Core for EasyNets and NextAccept payments plugin",
     "type": "package",
     "license": "MIT",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "autoload": {
         "psr-4": {
             "NetsCore\\": "src/"
@@ -16,8 +16,9 @@
     ],
     "require": {
         "php": ">=7.4",
-        "guzzlehttp/guzzle": "^6.2",
-        "myclabs/php-enum": "dev-master"
+        "guzzlehttp/guzzle": "^7.4.5",
+        "myclabs/php-enum": "dev-master",
+        "ext-json": "*"
     },
     "minimum-stability": "dev"
 }

@@ -2,47 +2,45 @@
 
 namespace NetsCore;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
+use NetsCore\Factory\APIClientFactory;
+use NetsCore\Factory\AuthFactory;
+use NetsCore\Factory\ClientFactory;
+use NetsCore\Interfaces\ClientServiceInterface;
+use NetsCore\Services\AuthService;
 
 class NetsCore
 {
-    private ClientInterface $httpClient;
     private Configuration $configuration;
-    private HeaderSelector $headerSelector;
+    private ClientServiceInterface $client;
+    private AuthService $authService;
 
-    public function __construct(ClientInterface $httpClient = null, Configuration $configuration = null, HeaderSelector $selector = null)
+    public function __construct(Configuration $configuration = null)
     {
-        $this->httpClient = $httpClient ?: new Client();
         $this->configuration = $configuration ?: new Configuration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $authService = (new AuthFactory())->getAuthenticationService($this->configuration, $this->configuration->getClientType());
+        $this->authService = new AuthService($this->configuration, $authService);
+        $client = (new APIClientFactory())->getClient($this->authService->getAuthData(), $this->configuration->getClientType());
+        $this->client = (new ClientFactory())->getService($client, $this->configuration->getClientType());
     }
 
     public function createPayment() {
-
     }
 
     public function getPaymentDetails() {
-
     }
 
     public function cancelPayment() {
-
     }
 
     public function authorizePayment() {
-
     }
 
     public function capturePayment() {
-
     }
 
     public function refundPayment() {
-
     }
 
     public function salePayment() {
-
     }
 }

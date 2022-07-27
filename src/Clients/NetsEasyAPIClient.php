@@ -2,9 +2,18 @@
 
 namespace NetsCore\Clients;
 
-class NetsEasyClient extends BaseClient
+use NetsCore\Configuration;
+use NetsCore\Interfaces\APIClientInterface;
+
+class NetsEasyAPIClient implements APIClientInterface
 {
-    private string $host = '';
+
+    protected array $authData;
+
+    public function __construct(array $authData)
+    {
+        $this->authData = $authData;
+    }
 
     public function createPayment()
     {

@@ -2,9 +2,17 @@
 
 namespace NetsCore\Clients;
 
-class NextAcceptClient extends BaseClient
+use NetsCore\Interfaces\APIClientInterface;
+
+class NextAcceptAPIClient implements APIClientInterface
 {
-    private string $host = '';
+
+    protected array $authData;
+
+    public function __construct(array $authData)
+    {
+        $this->authData = $authData;
+    }
 
     public function createPayment()
     {

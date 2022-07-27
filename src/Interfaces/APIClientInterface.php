@@ -2,7 +2,7 @@
 
 namespace NetsCore\Interfaces;
 
-interface ClientInterface
+interface APIClientInterface
 {
     function createPayment();
     function getPaymentDetails();

@@ -2,21 +2,23 @@
 
 namespace NetsCore;
 
-use NetsCore\Clients\BaseClient;
+use NetsCore\Clients\BaseAPIClient;
 use NetsCore\Enums\ClientType;
 
 class Configuration
 {
     private static Configuration $defaultConfiguration;
-    protected ClientType $clientType;
-    protected BaseClient $client;
 
+    protected string $clientType;
     protected array $apiKeys = [];
     protected array $apiKeyPrefixes = [];
     protected string $accessToken = '';
     protected string $username = '';
     protected string $password = '';
+    protected string $authenticationLink = '';
     protected string $debugFile = 'php://output';
+    protected string $debugLogDir = 'logs';
+    protected string $debugLogFile = 'debug.log';
     protected string $userAgent;
     protected string $tempFolderPath;
     protected bool $debug = false;
@@ -27,26 +29,14 @@ class Configuration
         $this->tempFolderPath = sys_get_temp_dir();
     }
 
-    public function setClient(ClientType $client): Configuration
-    {
-        $this->client = new ('Clients\\' . ClientType::from($client));
-
-        return $this;
-    }
-
-    public function getClient(): BaseClient
-    {
-        return $this->client;
-    }
-
-    public function setClientType(ClientType $clientType): Configuration
+    public function setClientType(string $clientType): Configuration
     {
         $this->clientType = $clientType;
 
         return $this;
     }
 
-    public function getClientType(): ClientType
+    public function getClientType(): string
     {
         return $this->clientType;
     }
@@ -201,5 +191,55 @@ class Configuration
         }
 
         return $keyWithPrefix;
+    }
+
+    public function getAuthenticationLink(): string
+    {
+        return $this->authenticationLink;
+    }
+
+    public function setAuthenticationLink(string $authenticationLink): Configuration
+    {
+        $this->authenticationLink = $authenticationLink;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDebugLogFile(): string
+    {
+        return $this->debugLogFile;
+    }
+
+    /**
+     * @param string $debugLogFile
+     * @return Configuration
+     */
+    public function setDebugLogFile(string $debugLogFile): Configuration
+    {
+        $this->debugLogFile = $debugLogFile;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDebugLogDir(): string
+    {
+        return $this->debugLogDir;
+    }
+
+    /**
+     * @param string $debugLogDir
+     * @return Configuration
+     */
+    public function setDebugLogDir(string $debugLogDir): Configuration
+    {
+        $this->debugLogDir = $debugLogDir;
+
+        return $this;
     }
 }

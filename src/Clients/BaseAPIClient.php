@@ -2,11 +2,10 @@
 
 namespace NetsCore\Clients;
 
-use NetsCore\Interfaces\ClientInterface;
+use NetsCore\Interfaces\APIClientInterface;
 
-class BaseClient implements ClientInterface
+class BaseAPIClient implements APIClientInterface
 {
-
     private string $host;
 
     function createPayment()
