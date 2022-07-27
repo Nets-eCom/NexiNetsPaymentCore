@@ -1,10 +1,11 @@
 # NetsCore - Payment Core for simple integration EasyNets and NextAccept API for plugins
 ============================================
 
-|------|----------
-|Author | `Piotr Staszewski`
-|Version | `0.0.3`
-|License | `MIT License`
+| Core    | NetsCore - Payment Core |
+|---------|-------------------------|
+| Author  | `Piotr Staszewski`      |
+| Version | `0.0.3`                 |
+| License | `MIT License`           |
 
 ## INSTALLATION
 
