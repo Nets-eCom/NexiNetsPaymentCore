@@ -13,6 +13,11 @@ class SepaDirectDepositTypeC implements PaymentMethodDetailsInterface
 
     public function getDetails()
     {
-        // TODO: Implement getDetails() method.
+        return (object) [
+            'iban' => $this->iban,
+            'customerEmail' => $this->customerEmail,
+            'mandateUrl' => $this->mandateUrl,
+            'type' => $this->type,
+        ];
     }
 }

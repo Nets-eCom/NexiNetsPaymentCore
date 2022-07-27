@@ -10,6 +10,8 @@ class Sofort implements PaymentMethodDetailsInterface
 
     public function getDetails()
     {
-        // TODO: Implement getDetails() method.
+        return (object) [
+            'type' => $this->type
+        ];
     }
 }

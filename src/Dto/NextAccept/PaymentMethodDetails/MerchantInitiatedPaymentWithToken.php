@@ -11,8 +11,13 @@ class MerchantInitiatedPaymentWithToken implements PaymentMethodDetailsInterface
     public string $merchantInitiatedTransactionType;
     public string $type;
 
-    public function getDetails()
+    public function getDetails(): object
     {
-        // TODO: Implement getDetails() method.
+        return (object) [
+            'token' => $this->token,
+            'secret' => $this->secret,
+            'merchantInitiatedTransactionType' => $this->merchantInitiatedTransactionType,
+            'type' => $this->type,
+        ];
     }
 }

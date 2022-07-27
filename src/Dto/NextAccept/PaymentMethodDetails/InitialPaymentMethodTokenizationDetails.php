@@ -10,8 +10,12 @@ class InitialPaymentMethodTokenizationDetails implements PaymentMethodDetailsInt
     public int $intervalDays;
     public string $type;
 
-    public function getDetails()
+    public function getDetails(): object
     {
-        // TODO: Implement getDetails() method.
+        return (object) [
+            'expiryDate' => $this->expiryDate,
+            'intervalDays' => $this->intervalDays,
+            'type' => $this->type,
+        ];
     }
 }
