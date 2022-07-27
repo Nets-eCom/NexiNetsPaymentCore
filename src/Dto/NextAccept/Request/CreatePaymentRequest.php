@@ -3,15 +3,9 @@
 namespace NetsCore\Dto\NextAccept\Request;
 
 use NetsCore\Dto\NextAccept\BasketItem;
-use NetsCore\Dto\NextAccept\Customer\CompanyCustomer;
-use NetsCore\Dto\NextAccept\Customer\IndividualCustomer;
-use NetsCore\Dto\NextAccept\PaymentMethodDetails\InitialPaymentMethodTokenizationDetails;
-use NetsCore\Dto\NextAccept\PaymentMethodDetails\MerchantInitiatedPaymentWithToken;
-use NetsCore\Dto\NextAccept\PaymentMethodDetails\PaymentWithToken;
-use NetsCore\Dto\NextAccept\PaymentMethodDetails\SepaDirectDepositTypeA;
-use NetsCore\Dto\NextAccept\PaymentMethodDetails\SepaDirectDepositTypeC;
-use NetsCore\Dto\NextAccept\PaymentMethodDetails\Sofort;
 use NetsCore\Dto\NextAccept\PayPageConfiguration;
+use NetsCore\Interfaces\CustomerInterface;
+use NetsCore\Interfaces\PaymentMethodDetailsInterface;
 
 class CreatePaymentRequest
 {
@@ -21,20 +15,15 @@ class CreatePaymentRequest
     public string $reconciliationReference;
     public int $amount;
     public string $currencyCode;
-    /**
-     * @var InitialPaymentMethodTokenizationDetails | MerchantInitiatedPaymentWithToken | PaymentWithToken | SepaDirectDepositTypeC | SepaDirectDepositTypeA | Sofort | object
-     */
-    public object $paymentMethodDetails;
     public string $processing;
-    /**
-     * @var object | IndividualCustomer | CompanyCustomer
-     */
-    public object $customer;
+    public string $description;
+
+    public PaymentMethodDetailsInterface $paymentMethodDetails;
+    public CustomerInterface $customer;
+    public PayPageConfiguration $payPageConfiguration;
+
     /**
      * @var BasketItem[]
      */
     public array $basket;
-
-    public PayPageConfiguration $payPageConfiguration;
-    public string $description;
 }

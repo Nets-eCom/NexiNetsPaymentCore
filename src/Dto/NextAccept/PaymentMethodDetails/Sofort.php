@@ -2,7 +2,14 @@
 
 namespace NetsCore\Dto\NextAccept\PaymentMethodDetails;
 
-class Sofort
+use NetsCore\Interfaces\PaymentMethodDetailsInterface;
+
+class Sofort implements PaymentMethodDetailsInterface
 {
     public string $type;
+
+    public function getDetails()
+    {
+        // TODO: Implement getDetails() method.
+    }
 }

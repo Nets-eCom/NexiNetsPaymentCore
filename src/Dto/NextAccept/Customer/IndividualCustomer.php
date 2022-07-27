@@ -2,7 +2,9 @@
 
 namespace NetsCore\Dto\NextAccept\Customer;
 
-class IndividualCustomer
+use NetsCore\Interfaces\CustomerInterface;
+
+class IndividualCustomer implements CustomerInterface
 {
     public string $firstName;
     public string $lastName;
@@ -11,4 +13,9 @@ class IndividualCustomer
     public Address $address;
     public string $email;
     public string $phone;
+
+    public function getCustomerInformation()
+    {
+        // TODO: Implement getCustomerInformation() method.
+    }
 }
