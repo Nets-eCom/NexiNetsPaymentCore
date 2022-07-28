@@ -22,7 +22,7 @@ class NextAcceptAPIClient implements APIClientInterface
 
     public function createPayment(PaymentObjectInterface $paymentObject)
     {
-        $request = new Request('POST', ApiUrls::NextAcceptPaymentService, $this->generateHeader(), $paymentObject->getObject());
+        $request = new Request('POST', ApiUrls::NextAcceptPaymentService, $this->generateHeader(), json_encode($paymentObject));
         $res = $this->httpClient->sendAsync($request)->wait();
         return $res->getBody();
     }

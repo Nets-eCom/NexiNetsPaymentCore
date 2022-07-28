@@ -2,8 +2,6 @@
 
 namespace NetsCore\Factory;
 
-use NetsCore\Configuration;
-
 class APIClientFactory
 {
     public function getClient(array $authData, string $clientType) {

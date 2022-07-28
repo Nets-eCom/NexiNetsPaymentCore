@@ -16,8 +16,8 @@ class ApiService
 
     public function post(string $host, array $header = null, array $options = null)
     {
-        $request = new Request('POST', $host, (array)$header);
-        $res = $this->client->sendAsync($request, (array)$options)->wait();
+        $request = new Request('POST', $host, $header);
+        $res = $this->client->sendAsync($request, $options)->wait();
 
         return $res->getBody();
     }

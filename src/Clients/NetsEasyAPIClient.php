@@ -2,8 +2,8 @@
 
 namespace NetsCore\Clients;
 
-use NetsCore\Configuration;
 use NetsCore\Interfaces\APIClientInterface;
+use NetsCore\Interfaces\PaymentObjectInterface;
 
 class NetsEasyAPIClient implements APIClientInterface
 {
@@ -15,7 +15,7 @@ class NetsEasyAPIClient implements APIClientInterface
         $this->authData = $authData;
     }
 
-    public function createPayment()
+    public function createPayment(PaymentObjectInterface $paymentObject)
     {
     }
 

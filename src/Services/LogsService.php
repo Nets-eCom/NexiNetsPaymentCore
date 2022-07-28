@@ -2,13 +2,13 @@
 
 namespace NetsCore\Services;
 
-use NetsCore\Configuration;
+use NetsCore\Interfaces\ConfigurationInterface;
 
 class LogsService
 {
-    private Configuration $configuration;
+    private ConfigurationInterface $configuration;
 
-    public function __construct(Configuration $configuration)
+    public function __construct(ConfigurationInterface $configuration)
     {
         $this->configuration = $configuration;
     }
@@ -22,7 +22,7 @@ class LogsService
 
         foreach ($data as $key => $val) {
 
-            $message = str_replace("%{$key}%", $val, $message);
+            $message = str_replace("%$key%", $val, $message);
 
         }
 
