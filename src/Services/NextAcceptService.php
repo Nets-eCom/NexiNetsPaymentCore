@@ -9,13 +9,16 @@ use NetsCore\Interfaces\PaymentObjectInterface;
 class NextAcceptService implements ClientServiceInterface
 {
 
+    private APIClientInterface $apiClient;
+
     public function __construct(APIClientInterface $client)
     {
+        $this->apiClient = $client;
     }
 
     function createPayment(PaymentObjectInterface $paymentObject)
     {
-        // TODO: Implement createPayment() method.
+        return $this->apiClient->createPayment($paymentObject);
     }
 
     function getPaymentDetails()

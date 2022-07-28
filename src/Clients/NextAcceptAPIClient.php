@@ -2,11 +2,13 @@
 
 namespace NetsCore\Clients;
 
+use Cassandra\RetryPolicy\Logging;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 use NetsCore\Enums\ApiUrls;
 use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
+use NetsCore\Services\ApiService;
 
 class NextAcceptAPIClient implements APIClientInterface
 {
@@ -24,6 +26,7 @@ class NextAcceptAPIClient implements APIClientInterface
     {
         $request = new Request('POST', ApiUrls::NextAcceptPaymentService, $this->generateHeader(), json_encode($paymentObject));
         $res = $this->httpClient->sendAsync($request)->wait();
+
         return $res->getBody();
     }
 

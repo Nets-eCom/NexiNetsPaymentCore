@@ -37,6 +37,8 @@ class NetsCore
 
     public function createPayment(PaymentObjectInterface $paymentObject) {
         $this->logger->logger(json_encode($paymentObject), []);
+        $response = $this->client->createPayment($paymentObject);
+        $this->logger->logger($response, []);
     }
 
     public function getPaymentDetails() {
