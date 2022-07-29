@@ -2,7 +2,6 @@
 
 namespace NetsCore\Services;
 
-use NetsCore\Configuration\NextAcceptConfiguration;
 use NetsCore\Interfaces\APIAuthServiceInterface;
 use NetsCore\Interfaces\ConfigurationInterface;
 
