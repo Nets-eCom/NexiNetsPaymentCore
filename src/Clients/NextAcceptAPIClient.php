@@ -30,26 +30,32 @@ class NextAcceptAPIClient implements APIClientInterface
 
     public function authorizePayment()
     {
+        //TODO: Implement authorize payment request
     }
 
     public function cancelPayment()
     {
+        //TODO: Implement cancel payment request
     }
 
     public function capturePayment()
     {
+        //TODO: Implement capture payment request
     }
 
     public function getPaymentDetails()
     {
+        //TODO: Implement get  payment details request
     }
 
     public function refundPayment()
     {
+        //TODO: Implement refund payment request
     }
 
     public function salePayment()
     {
+        //TODO: Implement sale payment request
     }
 
     private function generateHeader(): array

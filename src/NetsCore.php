@@ -7,7 +7,6 @@ use NetsCore\Factory\APIClientFactory;
 use NetsCore\Factory\AuthFactory;
 use NetsCore\Factory\ClientFactory;
 use NetsCore\Interfaces\APIAuthServiceInterface;
-use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\ConfigurationInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
@@ -17,45 +16,59 @@ use NetsCore\Services\LogsService;
 class NetsCore
 {
     private ConfigurationInterface $configuration;
-    private ClientServiceInterface $client;
-    private APIClientInterface $apiClient;
     private APIAuthServiceInterface $authService;
+    private LogsService $logger;
 
-    public function __construct(ConfigurationInterface $configuration = null)
+
+    public function setup(ConfigurationInterface $configuration = null)
     {
         $this->configuration = $configuration ?: new NextAcceptConfiguration();
-
         $this->authService = (new AuthFactory())->getAuthenticationService($this->configuration, $this->configuration->getClientType());
-
-        $authService = new AuthService($this->configuration, $this->authService);
-
-        $this->apiClient = (new APIClientFactory())->getClient($authService->getAuthData(), $this->configuration->getClientType());
-        $this->client = (new ClientFactory())->getService($this->apiClient, $this->configuration->getClientType());
-
         $this->logger = new LogsService($this->configuration);
     }
 
-    public function createPayment(PaymentObjectInterface $paymentObject) {
+    public function createPayment(PaymentObjectInterface $paymentObject)
+    {
+        //TODO: Prepare dto for responding url and transactionId
         $this->logger->logger(json_encode($paymentObject), []);
-        $response = $this->client->createPayment($paymentObject);
+        $response = $this->getClient()->createPayment($paymentObject);
         $this->logger->logger($response, []);
     }
 
-    public function getPaymentDetails() {
+    public function getPaymentDetails()
+    {
+        //TODO: Create get payment plugin api
     }
 
-    public function cancelPayment() {
+    public function cancelPayment()
+    {
+        //TODO: Create cancel payment plugin api
     }
 
-    public function authorizePayment() {
+    public function authorizePayment()
+    {
+        //TODO: Create authorize payment plugin api
     }
 
-    public function capturePayment() {
+    public function capturePayment()
+    {
+        //TODO: Create capture payment plugin api
     }
 
-    public function refundPayment() {
+    public function refundPayment()
+    {
+        //TODO: Create refund payment plugin api
     }
 
-    public function salePayment() {
+    public function salePayment()
+    {
+        //TODO: Create sale payment plugin api
+    }
+
+    private function getClient(): ClientServiceInterface
+    {
+        $authService = new AuthService($this->configuration, $this->authService);
+        $apiClient = (new APIClientFactory())->getClient($authService->getAuthData(), $this->configuration->getClientType());
+        return (new ClientFactory())->getService($apiClient, $this->configuration->getClientType());
     }
 }

@@ -18,6 +18,7 @@ class NextAcceptService implements ClientServiceInterface
 
     function createPayment(PaymentObjectInterface $paymentObject)
     {
+        //TODO: Remap object to simple structure
         return $this->apiClient->createPayment($paymentObject);
     }
 
