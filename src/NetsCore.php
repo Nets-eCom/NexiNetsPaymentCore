@@ -12,9 +12,9 @@ use NetsCore\Interfaces\ConfigurationInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 use NetsCore\Services\AuthService;
 use NetsCore\Services\LogsService;
-use NetsCore\Services\ResponseDto;
+use NetsCore\Services\CreatePaymentResponseDto;
 
-class NetsCore extends ResponseDto
+class NetsCore
 {
     private ConfigurationInterface $configuration;
     private APIAuthServiceInterface $authService;
@@ -26,6 +26,7 @@ class NetsCore extends ResponseDto
         $this->configuration = $configuration ?: new NextAcceptConfiguration();
         $this->authService = (new AuthFactory())->getAuthenticationService($this->configuration, $this->configuration->getClientType());
         $this->logger = new LogsService($this->configuration);
+
     }
 
     public function createPayment(PaymentObjectInterface $paymentObject)
@@ -34,8 +35,8 @@ class NetsCore extends ResponseDto
         $this->logger->logger(json_encode($paymentObject), []);
         $response = $this->getClient()->createPayment($paymentObject);
         $this->logger->logger($response, []);
-        
-        // return $arrDto; ???
+
+        return $response;
     }
 
     public function getPaymentDetails()
