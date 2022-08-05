@@ -1,56 +1,68 @@
 <?php
 
-declare (strict_types = 1);
+namespace NetsCore\Dto\NextAccept\Request\Transformer;
 
-namespace NetsCore\Dto\NextAccept\Request\Transfomer;
+use NetsCore\Dto\NextAccept\PayPageConfiguration;
+use NetsCore\Dto\NextAccept\RedirectUrl;
+use NetsCore\Dto\NextAccept\Request\CreatePaymentRequest;
+use NetsCore\Dto\NextAccept\Request\Transfomer\AbstractRequestDtoTransformer;
+use NetsCore\Enums\CurrencyCode;
+use NetsCore\Enums\PaymentProcessingType;
+use NetsCore\Enums\PaymentType;
+use Shopware\Core\Checkout\Payment\Cart\AsyncPaymentTransactionStruct;
+use Shopware\Core\Checkout\Payment\Exception\AsyncPaymentProcessException;
 
-class AsyncPaymentTrasactionStructTransformer extends AbstractRequestDtoTransformer
+
+class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransformer
 {
 
     /**
-     * @param AsyncPaymentTrasactionStruct $asyncPaymentTrasactionStruct
+     * @param AsyncPaymentTransactionStruct $asyncPaymentTransactionStruct
      *
-     * @return CustomerPaymentRequest
+     * @return CreatePaymentRequest
+     * @throws AsyncPaymentProcessException if the provided currency code is not valid
+     *
      */
-    public function transformFromObject(AsyncPaymentTrasactionStruct $asyncPaymentTrasactionStruct)
-    {
+    public function transformFromObject(AsyncPaymentTransactionStruct $asyncPaymentTransactionStruct
+    ): CreatePaymentRequest {
+        $dto = new CreatePaymentRequest();
 
-        $dto = new CustomerPaymentRequest();
+        $dto->type = PaymentType::MerchantHostedEcom;
 
-        $dto->orderNumber = $asyncPaymentTrasactionStruct->order->orderNumber;
+        $dto->orderNumber = $asyncPaymentTransactionStruct->getOrder()->getOrderNumber();
 
         $dto->orderDescription = null;
-        //coulnd't find it in AsyncPaymentTrasactionStruct
 
         $dto->reconciliationReference = null;
-        //coulnd't find it in AsyncPaymentTrasactionStruct
 
-        $dto->amount = $asyncPaymentTrasactionStruct->orderasyncPaymentTrasactionStruct->amount;
+        $amount      = $asyncPaymentTransactionStruct->getOrderTransaction()->getAmount();
+        $dto->amount = ceil($amount * 100);
 
-        $dto->currencyCode = $asyncPaymentTrasactionStruct->orderOrder->currencyId;
+        $currencyCode = $asyncPaymentTransactionStruct->getOrder()->getCurrencyId();
+        if (CurrencyCode::isValid($currencyCode)) {
+            $dto->currencyCode = $currencyCode;
+        } else {
+            throw new AsyncPaymentProcessException(
+                $asyncPaymentTransactionStruct->getOrderTransaction()->getId(),
+                'Wrong currency code'
+            );
+        }
 
-        $dto->processing = null;
-        //coulnd't find it in AsyncPaymentTrasactionStruct
+        $dto->processing = PaymentProcessingType::None;
 
         $dto->description = null;
-        //coulnd't find it in AsyncPaymentTrasactionStruct
 
-        $dto->redirectUrls = $asyncPaymentTrasactionStruct->getReturnUrl();
+        $dto->redirectUrls = new RedirectUrl();
 
-        $dto->paymentMethodDetails = $asyncPaymentTrasactionStruct->orderasyncPaymentTrasactionStruct->paymentMethodDetails;
-        //coulnd't find it in AsyncPaymentTrasactionStruct
+        $dto->paymentMethodDetails = null;
 
-        $dto->cusomter = $asyncPaymentTrasactionStruct->order->orderCusomter;
-        //doesn't match swagger
+        $dto->customer = null;
 
-        $dto->payPageConfiguration = null;
-        //coulnd't find it in AsyncPaymentTrasactionStruct
+        $dto->payPageConfiguration = new PayPageConfiguration();
 
-        $dto->basket = null;
-        //coulnd't find it in AsyncPaymentTrasaction
+        $dto->basket = [];
 
         return $dto;
-
     }
 
 }

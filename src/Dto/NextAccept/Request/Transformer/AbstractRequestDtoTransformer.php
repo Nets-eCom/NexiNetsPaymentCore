@@ -1,8 +1,8 @@
 <?php
 
-declare (strict_types = 1);
-
 namespace NetsCore\Dto\NextAccept\Request\Transfomer;
+
+use NetsCore\Dto\NextAccept\Transformer\RequestDtoTransformerInterface;
 
 abstract class AbstractRequestDtoTransformer implements RequestDtoTransformerInterface
 {
