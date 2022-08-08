@@ -9,7 +9,7 @@ use NetsCore\Interfaces\CustomerInterface;
 use NetsCore\Interfaces\PaymentMethodDetailsInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 
-class CreatePaymentRequest implements PaymentObjectInterface
+class PaymentObject implements PaymentObjectInterface
 {
     public string $type;
     public string $orderNumber;
