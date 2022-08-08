@@ -4,7 +4,7 @@ namespace NetsCore\Enums;
 
 use MyCLabs\Enum\Enum;
 
-class PageType extends Enum
+class PageTypeEnum extends Enum
 {
     const Multipage = 'Multipage';
     const Singlepage = 'Singlepage';
