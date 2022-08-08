@@ -1,11 +1,10 @@
 <?php
 
-namespace NetsCore\Dto\NextAccept\Request\Transformer;
+namespace NetsCore\Dto\NextAccept\Customer\Transformer;
 
 
-abstract class AbstractRequestDtoTransformer implements RequestDtoTransformerInterface
+abstract class AbstractCustomerDtoTransformer implements CustomerDtoTransformerInterface
 {
-
     public function transformFromObjects(iterable $objects): iterable
     {
         $dto = [];
@@ -16,4 +15,5 @@ abstract class AbstractRequestDtoTransformer implements RequestDtoTransformerInt
 
         return $dto;
     }
+
 }

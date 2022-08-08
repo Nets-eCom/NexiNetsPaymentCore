@@ -1,17 +1,15 @@
 <?php
 
-namespace NetsCore\Dto\NextAccept\Transformer;
+namespace NetsCore\Dto\NextAccept\Request\Transformer;
 
-use NetsCore\Dto\NextAccept\Request\CreatePaymentRequest;
-use Shopware\Core\Checkout\Payment\Cart\AsyncPaymentTransactionStruct;
+use NetsCore\Interfaces\CustomerInterface;
 
 interface RequestDtoTransformerInterface
 {
     /**
-     * @param AsyncPaymentTransactionStruct $asyncPaymentTransactionStruct
-     *
-     * @return CreatePaymentRequest
+     * @return CustomerInterface
      */
-    public function transformFromObject(AsyncPaymentTransactionStruct $asyncPaymentTransactionStruct): CreatePaymentRequest;
+    public function transformFromObject($object): CustomerInterface;
+
     public function transformFromObjects(iterable $objects): iterable;
 }

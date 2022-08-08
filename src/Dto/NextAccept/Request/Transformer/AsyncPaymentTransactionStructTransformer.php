@@ -2,13 +2,13 @@
 
 namespace NetsCore\Dto\NextAccept\Request\Transformer;
 
-use NetsCore\Dto\NextAccept\PayPageConfiguration;
-use NetsCore\Dto\NextAccept\RedirectUrl;
+use Exception;
+use NetsCore\Dto\NextAccept\BasketItem;
+use NetsCore\Dto\NextAccept\Customer\Address;
+use NetsCore\Dto\NextAccept\Customer\Transformer\OrderCustomerEntityTransformer;
 use NetsCore\Dto\NextAccept\Request\CreatePaymentRequest;
 use NetsCore\Dto\NextAccept\Request\Transfomer\AbstractRequestDtoTransformer;
-use NetsCore\Enums\CurrencyCode;
-use NetsCore\Enums\PaymentProcessingType;
-use NetsCore\Enums\PaymentType;
+use NetsCore\Enums\CountryCode;
 use Shopware\Core\Checkout\Payment\Cart\AsyncPaymentTransactionStruct;
 use Shopware\Core\Checkout\Payment\Exception\AsyncPaymentProcessException;
 
@@ -17,50 +17,73 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
 {
 
     /**
-     * @param AsyncPaymentTransactionStruct $asyncPaymentTransactionStruct
+     * @param AsyncPaymentTransactionStruct $object
      *
      * @return CreatePaymentRequest
-     * @throws AsyncPaymentProcessException if the provided currency code is not valid
+     * @throws AsyncPaymentProcessException|Exception if the provided currency code is not valid
      *
      */
-    public function transformFromObject(AsyncPaymentTransactionStruct $asyncPaymentTransactionStruct
+    public function transformFromObject($object
     ): CreatePaymentRequest {
         $dto = new CreatePaymentRequest();
 
-        $dto->type = PaymentType::MerchantHostedEcom;
+        $dto->orderNumber = $object->getOrder()->getOrderNumber();
 
-        $dto->orderNumber = $asyncPaymentTransactionStruct->getOrder()->getOrderNumber();
-
-        $dto->orderDescription = null;
-
-        $dto->reconciliationReference = null;
-
-        $amount      = $asyncPaymentTransactionStruct->getOrderTransaction()->getAmount();
+        $amount      = $object->getOrderTransaction()->getAmount();
         $dto->amount = ceil($amount * 100);
 
-        $currencyCode = $asyncPaymentTransactionStruct->getOrder()->getCurrencyId();
-        if (CurrencyCode::isValid($currencyCode)) {
-            $dto->currencyCode = $currencyCode;
-        } else {
+        try {
+            $dto->currencyCode = $dto->validated_currency_code(
+                $object->getOrder()->getCurrencyId()
+            );
+        } catch (Exception $e) {
             throw new AsyncPaymentProcessException(
-                $asyncPaymentTransactionStruct->getOrderTransaction()->getId(),
+                $object->getOrderTransaction()->getId(),
                 'Wrong currency code'
             );
         }
 
-        $dto->processing = PaymentProcessingType::None;
+        $dto->redirectUrls->returnUrl = $object->getReturnUrl();
 
-        $dto->description = null;
-
-        $dto->redirectUrls = new RedirectUrl();
-
-        $dto->paymentMethodDetails = null;
-
-        $dto->customer = null;
-
-        $dto->payPageConfiguration = new PayPageConfiguration();
+        $customerTransformer         = new OrderCustomerEntityTransformer();
+        $dto->customer               = $customerTransformer->transformFromObject(
+            $object->getOrder()->getOrderCustomer()
+        );
+        $customerAddress             = new Address();
+        $fetchedAddress              = $object->getOrder()->getBillingAddress();
+        $dto->customer->phone        = $fetchedAddress->getPhoneNumber();
+        $customerAddress->address1   = $fetchedAddress->getStreet();
+        $customerAddress->city       = $fetchedAddress->getCity();
+        $customerAddress->postalCode = $fetchedAddress->getZipcode();
+        $countryCode                 = $fetchedAddress->getCountry()->getIso();
+        if (CountryCode::isValid($countryCode)) {
+            $customerAddress->countryCode = $countryCode;
+        } else {
+            throw new AsyncPaymentProcessException(
+                $object->getOrderTransaction()->getId(),
+                'Wrong country code'
+            );
+        }
+        $customerAddress->countryCode = $fetchedAddress->getCountry()->getIso();
+        $dto->customer->address       = $customerAddress;
 
         $dto->basket = [];
+
+        $basketItems = $object->getOrder()->getLineItems();
+        foreach ($basketItems as $key => $basketItem) {
+            $item                = new BasketItem();
+            $item->itemNumber    = $basketItem->getProductId();
+            $item->title         = $basketItem->getLabel();
+            $item->quantity      = $basketItem->getQuantity();
+            $item->unitPrice     = $basketItem->getUnitPrice();
+            $taxRule             = $basketItem->getPrice()->getTaxRules()->getElements();
+            $taxRule             = $taxRule[array_key_first($taxRule)];
+            $taxRate             = $taxRule['taxRate'] * $taxRule['percentage'] / 100;
+            $item->vatPercentage = $taxRate;
+            $item->unitCode      = $key;
+
+            $dto->basket[] = $item;
+        }
 
         return $dto;
     }
