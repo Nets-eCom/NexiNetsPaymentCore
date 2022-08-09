@@ -20,7 +20,7 @@ class AuthService
 
     public function authorize() {
         $this->authData = json_decode($this->APIAuthService->authorize(), true);
-        LogsService::logger(json_encode($this->authData), []);
+        LogsService::logger(json_encode($this->authData));
     }
 
     public function refreshToken() {

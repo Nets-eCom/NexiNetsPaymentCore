@@ -22,4 +22,4 @@ TODO: Finish this
 
 ### Logs
 
-Logs are very simple to use. You must only use ``LogsService::logger("Message", []);`` and that's all.
+Logs are very simple to use. You must only use ``LogsService::logger("Message");`` and that's all.
