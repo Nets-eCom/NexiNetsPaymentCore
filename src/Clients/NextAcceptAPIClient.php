@@ -7,7 +7,6 @@ use GuzzleHttp\Psr7\Request;
 use NetsCore\Enums\ApiUrls;
 use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
-use NetsCore\Services\CreatePaymentResponseDto;
 
 class NextAcceptAPIClient implements APIClientInterface
 {
@@ -21,7 +20,7 @@ class NextAcceptAPIClient implements APIClientInterface
         $this->httpClient = $client ?: new Client();
     }
 
-    public function createPayment(PaymentObjectInterface $paymentObject) : CreatePaymentResponseDto
+    public function createPayment(PaymentObjectInterface $paymentObject)
     {
         $request = new Request('POST', ApiUrls::NextAcceptPaymentService, $this->generateHeader(), json_encode($paymentObject));
         $res = $this->httpClient->sendAsync($request)->wait();
