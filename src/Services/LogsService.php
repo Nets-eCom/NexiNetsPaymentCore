@@ -2,33 +2,21 @@
 
 namespace NetsCore\Services;
 
-use NetsCore\Interfaces\ConfigurationInterface;
-
 class LogsService
 {
-    private ConfigurationInterface $configuration;
-
-    public function __construct(ConfigurationInterface $configuration)
-    {
-        $this->configuration = $configuration;
-    }
-
-    function logger($message, array $data)
+    public static function logger($message, array $data, string $path = '../logs')
     {
 
-        if(!is_dir($this->configuration->getDebugLogDir())) {
-            mkdir($this->configuration->getDebugLogDir(),0777, true);
+        if(!is_dir($path)) {
+            mkdir($path,0777, true);
         }
 
         foreach ($data as $key => $val) {
-
             $message = str_replace("%$key%", $val, $message);
-
         }
 
         $message .= PHP_EOL;
 
-        return file_put_contents($this->configuration->getDebugLogDir() . '/' . $this->configuration->getDebugLogFile(), $message, FILE_APPEND);
-
+        file_put_contents($path . '/debug.log', $message, FILE_APPEND);
     }
 }

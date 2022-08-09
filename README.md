@@ -3,7 +3,7 @@
 
 | Core    | NetsCore - Payment Core |
 |---------|-------------------------|
-| Author  | `Piotr Staszewski`      |
+| Author  | `Nets eCom`             |
 | Version | `0.0.3`                 |
 | License | `MIT License`           |
 

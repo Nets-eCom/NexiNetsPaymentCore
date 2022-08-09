@@ -15,13 +15,12 @@ class AuthService
     {
         $this->APIAuthService = $authService;
         $this->configuration = $configuration;
-        $this->logg = new LogsService($configuration);
         $this->authorize();
     }
 
     public function authorize() {
         $this->authData = json_decode($this->APIAuthService->authorize(), true);
-        $this->logg->logger(json_encode($this->authData), []);
+        LogsService::logger(json_encode($this->authData), []);
     }
 
     public function refreshToken() {

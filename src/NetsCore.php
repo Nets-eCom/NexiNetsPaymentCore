@@ -17,22 +17,20 @@ class NetsCore
 {
     private ConfigurationInterface $configuration;
     private APIAuthServiceInterface $authService;
-    private LogsService $logger;
 
 
     public function setup(ConfigurationInterface $configuration = null)
     {
         $this->configuration = $configuration ?: new NextAcceptConfiguration();
         $this->authService = (new AuthFactory())->getAuthenticationService($this->configuration, $this->configuration->getClientType());
-        $this->logger = new LogsService($this->configuration);
     }
 
     public function createPayment(PaymentObjectInterface $paymentObject)
     {
-        //TODO: Prepare dto for responding url and transactionId
-        $this->logger->logger(json_encode($paymentObject), []);
+        //TODO: Prepare json response dto and remaping from json response to object with responding url and transactionId
+        LogsService::logger(json_encode($paymentObject), []);
         $response = $this->getClient()->createPayment($paymentObject);
-        $this->logger->logger($response, []);
+        LogsService::logger($response, []);
     }
 
     public function getPaymentDetails()
