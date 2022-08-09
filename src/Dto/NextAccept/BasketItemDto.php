@@ -2,7 +2,7 @@
 
 namespace NetsCore\Dto\NextAccept;
 
-class BasketItem
+class BasketItemDto
 {
     public string $itemNumber;
     public string $title;

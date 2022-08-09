@@ -2,14 +2,14 @@
 
 namespace NetsCore\Dto\NextAccept\Request;
 
-use NetsCore\Dto\NextAccept\BasketItem;
-use NetsCore\Dto\NextAccept\PayPageConfiguration;
-use NetsCore\Dto\NextAccept\RedirectUrl;
+use NetsCore\Dto\NextAccept\BasketItemDto;
+use NetsCore\Dto\NextAccept\PayPageConfigurationDto;
+use NetsCore\Dto\NextAccept\RedirectUrlDto;
 use NetsCore\Interfaces\CustomerInterface;
 use NetsCore\Interfaces\PaymentMethodDetailsInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 
-class PaymentObject implements PaymentObjectInterface
+class PaymentObjectDto implements PaymentObjectInterface
 {
     public string $type;
     public string $orderNumber;
@@ -20,10 +20,10 @@ class PaymentObject implements PaymentObjectInterface
     public string $processing;
     public string $description;
 
-    public RedirectUrl $redirectUrls;
+    public RedirectUrlDto $redirectUrls;
     public PaymentMethodDetailsInterface $paymentMethodDetails;
     public CustomerInterface $customer;
-    public PayPageConfiguration $payPageConfiguration;
+    public PayPageConfigurationDto $payPageConfiguration;
 
     /**
      * @var BasketItem[]
