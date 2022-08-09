@@ -4,7 +4,7 @@ namespace NetsCore\Clients;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
-use NetsCore\Enums\ApiUrls;
+use NetsCore\Enums\ApiUrlsEnum;
 use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 
@@ -22,7 +22,7 @@ class NextAcceptAPIClient implements APIClientInterface
 
     public function createPayment(PaymentObjectInterface $paymentObject)
     {
-        $request = new Request('POST', ApiUrls::NextAcceptPaymentService, $this->generateHeader(), json_encode($paymentObject));
+        $request = new Request('POST', ApiUrlsEnum::NextAcceptPaymentService, $this->generateHeader(), json_encode($paymentObject));
         $res = $this->httpClient->sendAsync($request)->wait();
 
 

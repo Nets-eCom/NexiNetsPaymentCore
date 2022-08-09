@@ -2,7 +2,7 @@
 
 namespace NetsCore\Auth;
 
-use NetsCore\Enums\ApiUrls;
+use NetsCore\Enums\ApiUrlsEnum;
 use NetsCore\Interfaces\APIAuthServiceInterface;
 use NetsCore\Interfaces\ConfigurationInterface;
 use NetsCore\Services\ApiService;
@@ -46,7 +46,7 @@ class NextAcceptAPIAuthService implements APIAuthServiceInterface
                 ],
                 [
                     'name' => 'scope',
-                    'contents' => ApiUrls::NextAcceptApiScopePaymantService
+                    'contents' => ApiUrlsEnum::NextAcceptApiScopePaymantService
                 ]
             ]
         ];
