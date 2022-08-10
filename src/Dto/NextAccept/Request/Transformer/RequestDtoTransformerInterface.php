@@ -2,14 +2,14 @@
 
 namespace NetsCore\Dto\NextAccept\Request\Transformer;
 
-use NetsCore\Interfaces\CustomerInterface;
+use NetsCore\Dto\NextAccept\Request\CreatePaymentRequest;
 
 interface RequestDtoTransformerInterface
 {
     /**
-     * @return CustomerInterface
+     * @return CreatePaymentRequest
      */
-    public function transformFromObject($object): CustomerInterface;
+    public function transformFromObject($object): CreatePaymentRequest;
 
     public function transformFromObjects(iterable $objects): iterable;
 }
