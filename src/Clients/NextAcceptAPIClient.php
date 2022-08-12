@@ -26,7 +26,6 @@ class NextAcceptAPIClient implements APIClientInterface
         $request = new Request('POST', ApiUrls::NextAcceptPaymentService, $this->generateHeader(), json_encode($paymentObject));
         $res = $this->httpClient->sendAsync($request)->wait();
 
-
         return $res->getBody();
     }
 

@@ -17,11 +17,14 @@ class NextAcceptService implements ClientServiceInterface
         $this->apiClient = $client;
     }
 
-    function createPayment(PaymentObjectInterface $paymentObject)
+    function createPayment(PaymentObjectInterface $paymentObject): CreatePaymentResponseDto
     {
         //TODO: Remap object to simple structure
-
-        return $this->apiClient->createPayment($paymentObject);
+        $response = $this->apiClient->createPayment($paymentObject);
+        $map = new CreatePaymentResponseDto();
+        $map->paymentId = $response['paymentId'];
+        $map->paypageURL = $response['paypageURL'];
+        return $map;
     }
 
     function getPaymentDetails()
