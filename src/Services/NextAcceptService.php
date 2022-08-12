@@ -2,6 +2,7 @@
 
 namespace NetsCore\Services;
 
+use NetsCore\Dto\NextAccept\CreatePaymentResponseDto;
 use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
@@ -19,6 +20,7 @@ class NextAcceptService implements ClientServiceInterface
     function createPayment(PaymentObjectInterface $paymentObject)
     {
         //TODO: Remap object to simple structure
+
         return $this->apiClient->createPayment($paymentObject);
     }
 
