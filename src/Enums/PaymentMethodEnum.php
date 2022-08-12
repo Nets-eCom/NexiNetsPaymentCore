@@ -4,7 +4,7 @@ namespace NetsCore\Enums;
 
 use MyCLabs\Enum\Enum;
 
-class PaymentMethod extends Enum
+class PaymentMethodEnum extends Enum
 {
     const AmericanExpress = 'AmericanExpress';
     const DinersClubInternational = 'DinersClubInternational';

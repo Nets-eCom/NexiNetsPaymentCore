@@ -4,7 +4,7 @@ namespace NetsCore\Enums;
 
 use MyCLabs\Enum\Enum;
 
-class CurrencyCode extends Enum
+class CurrencyCodeEnum extends Enum
 {
     const AED = 'AED';
     const AFN = 'AFN';

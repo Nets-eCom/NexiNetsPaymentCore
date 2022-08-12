@@ -2,13 +2,13 @@
 
 namespace NetsCore\Configuration;
 
-use NetsCore\Enums\ApiUrls;
-use NetsCore\Enums\ClientType;
+use NetsCore\Enums\ApiUrlsEnum;
+use NetsCore\Enums\ClientTypeEnum;
 use NetsCore\Interfaces\ConfigurationInterface;
 
 class NextAcceptConfiguration implements ConfigurationInterface
 {
-    protected string $clientType = ClientType::NextAccept;
+    protected string $clientType = ClientTypeEnum::NextAccept;
     private string $username;
     private string $password;
 
@@ -45,6 +45,6 @@ class NextAcceptConfiguration implements ConfigurationInterface
 
     public function getAuthUrl(): string
     {
-        return ApiUrls::NextAcceptOAuthAuthorization;
+        return ApiUrlsEnum::NextAcceptOAuthAuthorization;
     }
 }
