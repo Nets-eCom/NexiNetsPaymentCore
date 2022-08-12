@@ -3,12 +3,13 @@
 namespace NetsCore\Services;
 
 use Exception;
+use NetsCore\Validator\IsDirectoryValidator;
 
 class LogsService
 {
     public static function logger($message, string $path = '../logs', string $fileName = 'debug.log')
     {
-        if(!is_dir($path)) {
+        if(!IsDirectoryValidator::valid($path)) {
             try {
                 mkdir($path,0777, true);
             } catch (Exception $e) {
