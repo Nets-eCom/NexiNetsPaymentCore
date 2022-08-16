@@ -2,7 +2,6 @@
 
 namespace NetsCore\Dto\NextAccept\Request;
 
-use NetsCore\Dto\NextAccept\BasketItemDto;
 use NetsCore\Dto\NextAccept\PayPageConfigurationDto;
 use NetsCore\Dto\NextAccept\RedirectUrlDto;
 use NetsCore\Interfaces\CustomerInterface;
