@@ -2,13 +2,16 @@
 
 namespace NetsCore\Dto\NextAccept\Request;
 
+use Exception;
+use NetsCore\Dto\NextAccept\BasketItem;
+use NetsCore\Enums\CurrencyCode;
 use NetsCore\Dto\NextAccept\PayPageConfigurationDto;
 use NetsCore\Dto\NextAccept\RedirectUrlDto;
 use NetsCore\Interfaces\CustomerInterface;
 use NetsCore\Interfaces\PaymentMethodDetailsInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 
-class PaymentObjectDto implements PaymentObjectInterface
+class PaymentObject implements PaymentObjectInterface
 {
     public string $type;
     public string $orderNumber;
@@ -28,4 +31,18 @@ class PaymentObjectDto implements PaymentObjectInterface
      * @var BasketItem[]
      */
     public array $basket;
+
+    /**
+     * @throws Exception
+     */
+    public function validated_currency_code($currencyCode)
+    {
+        if (CurrencyCode::isValid($currencyCode)) {
+            return $currencyCode;
+        } else {
+            throw new Exception(
+                'Wrong currency code'
+            );
+        }
+    }
 }
