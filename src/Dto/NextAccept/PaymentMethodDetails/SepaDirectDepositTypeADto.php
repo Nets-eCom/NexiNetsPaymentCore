@@ -4,7 +4,7 @@ namespace NetsCore\Dto\NextAccept\PaymentMethodDetails;
 
 use NetsCore\Interfaces\PaymentMethodDetailsInterface;
 
-class SepaDirectDepositTypeA implements PaymentMethodDetailsInterface
+class SepaDirectDepositTypeADto implements PaymentMethodDetailsInterface
 {
     public string $iban;
     public string $customerEmail;
