@@ -11,21 +11,17 @@ use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\ConfigurationInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 use NetsCore\Services\AuthService;
-use NetsCore\Services\LogsService;
 
 class NetsCore
 {
     private ConfigurationInterface $configuration;
     private APIAuthServiceInterface $authService;
-    private LogsService $logger;
 
 
     public function setup(ConfigurationInterface $configuration = null)
     {
         $this->configuration = $configuration ?: new NextAcceptConfiguration();
         $this->authService = (new AuthFactory())->getAuthenticationService($this->configuration, $this->configuration->getClientType());
-        $this->logger = new LogsService($this->configuration);
-
     }
 
     public function createPayment(PaymentObjectInterface $paymentObject)

@@ -4,7 +4,7 @@ namespace NetsCore\Enums;
 
 use MyCLabs\Enum\Enum;
 
-class PaymentMethodDetailsType extends Enum
+class PaymentMethodDetailsTypeEnum extends Enum
 {
     const PaymentWithToken = 'PaymentWithToken';
     const InitialPaymentMethodTokenizationDetails = 'InitialPaymentMethodTokenizationDetails';

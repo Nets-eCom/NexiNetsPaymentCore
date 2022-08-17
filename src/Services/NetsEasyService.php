@@ -10,7 +10,6 @@ class NetsEasyService implements ClientServiceInterface
 {
 
     private APIClientInterface $client;
-    private LogsService $logsService;
 
     public function __construct(APIClientInterface $client)
     {

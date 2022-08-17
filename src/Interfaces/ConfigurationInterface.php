@@ -10,7 +10,4 @@ interface ConfigurationInterface
     public function getPassword();
     public function setPassword(string $password);
     public function getAuthUrl();
-
-    public function getDebugLogDir();
-    public function getDebugLogFile();
 }
