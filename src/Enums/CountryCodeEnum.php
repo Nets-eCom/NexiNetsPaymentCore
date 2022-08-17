@@ -4,7 +4,7 @@ namespace NetsCore\Enums;
 
 use MyCLabs\Enum\Enum;
 
-class CountryCode extends Enum
+class CountryCodeEnum extends Enum
 {
     const AF = 'AF';
     const AX = 'AX';

@@ -4,7 +4,7 @@ namespace NetsCore\Enums;
 
 use MyCLabs\Enum\Enum;
 
-class MerchantInitiatedTransactionType extends Enum
+class MerchantInitiatedTransactionTypeEnum extends Enum
 {
     const UnscheduledCardOnFile = 'UnscheduledCardOnFile';
     const DelayedCharge = 'DelayedCharge';

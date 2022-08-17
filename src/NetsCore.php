@@ -25,6 +25,7 @@ class NetsCore
         $this->configuration = $configuration ?: new NextAcceptConfiguration();
         $this->authService = (new AuthFactory())->getAuthenticationService($this->configuration, $this->configuration->getClientType());
         $this->logger = new LogsService($this->configuration);
+
     }
 
     public function createPayment(PaymentObjectInterface $paymentObject)
