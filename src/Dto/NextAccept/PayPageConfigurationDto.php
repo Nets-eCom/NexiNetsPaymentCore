@@ -2,7 +2,7 @@
 
 namespace NetsCore\Dto\NextAccept;
 
-class PayPageConfiguration
+class PayPageConfigurationDto
 {
     /**
      * @var PaymentMethodActionInfo[]

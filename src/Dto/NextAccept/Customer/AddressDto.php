@@ -2,7 +2,7 @@
 
 namespace NetsCore\Dto\NextAccept\Customer;
 
-class Address
+class AddressDto
 {
     public string $address1;
     public string $address2;
