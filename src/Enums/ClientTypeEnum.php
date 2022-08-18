@@ -6,7 +6,6 @@ use MyCLabs\Enum\Enum;
 
 final class ClientTypeEnum extends Enum
 {
-    const EasyNets = 'NetsEasy';
-    const NextAccept = 'NextAccept';
+    const EASY_NETS = 'NetsEasy';
+    const NEXT_ACCEPT = 'NextAccept';
 }
-

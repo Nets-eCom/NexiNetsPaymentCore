@@ -9,5 +9,4 @@ class SepaDirectDepositTypeADto implements PaymentMethodDetailsInterface
     public string $iban;
     public string $customerEmail;
     public string $type;
-
 }

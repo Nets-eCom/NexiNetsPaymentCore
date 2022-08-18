@@ -6,7 +6,7 @@ use MyCLabs\Enum\Enum;
 
 class PaymentMethodTypeEnum extends Enum
 {
-    const Card = 'Card';
-    const DirectBankTransfer = 'DirectBankTransfer';
-    const Prepaid = 'Prepaid';
+    const CARD = 'Card';
+    const DIRECT_BANK_TRANSFER = 'DirectBankTransfer';
+    const PREPAID = 'Prepaid';
 }

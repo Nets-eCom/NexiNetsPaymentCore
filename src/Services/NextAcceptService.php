@@ -8,46 +8,52 @@ use NetsCore\Interfaces\PaymentObjectInterface;
 
 class NextAcceptService implements ClientServiceInterface
 {
-
     private APIClientInterface $apiClient;
 
-    public function __construct(APIClientInterface $client)
+    /**
+     * @param  APIClientInterface  $apiClient
+     */
+    public function __construct(APIClientInterface $apiClient)
     {
-        $this->apiClient = $client;
+        $this->apiClient = $apiClient;
     }
 
-    function createPayment(PaymentObjectInterface $paymentObject)
+    /**
+     * @param  PaymentObjectInterface  $paymentObject
+     * @return mixed
+     */
+    public function createPayment(PaymentObjectInterface $paymentObject)
     {
         //TODO: Remap object to simple structure
         return $this->apiClient->createPayment($paymentObject);
     }
 
-    function getPaymentDetails()
+    public function getPaymentDetails()
     {
         // TODO: Implement getPaymentDetails() method.
     }
 
-    function cancelPayment()
+    public function cancelPayment()
     {
         // TODO: Implement cancelPayment() method.
     }
 
-    function authorizePayment()
+    public function authorizePayment()
     {
         // TODO: Implement authorizePayment() method.
     }
 
-    function capturePayment()
+    public function capturePayment()
     {
         // TODO: Implement capturePayment() method.
     }
 
-    function refundPayment()
+    public function refundPayment()
     {
         // TODO: Implement refundPayment() method.
     }
 
-    function salePayment()
+    public function salePayment()
     {
         // TODO: Implement salePayment() method.
     }
