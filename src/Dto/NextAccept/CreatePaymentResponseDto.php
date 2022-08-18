@@ -3,7 +3,7 @@
 namespace NetsCore\Dto\NextAccept;
 
 
-    class CreatePaymentResponseDto
+class CreatePaymentResponseDto
 {
     public string $paymentId;
 

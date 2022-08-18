@@ -26,7 +26,6 @@ class NetsCore
 
     public function createPayment(PaymentObjectInterface $paymentObject)
     {
-        //TODO: Prepare dto for responding url and transactionId
         return $this->getClient()->createPayment($paymentObject);
     }
 
