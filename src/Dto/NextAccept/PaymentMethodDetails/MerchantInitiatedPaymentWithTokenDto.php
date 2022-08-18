@@ -10,5 +10,4 @@ class MerchantInitiatedPaymentWithTokenDto implements PaymentMethodDetailsInterf
     public string $secret;
     public string $merchantInitiatedTransactionType;
     public string $type;
-
 }

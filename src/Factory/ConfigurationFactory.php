@@ -6,7 +6,12 @@ use NetsCore\Interfaces\ConfigurationInterface;
 
 class ConfigurationFactory
 {
-    public function getConfiguration(string $integrationType): ConfigurationInterface {
+    /**
+     * @param  string  $integrationType
+     * @return ConfigurationInterface
+     */
+    public function getConfiguration(string $integrationType): ConfigurationInterface
+    {
         $configuration = '\NetsCore\Configuration\\' . $integrationType . 'Configuration';
 
         return new $configuration();

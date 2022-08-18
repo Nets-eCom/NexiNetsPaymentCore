@@ -3,29 +3,27 @@
 namespace NetsCore\Dto\NextAccept\Request\Transformer;
 
 use Exception;
-use NetsCore\Dto\NextAccept\BasketItem;
-use NetsCore\Dto\NextAccept\Customer\Address;
+use NetsCore\Dto\NextAccept\BasketItemDto;
+use NetsCore\Dto\NextAccept\Customer\AddressDto;
 use NetsCore\Dto\NextAccept\Customer\Transformer\OrderCustomerEntityTransformer;
-use NetsCore\Dto\NextAccept\RedirectUrl;
-use NetsCore\Dto\NextAccept\Request\CreatePaymentRequest;
-use NetsCore\Enums\CountryCode;
+use NetsCore\Dto\NextAccept\RedirectUrlDto;
+use NetsCore\Dto\NextAccept\Request\PaymentObject;
+use NetsCore\Enums\CountryCodeEnum;
 use Shopware\Core\Checkout\Payment\Cart\AsyncPaymentTransactionStruct;
 use Shopware\Core\Checkout\Payment\Exception\AsyncPaymentProcessException;
 
-
 class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransformer
 {
-
     /**
      * @param AsyncPaymentTransactionStruct $object
      *
-     * @return CreatePaymentRequest
+     * @return PaymentObject
      * @throws AsyncPaymentProcessException|Exception if the provided currency code is not valid
      *
      */
-    public function transformFromObject($object
-    ): CreatePaymentRequest {
-        $dto = new CreatePaymentRequest();
+    public function transformFromObject($object): PaymentObject
+    {
+        $dto = new PaymentObject();
 
         $dto->orderNumber = $object->getOrder()->getOrderNumber();
 
@@ -33,7 +31,7 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
         $dto->amount = ceil($amount * 100);
 
         try {
-            $dto->currencyCode = $dto->validated_currency_code(
+            $dto->currencyCode = $dto->validatedCurrencyCode(
                 $object->getOrder()->getCurrency()->getIsoCode()
             );
         } catch (Exception $e) {
@@ -42,21 +40,21 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
                 'Wrong currency code'
             );
         }
-        $dto->redirectUrls            = new RedirectUrl();
+        $dto->redirectUrls            = new RedirectUrlDto();
         $dto->redirectUrls->returnUrl = $object->getReturnUrl();
 
         $customerTransformer         = new OrderCustomerEntityTransformer();
         $dto->customer               = $customerTransformer->transformFromObject(
             $object->getOrder()->getOrderCustomer()
         );
-        $customerAddress             = new Address();
+        $customerAddress             = new AddressDto();
         $fetchedAddress              = $object->getOrder()->getBillingAddress();
         $dto->customer->phone        = $fetchedAddress->getPhoneNumber() ?? '';
         $customerAddress->address1   = $fetchedAddress->getStreet();
         $customerAddress->city       = $fetchedAddress->getCity();
         $customerAddress->postalCode = $fetchedAddress->getZipcode();
         $countryCode                 = $fetchedAddress->getCountry()->getIso();
-        if (CountryCode::isValid($countryCode)) {
+        if (CountryCodeEnum::isValid($countryCode)) {
             $customerAddress->countryCode = $countryCode;
         } else {
             throw new AsyncPaymentProcessException(
@@ -72,7 +70,7 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
         $basketItems = $object->getOrder()->getLineItems();
         $unitCode    = 0;
         foreach ($basketItems as $basketItem) {
-            $item                = new BasketItem();
+            $item                = new BasketItemDto();
             $item->itemNumber    = $basketItem->getProductId();
             $item->title         = $basketItem->getLabel();
             $item->quantity      = $basketItem->getQuantity();
@@ -90,5 +88,4 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
 
         return $dto;
     }
-
 }

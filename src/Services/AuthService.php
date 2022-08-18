@@ -10,7 +10,12 @@ class AuthService
     protected APIAuthServiceInterface $APIAuthService;
     private ConfigurationInterface $configuration;
     private array $authData;
+    private LogsService $logg;
 
+    /**
+     * @param  ConfigurationInterface  $configuration
+     * @param  APIAuthServiceInterface  $authService
+     */
     public function __construct(ConfigurationInterface $configuration, APIAuthServiceInterface $authService)
     {
         $this->APIAuthService = $authService;
@@ -19,16 +24,24 @@ class AuthService
         $this->authorize();
     }
 
-    public function authorize() {
+    /**
+     *
+     */
+    public function authorize()
+    {
         $this->authData = json_decode($this->APIAuthService->authorize(), true);
         $this->logg->logger(json_encode($this->authData), []);
     }
 
-    public function refreshToken() {
-
+    public function refreshToken()
+    {
     }
 
-    public function getAuthData(): array {
+    /**
+     * @return array
+     */
+    public function getAuthData(): array
+    {
         return [
             'token' => $this->authData['access_token']
         ];
