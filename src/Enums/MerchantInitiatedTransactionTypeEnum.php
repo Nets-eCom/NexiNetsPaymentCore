@@ -6,7 +6,7 @@ use MyCLabs\Enum\Enum;
 
 class MerchantInitiatedTransactionTypeEnum extends Enum
 {
-    const UnscheduledCardOnFile = 'UnscheduledCardOnFile';
-    const DelayedCharge = 'DelayedCharge';
-    const NoShow = 'NoShow';
+    const UNSCHEDULED_CARD_ON_FILE = 'UnscheduledCardOnFile';
+    const DELAYED_CHARGE = 'DelayedCharge';
+    const NO_SHOW = 'NoShow';
 }

@@ -10,5 +10,4 @@ class PaymentWithTokenDto implements PaymentMethodDetailsInterface
     public string $secret;
     public bool $isRecurring;
     public string $type;
-
 }

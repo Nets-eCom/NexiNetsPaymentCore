@@ -9,16 +9,22 @@ use NetsCore\Services\ApiService;
 
 class NextAcceptAPIAuthService implements APIAuthServiceInterface
 {
-
     protected ConfigurationInterface $configuration;
     private ApiService $apiService;
 
+    /**
+     * @param  ConfigurationInterface  $configuration
+     * @param  ApiService|null  $apiService
+     */
     public function __construct(ConfigurationInterface $configuration, ApiService $apiService = null)
     {
         $this->apiService = $apiService ?: new ApiService();
         $this->configuration = $configuration;
     }
 
+    /**
+     * @return mixed
+     */
     public function authorize()
     {
         return $this->apiService->post($this->configuration->getAuthUrl(), $this->generateHeaders(), $this->getOptions());
@@ -29,6 +35,9 @@ class NextAcceptAPIAuthService implements APIAuthServiceInterface
         // TODO: Implement refreshToken() method.
     }
 
+    /**
+     * @return string[]
+     */
     private function generateHeaders(): array
     {
         return [
@@ -36,6 +45,9 @@ class NextAcceptAPIAuthService implements APIAuthServiceInterface
         ];
     }
 
+    /**
+     * @return array[]
+     */
     private function getOptions(): array
     {
         return [
@@ -46,7 +58,7 @@ class NextAcceptAPIAuthService implements APIAuthServiceInterface
                 ],
                 [
                     'name' => 'scope',
-                    'contents' => ApiUrlsEnum::NextAcceptApiScopePaymantService
+                    'contents' => ApiUrlsEnum::NEXT_ACCEPT_API_SCOPE_PAYMENT_SERVICE
                 ]
             ]
         ];

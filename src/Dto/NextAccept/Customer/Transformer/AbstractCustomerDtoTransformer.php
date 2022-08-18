@@ -2,9 +2,12 @@
 
 namespace NetsCore\Dto\NextAccept\Customer\Transformer;
 
-
 abstract class AbstractCustomerDtoTransformer implements CustomerDtoTransformerInterface
 {
+    /**
+     * @param  iterable  $objects
+     * @return iterable
+     */
     public function transformFromObjects(iterable $objects): iterable
     {
         $dto = [];
@@ -15,5 +18,4 @@ abstract class AbstractCustomerDtoTransformer implements CustomerDtoTransformerI
 
         return $dto;
     }
-
 }

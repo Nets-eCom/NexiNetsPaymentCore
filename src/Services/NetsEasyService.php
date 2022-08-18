@@ -9,43 +9,50 @@ use NetsCore\Interfaces\PaymentObjectInterface;
 class NetsEasyService implements ClientServiceInterface
 {
 
-    private APIClientInterface $client;
+    public $client;
 
-    public function __construct(APIClientInterface $client)
+    /**
+     * @param  APIClientInterface  $apiClient
+     */
+    public function __construct(APIClientInterface $apiClient)
     {
     }
 
-    function createPayment(PaymentObjectInterface $paymentObject)
+    /**
+     * @param  PaymentObjectInterface  $paymentObject
+     * @return mixed
+     */
+    public function createPayment(PaymentObjectInterface $paymentObject)
     {
         return $this->client->createPayment($paymentObject);
     }
 
-    function getPaymentDetails()
+    public function getPaymentDetails()
     {
         // TODO: Implement getPaymentDetails() method.
     }
 
-    function cancelPayment()
+    public function cancelPayment()
     {
         // TODO: Implement cancelPayment() method.
     }
 
-    function authorizePayment()
+    public function authorizePayment()
     {
         // TODO: Implement authorizePayment() method.
     }
 
-    function capturePayment()
+    public function capturePayment()
     {
         // TODO: Implement capturePayment() method.
     }
 
-    function refundPayment()
+    public function refundPayment()
     {
         // TODO: Implement refundPayment() method.
     }
 
-    function salePayment()
+    public function salePayment()
     {
         // TODO: Implement salePayment() method.
     }

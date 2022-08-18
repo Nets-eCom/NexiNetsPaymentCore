@@ -9,40 +9,50 @@ class BaseAPIClient implements APIClientInterface
 {
     private string $host;
 
-    function createPayment(PaymentObjectInterface $paymentObject)
+    /**
+     * @param  PaymentObjectInterface  $paymentObject
+     * @return void
+     */
+    public function createPayment(PaymentObjectInterface $paymentObject)
     {
     }
 
-    function getPaymentDetails()
+    public function getPaymentDetails()
     {
     }
 
-    function cancelPayment()
+    public function cancelPayment()
     {
     }
 
-    function authorizePayment()
+    public function authorizePayment()
     {
     }
 
-    function capturePayment()
+    public function capturePayment()
     {
     }
 
-    function refundPayment()
+    public function refundPayment()
     {
     }
 
-    function salePayment()
+    public function salePayment()
     {
     }
 
 
+    /**
+     * @return string
+     */
     public function getHost(): string
     {
         return $this->host;
     }
 
+    /**
+     * @param  string  $host
+     */
     public function setHost(string $host): void
     {
         $this->host = $host;
