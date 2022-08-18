@@ -65,20 +65,4 @@ class NetsEasyConfiguration implements ConfigurationInterface
     {
         return ApiUrlsEnum::NETS_EASY_O_AUTH_AUTHORIZATION;
     }
-
-    /**
-     * @return string
-     */
-    public function getDebugLogDir(): string
-    {
-        return 'logs';
-    }
-
-    /**
-     * @return string
-     */
-    public function getDebugLogFile(): string
-    {
-        return 'debug.log';
-    }
 }

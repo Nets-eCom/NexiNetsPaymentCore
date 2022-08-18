@@ -66,20 +66,4 @@ class NextAcceptConfiguration implements ConfigurationInterface
     {
         return ApiUrlsEnum::NEXT_ACCEPT_O_AUTH_AUTHORIZATION;
     }
-
-    /**
-     * @return string
-     */
-    public function getDebugLogDir(): string
-    {
-        return 'logs';
-    }
-
-    /**
-     * @return string
-     */
-    public function getDebugLogFile(): string
-    {
-        return 'debug.log';
-    }
 }

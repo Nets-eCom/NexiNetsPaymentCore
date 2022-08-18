@@ -8,8 +8,7 @@ use NetsCore\Interfaces\PaymentObjectInterface;
 
 class NetsEasyService implements ClientServiceInterface
 {
-    private APIClientInterface $apiClient;
-    private LogsService $logsService;
+
     public $client;
 
     /**
