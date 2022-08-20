@@ -3,10 +3,10 @@
 namespace NetsCore\Dto\NextAccept\Request;
 
 use Exception;
-use NetsCore\Dto\NextAccept\BasketItem;
-use NetsCore\Dto\NextAccept\PayPageConfiguration;
-use NetsCore\Dto\NextAccept\RedirectUrl;
-use NetsCore\Enums\CurrencyCode;
+use NetsCore\Dto\NextAccept\BasketItemDto;
+use NetsCore\Enums\CurrencyCodeEnum;
+use NetsCore\Dto\NextAccept\PayPageConfigurationDto;
+use NetsCore\Dto\NextAccept\RedirectUrlDto;
 use NetsCore\Interfaces\CustomerInterface;
 use NetsCore\Interfaces\PaymentMethodDetailsInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
@@ -22,22 +22,24 @@ class PaymentObject implements PaymentObjectInterface
     public string $processing;
     public string $description;
 
-    public RedirectUrl $redirectUrls;
+    public RedirectUrlDto $redirectUrls;
     public PaymentMethodDetailsInterface $paymentMethodDetails;
     public CustomerInterface $customer;
-    public PayPageConfiguration $payPageConfiguration;
+    public PayPageConfigurationDto $payPageConfiguration;
 
     /**
-     * @var BasketItem[]
+     * @var BasketItemDto[]
      */
     public array $basket;
 
     /**
+     * @param $currencyCode
+     * @return mixed
      * @throws Exception
      */
-    public function validated_currency_code($currencyCode)
+    public function validatedCurrencyCode($currencyCode)
     {
-        if (CurrencyCode::isValid($currencyCode)) {
+        if (CurrencyCodeEnum::isValid($currencyCode)) {
             return $currencyCode;
         } else {
             throw new Exception(

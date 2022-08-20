@@ -2,7 +2,7 @@
 
 namespace NetsCore\Dto\NextAccept;
 
-class PaymentMethodActionInfo
+class PaymentMethodActionInfoDto
 {
     public string $paymentMethod;
     public string $name;

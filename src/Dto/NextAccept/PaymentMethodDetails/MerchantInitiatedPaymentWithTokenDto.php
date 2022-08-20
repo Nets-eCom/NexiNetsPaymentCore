@@ -4,11 +4,10 @@ namespace NetsCore\Dto\NextAccept\PaymentMethodDetails;
 
 use NetsCore\Interfaces\PaymentMethodDetailsInterface;
 
-class PaymentWithToken implements PaymentMethodDetailsInterface
+class MerchantInitiatedPaymentWithTokenDto implements PaymentMethodDetailsInterface
 {
     public string $token;
     public string $secret;
-    public bool $isRecurring;
+    public string $merchantInitiatedTransactionType;
     public string $type;
-
 }

@@ -2,7 +2,7 @@
 
 namespace NetsCore\Dto\NextAccept;
 
-class RedirectUrl
+class RedirectUrlDto
 {
     public string $returnUrl;
 }

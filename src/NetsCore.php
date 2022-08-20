@@ -17,13 +17,18 @@ class NetsCore
     private ConfigurationInterface $configuration;
     private APIAuthServiceInterface $authService;
 
-
+    /**
+     * @param  ConfigurationInterface|null  $configuration
+     */
     public function setup(ConfigurationInterface $configuration = null)
     {
         $this->configuration = $configuration ?: new NextAcceptConfiguration();
         $this->authService = (new AuthFactory())->getAuthenticationService($this->configuration, $this->configuration->getClientType());
     }
 
+    /**
+     * @param  PaymentObjectInterface  $paymentObject
+     */
     public function createPayment(PaymentObjectInterface $paymentObject)
     {
         return $this->getClient()->createPayment($paymentObject);
@@ -59,6 +64,9 @@ class NetsCore
         //TODO: Create sale payment plugin api
     }
 
+    /**
+     * @return ClientServiceInterface
+     */
     private function getClient(): ClientServiceInterface
     {
         $authService = new AuthService($this->configuration, $this->authService);

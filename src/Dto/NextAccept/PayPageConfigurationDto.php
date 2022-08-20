@@ -2,10 +2,10 @@
 
 namespace NetsCore\Dto\NextAccept;
 
-class PayPageConfiguration
+class PayPageConfigurationDto
 {
     /**
-     * @var PaymentMethodActionInfo[]
+     * @var PaymentMethodActionInfoDto[]
      */
     public array $paymentMethodActionInfo;
     public string $language;

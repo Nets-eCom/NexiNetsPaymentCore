@@ -4,7 +4,7 @@ namespace NetsCore\Dto\NextAccept\PaymentMethodDetails;
 
 use NetsCore\Interfaces\PaymentMethodDetailsInterface;
 
-class InitialPaymentMethodTokenizationDetails implements PaymentMethodDetailsInterface
+class InitialPaymentMethodTokenizationDetailsDto implements PaymentMethodDetailsInterface
 {
     public string $expiryDate;
     public int $intervalDays;

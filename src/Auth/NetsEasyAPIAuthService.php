@@ -9,6 +9,9 @@ class NetsEasyAPIAuthService implements APIAuthServiceInterface
 {
     protected NextAcceptConfiguration $configuration;
 
+    /**
+     * @param  NextAcceptConfiguration  $configuration
+     */
     public function __construct(NextAcceptConfiguration $configuration)
     {
         $this->configuration = $configuration;
