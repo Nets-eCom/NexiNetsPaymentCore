@@ -32,19 +32,4 @@ class PaymentObject implements PaymentObjectInterface
      */
     public array $basket;
 
-    /**
-     * @param $currencyCode
-     * @return mixed
-     * @throws Exception
-     */
-    public function validatedCurrencyCode($currencyCode)
-    {
-        if (CurrencyCodeEnum::isValid($currencyCode)) {
-            return $currencyCode;
-        } else {
-            throw new Exception(
-                'Wrong currency code'
-            );
-        }
-    }
 }

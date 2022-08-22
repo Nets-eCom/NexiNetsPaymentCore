@@ -8,7 +8,7 @@ use NetsCore\Dto\NextAccept\Customer\AddressDto;
 use NetsCore\Dto\NextAccept\Customer\Transformer\OrderCustomerEntityTransformer;
 use NetsCore\Dto\NextAccept\RedirectUrlDto;
 use NetsCore\Dto\NextAccept\Request\PaymentObject;
-use NetsCore\Enums\CountryCodeEnum;
+use NetsCore\Validator\PaymentObjectValidator;
 use Shopware\Core\Checkout\Payment\Cart\AsyncPaymentTransactionStruct;
 use Shopware\Core\Checkout\Payment\Exception\AsyncPaymentProcessException;
 
@@ -18,7 +18,7 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
      * @param AsyncPaymentTransactionStruct $object
      *
      * @return PaymentObject
-     * @throws AsyncPaymentProcessException|Exception if the provided currency code is not valid
+     * @throws AsyncPaymentProcessException|Exception if the provided currency or country code is not valid
      *
      */
     public function transformFromObject($object): PaymentObject
@@ -30,11 +30,10 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
         $amount      = $object->getOrderTransaction()->getAmount()->getTotalPrice();
         $dto->amount = ceil($amount * 100);
 
-        try {
-            $dto->currencyCode = $dto->validatedCurrencyCode(
-                $object->getOrder()->getCurrency()->getIsoCode()
-            );
-        } catch (Exception $e) {
+        $currencyCode = $object->getOrder()->getCurrency()->getIsoCode();
+        if (PaymentObjectValidator::isCurrencyCodeValid($currencyCode)) {
+            $dto->currencyCode = $currencyCode;
+        } else {
             throw new AsyncPaymentProcessException(
                 $object->getOrderTransaction()->getId(),
                 'Wrong currency code'
@@ -54,7 +53,7 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
         $customerAddress->city       = $fetchedAddress->getCity();
         $customerAddress->postalCode = $fetchedAddress->getZipcode();
         $countryCode                 = $fetchedAddress->getCountry()->getIso();
-        if (CountryCodeEnum::isValid($countryCode)) {
+        if (PaymentObjectValidator::isCountryCodeValid($countryCode)) {
             $customerAddress->countryCode = $countryCode;
         } else {
             throw new AsyncPaymentProcessException(
