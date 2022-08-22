@@ -11,13 +11,11 @@ use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\ConfigurationInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 use NetsCore\Services\AuthService;
-use NetsCore\Services\LogsService;
 
 class NetsCore
 {
     private ConfigurationInterface $configuration;
     private APIAuthServiceInterface $authService;
-
 
     /**
      * @param  ConfigurationInterface|null  $configuration
@@ -33,10 +31,7 @@ class NetsCore
      */
     public function createPayment(PaymentObjectInterface $paymentObject)
     {
-        //TODO: Prepare json response dto and remaping from json response to object with responding url and transactionId
-        LogsService::logger(json_encode($paymentObject));
-        $response = $this->getClient()->createPayment($paymentObject);
-        LogsService::logger(json_encode($response));
+        return $this->getClient()->createPayment($paymentObject);
     }
 
     public function getPaymentDetails()
