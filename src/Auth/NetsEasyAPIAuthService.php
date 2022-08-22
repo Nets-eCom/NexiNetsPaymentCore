@@ -21,9 +21,4 @@ class NetsEasyAPIAuthService implements APIAuthServiceInterface
     {
         // TODO: Implement authorize() method.
     }
-
-    public function refreshToken()
-    {
-        // TODO: Implement refreshToken() method.
-    }
 }

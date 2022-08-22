@@ -32,10 +32,6 @@ class AuthService
         LogsService::logger(json_encode($this->authData));
     }
 
-    public function refreshToken()
-    {
-    }
-
     /**
      * @return array
      */
