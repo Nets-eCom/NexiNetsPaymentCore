@@ -3,6 +3,7 @@
 namespace NetsCore\Services;
 
 use NetsCore\Dto\NextAccept\CreatePaymentResponseDto;
+use NetsCore\Dto\NextAccept\CancelPaymentResponseDto;
 use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
@@ -23,15 +24,10 @@ class NextAcceptService implements ClientServiceInterface
      * @param  PaymentObjectInterface  $paymentObject
      * @return mixed
      */
-        function createPayment(PaymentObjectInterface $paymentObject): CreatePaymentResponseDto
-
+    public function createPayment(PaymentObjectInterface $paymentObject): CreatePaymentResponseDto
     {
-        //TODO: Remap object to simple structure
         $response = $this->apiClient->createPayment($paymentObject);
-        $map = new CreatePaymentResponseDto();
-        $map->paymentId = $response['paymentId'];
-        $map->paypageURL = $response['paypageURL'];
-        return $map;
+        return (new CreatePaymentResponseDto())->map($response);
     }
 
     public function getPaymentDetails()
@@ -39,9 +35,13 @@ class NextAcceptService implements ClientServiceInterface
         // TODO: Implement getPaymentDetails() method.
     }
 
-    public function cancelPayment()
+    public function cancelPayment(PaymentObjectInterface $paymentObject): CancelPaymentResponseDto
     {
         // TODO: Implement cancelPayment() method.
+        $response = $this->apiClient->cancelPayment($paymentObject);
+        $map = new CancelPaymentResponseDto();
+        $map->paymentId = $response['paymentId'];
+        return $map;
     }
 
     public function authorizePayment()

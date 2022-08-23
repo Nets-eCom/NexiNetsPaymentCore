@@ -30,11 +30,6 @@ class NextAcceptAPIAuthService implements APIAuthServiceInterface
         return $this->apiService->post($this->configuration->getAuthUrl(), $this->generateHeaders(), $this->getOptions());
     }
 
-    public function refreshToken()
-    {
-        // TODO: Implement refreshToken() method.
-    }
-
     /**
      * @return string[]
      */

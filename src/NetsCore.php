@@ -3,6 +3,7 @@
 namespace NetsCore;
 
 use NetsCore\Configuration\NextAcceptConfiguration;
+use NetsCore\Dto\NextAccept\CreatePaymentResponseDto;
 use NetsCore\Factory\APIClientFactory;
 use NetsCore\Factory\AuthFactory;
 use NetsCore\Factory\ClientFactory;
@@ -29,7 +30,7 @@ class NetsCore
     /**
      * @param  PaymentObjectInterface  $paymentObject
      */
-    public function createPayment(PaymentObjectInterface $paymentObject)
+    public function createPayment(PaymentObjectInterface $paymentObject): CreatePaymentResponseDto
     {
         return $this->getClient()->createPayment($paymentObject);
     }
