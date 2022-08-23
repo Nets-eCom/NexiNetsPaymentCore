@@ -10,7 +10,7 @@ interface APIClientInterface
      */
     public function createPayment(PaymentObjectInterface $paymentObject);
     public function getPaymentDetails();
-    public function cancelPayment();
+    public function cancelPayment(PaymentObjectInterface $paymentObject);
     public function authorizePayment();
     public function capturePayment();
     public function refundPayment();
