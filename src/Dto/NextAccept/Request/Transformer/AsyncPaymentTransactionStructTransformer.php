@@ -30,37 +30,25 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
         $amount      = $object->getOrderTransaction()->getAmount()->getTotalPrice();
         $dto->amount = ceil($amount * 100);
 
-        $currencyCode = $object->getOrder()->getCurrency()->getIsoCode();
-        if (PaymentObjectValidator::isCurrencyCodeValid($currencyCode)) {
-            $dto->currencyCode = $currencyCode;
-        } else {
-            throw new AsyncPaymentProcessException(
-                $object->getOrderTransaction()->getId(),
-                'Wrong currency code'
-            );
-        }
+        $currencyCode      = $object->getOrder()->getCurrency()->getIsoCode();
+        $dto->currencyCode = $currencyCode;
+
         $dto->redirectUrls            = new RedirectUrlDto();
         $dto->redirectUrls->returnUrl = $object->getReturnUrl();
 
-        $customerTransformer         = new OrderCustomerEntityTransformer();
-        $dto->customer               = $customerTransformer->transformFromObject(
+        $customerTransformer          = new OrderCustomerEntityTransformer();
+        $dto->customer                = $customerTransformer->transformFromObject(
             $object->getOrder()->getOrderCustomer()
         );
-        $customerAddress             = new AddressDto();
-        $fetchedAddress              = $object->getOrder()->getBillingAddress();
-        $dto->customer->phone        = $fetchedAddress->getPhoneNumber() ?? '';
-        $customerAddress->address1   = $fetchedAddress->getStreet();
-        $customerAddress->city       = $fetchedAddress->getCity();
-        $customerAddress->postalCode = $fetchedAddress->getZipcode();
-        $countryCode                 = $fetchedAddress->getCountry()->getIso();
-        if (PaymentObjectValidator::isCountryCodeValid($countryCode)) {
-            $customerAddress->countryCode = $countryCode;
-        } else {
-            throw new AsyncPaymentProcessException(
-                $object->getOrderTransaction()->getId(),
-                'Wrong country code'
-            );
-        }
+        $customerAddress              = new AddressDto();
+        $fetchedAddress               = $object->getOrder()->getBillingAddress();
+        $dto->customer->phone         = $fetchedAddress->getPhoneNumber() ?? '';
+        $customerAddress->address1    = $fetchedAddress->getStreet();
+        $customerAddress->city        = $fetchedAddress->getCity();
+        $customerAddress->postalCode  = $fetchedAddress->getZipcode();
+        $countryCode                  = $fetchedAddress->getCountry()->getIso();
+        $customerAddress->countryCode = $countryCode;
+
         $customerAddress->countryCode = $fetchedAddress->getCountry()->getIso();
         $dto->customer->address       = $customerAddress;
 
@@ -84,7 +72,12 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
 
             $dto->basket[] = $item;
         }
-
-        return $dto;
+        if (PaymentObjectValidator::isPaymentObjectValid($dto)) {
+            return $dto;
+        } else {
+            throw new AsyncPaymentProcessException(
+                $object->getOrderTransaction()->getId(), "Provided transaction object is invalid"
+            );
+        }
     }
 }
