@@ -40,9 +40,13 @@ class NetsCore
         //TODO: Create get payment plugin api
     }
 
-    public function cancelPayment()
+    /**
+     * @param  PaymentObjectInterface  $paymentObject
+     */
+    public function cancelPayment(PaymentObjectInterface $paymentObject)
     {
         //TODO: Create cancel payment plugin api
+        return $this->getClient()->cancelPayment($paymentObject);
     }
 
     public function authorizePayment()
