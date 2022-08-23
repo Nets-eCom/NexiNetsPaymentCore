@@ -8,9 +8,9 @@ use NetsCore\Dto\NextAccept\Customer\AddressDto;
 use NetsCore\Dto\NextAccept\Customer\Transformer\OrderCustomerEntityTransformer;
 use NetsCore\Dto\NextAccept\RedirectUrlDto;
 use NetsCore\Dto\NextAccept\Request\PaymentObject;
-use NetsCore\Validator\PaymentObjectValidator;
+use NetsCore\Enums\PaymentProcessingTypeEnum;
+use NetsCore\Enums\PaymentTypeEnum;
 use Shopware\Core\Checkout\Payment\Cart\AsyncPaymentTransactionStruct;
-use Shopware\Core\Checkout\Payment\Exception\AsyncPaymentProcessException;
 
 class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransformer
 {
@@ -18,7 +18,6 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
      * @param AsyncPaymentTransactionStruct $object
      *
      * @return PaymentObject
-     * @throws AsyncPaymentProcessException|Exception if the provided currency or country code is not valid
      *
      */
     public function transformFromObject($object): PaymentObject
@@ -29,9 +28,12 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
 
         $amount      = $object->getOrderTransaction()->getAmount()->getTotalPrice();
         $dto->amount = ceil($amount * 100);
+        $dto->type   = PaymentTypeEnum::NETS_HOSTED_ECOM;
 
         $currencyCode      = $object->getOrder()->getCurrency()->getIsoCode();
         $dto->currencyCode = $currencyCode;
+
+        $dto->processing = PaymentProcessingTypeEnum::NONE;
 
         $dto->redirectUrls            = new RedirectUrlDto();
         $dto->redirectUrls->returnUrl = $object->getReturnUrl();
@@ -72,12 +74,7 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
 
             $dto->basket[] = $item;
         }
-        if (PaymentObjectValidator::isPaymentObjectValid($dto)) {
-            return $dto;
-        } else {
-            throw new AsyncPaymentProcessException(
-                $object->getOrderTransaction()->getId(), "Provided transaction object is invalid"
-            );
-        }
+
+        return $dto;
     }
 }
