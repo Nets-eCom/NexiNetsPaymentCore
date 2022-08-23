@@ -9,6 +9,7 @@ use NetsCore\Dto\NextAccept\Customer\Transformer\OrderCustomerEntityTransformer;
 use NetsCore\Dto\NextAccept\RedirectUrlDto;
 use NetsCore\Dto\NextAccept\Request\PaymentObject;
 use NetsCore\Enums\CountryCodeEnum;
+use NetsCore\Enums\PaymentTypeEnum;
 use Shopware\Core\Checkout\Payment\Cart\AsyncPaymentTransactionStruct;
 use Shopware\Core\Checkout\Payment\Exception\AsyncPaymentProcessException;
 
@@ -29,6 +30,7 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
 
         $amount      = $object->getOrderTransaction()->getAmount()->getTotalPrice();
         $dto->amount = ceil($amount * 100);
+        $dto->type = PaymentTypeEnum::NETS_HOSTED_ECOM; // Its information where is the terminal -> NETS_HOSTED_ECOM redirect to terminal NETS_HOSTED_ECOM -> On the page without redirect
 
         try {
             $dto->currencyCode = $dto->validatedCurrencyCode(
