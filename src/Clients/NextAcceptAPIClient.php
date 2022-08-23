@@ -40,9 +40,16 @@ class NextAcceptAPIClient implements APIClientInterface
         //TODO: Implement authorize payment request
     }
 
-    public function cancelPayment()
+    /**
+     * @param  PaymentObjectInterface  $paymentObject
+     * @return mixed
+     */
+    public function cancelPayment(PaymentObjectInterface  $paymentObject)
     {
         //TODO: Implement cancel payment request
+        $request = new Request('POST', ApiUrlsEnum::NEXT_ACCEPT_PAYMENT_SERVICE. $paymentObject->getPaymentId() .ApiUrlsEnum::NEXT_ACCEPT_API_CANCEL, $this->generateHeader(), json_encode($paymentObject));
+        $res = $this->httpClient->sendAsync($request)->wait();
+        return $res->getBody();
     }
 
     public function capturePayment()
