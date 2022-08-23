@@ -29,7 +29,11 @@ class NetsEasyAPIClient implements APIClientInterface
     {
     }
 
-    public function cancelPayment()
+    /**
+     * @param  PaymentObjectInterface  $paymentObject
+     * @return void
+     */
+    public function cancelPayment(PaymentObjectInterface $paymentObject)
     {
     }
 
