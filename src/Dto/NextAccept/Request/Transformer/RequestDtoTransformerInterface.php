@@ -8,9 +8,9 @@ interface RequestDtoTransformerInterface
 {
     /**
      * @param $object
-     * @return PaymentObject
+     * @return object
      */
-    public function transformFromObject($object): PaymentObject;
+    public function transformFromObject($object): object;
 
     public function transformFromObjects(iterable $objects): iterable;
 }
