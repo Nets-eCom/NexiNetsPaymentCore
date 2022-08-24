@@ -8,7 +8,7 @@ use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 
-class NextAcceptService implements ClientServiceInterface
+class NetaxeptService implements ClientServiceInterface
 {
     private APIClientInterface $apiClient;
 
