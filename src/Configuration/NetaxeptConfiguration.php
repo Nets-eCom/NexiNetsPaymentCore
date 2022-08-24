@@ -6,7 +6,7 @@ use NetsCore\Enums\ApiUrlsEnum;
 use NetsCore\Enums\ClientTypeEnum;
 use NetsCore\Interfaces\ConfigurationInterface;
 
-class NextAcceptConfiguration implements ConfigurationInterface
+class NetaxeptConfiguration implements ConfigurationInterface
 {
     protected string $clientType = ClientTypeEnum::NEXT_ACCEPT;
     private string $username;
@@ -33,7 +33,7 @@ class NextAcceptConfiguration implements ConfigurationInterface
      * @param  string  $username
      * @return $this
      */
-    public function setUsername(string $username): NextAcceptConfiguration
+    public function setUsername(string $username): NetaxeptConfiguration
     {
         $this->username = $username;
 
@@ -52,7 +52,7 @@ class NextAcceptConfiguration implements ConfigurationInterface
      * @param  string  $password
      * @return $this
      */
-    public function setPassword(string $password): NextAcceptConfiguration
+    public function setPassword(string $password): NetaxeptConfiguration
     {
         $this->password = $password;
 
