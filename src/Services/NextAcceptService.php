@@ -39,9 +39,7 @@ class NextAcceptService implements ClientServiceInterface
     {
         // TODO: Implement cancelPayment() method.
         $response = $this->apiClient->cancelPayment($paymentObject);
-        $map = new CancelPaymentResponseDto();
-        $map->paymentId = $response['paymentId'];
-        return $map;
+        return (new CancelPaymentResponseDto())->map($response);
     }
 
     public function authorizePayment()

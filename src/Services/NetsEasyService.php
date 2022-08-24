@@ -32,9 +32,15 @@ class NetsEasyService implements ClientServiceInterface
         // TODO: Implement getPaymentDetails() method.
     }
 
-    public function cancelPayment()
+
+    /**
+     * @param  PaymentObjectInterface  $paymentObject
+     * @return mixed
+     */
+    public function cancelPayment(PaymentObjectInterface $paymentObject)
     {
         // TODO: Implement cancelPayment() method.
+        return $this->client->cancelPayment($paymentObject);
     }
 
     public function authorizePayment()
