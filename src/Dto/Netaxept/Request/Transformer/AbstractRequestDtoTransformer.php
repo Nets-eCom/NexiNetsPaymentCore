@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Dto\NextAccept\Request\Transformer;
+namespace NetsCore\Dto\Netaxept\Request\Transformer;
 
 abstract class AbstractRequestDtoTransformer implements RequestDtoTransformerInterface
 {

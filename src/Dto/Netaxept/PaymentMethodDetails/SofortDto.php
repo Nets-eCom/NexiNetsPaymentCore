@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Dto\NextAccept\PaymentMethodDetails;
+namespace NetsCore\Dto\Netaxept\PaymentMethodDetails;
 
 use NetsCore\Interfaces\PaymentMethodDetailsInterface;
 

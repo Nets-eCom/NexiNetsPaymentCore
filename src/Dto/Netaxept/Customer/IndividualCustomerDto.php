@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Dto\NextAccept\Customer;
+namespace NetsCore\Dto\Netaxept\Customer;
 
 use NetsCore\Interfaces\CustomerInterface;
 

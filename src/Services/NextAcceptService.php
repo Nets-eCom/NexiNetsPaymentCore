@@ -2,8 +2,8 @@
 
 namespace NetsCore\Services;
 
-use NetsCore\Dto\NextAccept\CreatePaymentResponseDto;
-use NetsCore\Dto\NextAccept\CancelPaymentResponseDto;
+use NetsCore\Dto\Netaxept\CreatePaymentResponseDto;
+use NetsCore\Dto\Netaxept\CancelPaymentResponseDto;
 use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;

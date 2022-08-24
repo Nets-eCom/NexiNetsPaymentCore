@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Dto\NextAccept;
+namespace NetsCore\Dto\Netaxept;
 
 class CreatePaymentResponseDto
 {
