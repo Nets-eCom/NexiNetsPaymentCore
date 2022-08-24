@@ -8,7 +8,7 @@ use NetsCore\Interfaces\ConfigurationInterface;
 
 class NetaxeptConfiguration implements ConfigurationInterface
 {
-    protected string $clientType = ClientTypeEnum::NEXT_ACCEPT;
+    protected string $clientType = ClientTypeEnum::NETAXEPT;
     private string $username;
     private string $password;
 
@@ -64,6 +64,6 @@ class NetaxeptConfiguration implements ConfigurationInterface
      */
     public function getAuthUrl(): string
     {
-        return ApiUrlsEnum::NEXT_ACCEPT_O_AUTH_AUTHORIZATION;
+        return ApiUrlsEnum::NETAXEPT_O_AUTH_AUTHORIZATION;
     }
 }

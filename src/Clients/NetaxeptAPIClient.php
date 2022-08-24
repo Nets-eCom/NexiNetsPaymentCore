@@ -29,7 +29,7 @@ class NetaxeptAPIClient implements APIClientInterface
      */
     public function createPayment(PaymentObjectInterface $paymentObject)
     {
-        $request = new Request('POST', ApiUrlsEnum::NEXT_ACCEPT_PAYMENT_SERVICE, $this->generateHeader(), json_encode($paymentObject));
+        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE, $this->generateHeader(), json_encode($paymentObject));
         $res = $this->httpClient->sendAsync($request)->wait();
 
         return $res->getBody();
