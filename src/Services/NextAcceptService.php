@@ -4,6 +4,7 @@ namespace NetsCore\Services;
 
 use NetsCore\Dto\NextAccept\CreatePaymentResponseDto;
 use NetsCore\Dto\NextAccept\CancelPaymentResponseDto;
+use NetsCore\Dto\NextAccept\RefundPaymentResponseDto;
 use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
@@ -52,9 +53,11 @@ class NextAcceptService implements ClientServiceInterface
         // TODO: Implement capturePayment() method.
     }
 
-    public function refundPayment()
+    public function refundPayment(PaymentObjectInterface $paymentObject):RefundPaymentResponseDto
     {
         // TODO: Implement refundPayment() method.
+        $response = $this->apiClient->cancelPayment($paymentObject);
+        return (new RefundPaymentResponseDto())->map($response);
     }
 
     public function salePayment()

@@ -59,9 +59,10 @@ class NetsCore
         //TODO: Create capture payment plugin api
     }
 
-    public function refundPayment()
+    public function refundPayment(PaymentObjectInterface $paymentObject)
     {
         //TODO: Create refund payment plugin api
+        return $this->getClient()->refundPayment($paymentObject);
     }
 
     public function salePayment()

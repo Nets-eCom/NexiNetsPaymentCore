@@ -53,9 +53,10 @@ class NetsEasyService implements ClientServiceInterface
         // TODO: Implement capturePayment() method.
     }
 
-    public function refundPayment()
+    public function refundPayment(PaymentObjectInterface $paymentObject)
     {
         // TODO: Implement refundPayment() method.
+        return $this->client->refundPayment($paymentObject);
     }
 
     public function salePayment()

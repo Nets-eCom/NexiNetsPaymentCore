@@ -62,9 +62,12 @@ class NextAcceptAPIClient implements APIClientInterface
         //TODO: Implement get  payment details request
     }
 
-    public function refundPayment()
+    public function refundPayment(PaymentObjectInterface  $paymentObject)
     {
         //TODO: Implement refund payment request
+        $request = new Request('POST', ApiUrlsEnum::NEXT_ACCEPT_PAYMENT_SERVICE.$paymentObject->getPaymentId().ApiUrlsEnum::NEXT_ACCEPT_API_REFUND, $this->generateHeader(), json_encode($paymentObject));
+        $res = $this->httpClient->sendAsync($request)->wait();
+        return $res->getBody();
     }
 
     public function salePayment()
