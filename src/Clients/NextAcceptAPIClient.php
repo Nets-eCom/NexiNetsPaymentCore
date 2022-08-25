@@ -7,6 +7,7 @@ use GuzzleHttp\Psr7\Request;
 use NetsCore\Dto\NextAccept\Request\Transformer\AuthorizePaymentRequestTransformer;
 use NetsCore\Enums\ApiUrlsEnum;
 use NetsCore\Interfaces\APIClientInterface;
+use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 
 class NextAcceptAPIClient implements APIClientInterface
@@ -37,13 +38,12 @@ class NextAcceptAPIClient implements APIClientInterface
     }
 
     /**
-     * @param  PaymentObjectInterface  $paymentObject
+     * @param  AuthorizePaymentRequestInterface  $authorizationObject
      * @return mixed
      */
-    public function authorizePayment(PaymentObjectInterface  $paymentObject)
+    public function authorizePayment(AuthorizePaymentRequestInterface  $authorizationObject)
     {
-        $bodyRequest = new AuthorizePaymentRequestTransformer();
-        $request = new Request('POST', ApiUrlsEnum::NEXT_ACCEPT_PAYMENT_SERVICE. $paymentObject->getPaymentId() . ApiUrlsEnum::NEXT_ACCEPT_API_PAYMENT_AUTHORIZATION, $this->generateHeader(), json_encode($bodyRequest->transformFromObject($paymentObject)));
+        $request = new Request('POST', ApiUrlsEnum::NEXT_ACCEPT_PAYMENT_SERVICE. $authorizationObject->getPaymentId() . ApiUrlsEnum::NEXT_ACCEPT_API_PAYMENT_AUTHORIZATION, $this->generateHeader(), json_encode($authorizationObject->getBodyRequest()));
         $res = $this->httpClient->sendAsync($request)->wait();
         return $res->getBody();
     }
