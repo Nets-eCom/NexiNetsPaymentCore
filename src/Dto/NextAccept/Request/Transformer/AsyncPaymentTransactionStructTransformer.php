@@ -10,12 +10,11 @@ use NetsCore\Dto\NextAccept\RedirectUrlDto;
 use NetsCore\Dto\NextAccept\Request\PaymentObject;
 use NetsCore\Enums\PaymentProcessingTypeEnum;
 use NetsCore\Enums\PaymentTypeEnum;
-use Shopware\Core\Checkout\Payment\Cart\AsyncPaymentTransactionStruct;
 
 class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransformer
 {
     /**
-     * @param AsyncPaymentTransactionStruct $object
+     * @param object $object
      *
      * @return PaymentObject
      *
