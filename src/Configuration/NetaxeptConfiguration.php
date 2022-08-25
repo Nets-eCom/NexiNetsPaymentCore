@@ -6,7 +6,7 @@ use NetsCore\Enums\ApiUrlsEnum;
 use NetsCore\Enums\ClientTypeEnum;
 use NetsCore\Interfaces\ConfigurationInterface;
 
-class NetsEasyConfiguration implements ConfigurationInterface
+class NetaxeptConfiguration implements ConfigurationInterface
 {
     protected string $clientType = ClientTypeEnum::NETAXEPT;
     private string $username;
@@ -20,6 +20,7 @@ class NetsEasyConfiguration implements ConfigurationInterface
         return $this->clientType;
     }
 
+
     /**
      * @return string
      */
@@ -32,7 +33,7 @@ class NetsEasyConfiguration implements ConfigurationInterface
      * @param  string  $username
      * @return $this
      */
-    public function setUsername(string $username): NetsEasyConfiguration
+    public function setUsername(string $username): NetaxeptConfiguration
     {
         $this->username = $username;
 
@@ -51,7 +52,7 @@ class NetsEasyConfiguration implements ConfigurationInterface
      * @param  string  $password
      * @return $this
      */
-    public function setPassword(string $password): NetsEasyConfiguration
+    public function setPassword(string $password): NetaxeptConfiguration
     {
         $this->password = $password;
 
@@ -63,6 +64,6 @@ class NetsEasyConfiguration implements ConfigurationInterface
      */
     public function getAuthUrl(): string
     {
-        return ApiUrlsEnum::NETS_EASY_O_AUTH_AUTHORIZATION;
+        return ApiUrlsEnum::NETAXEPT_O_AUTH_AUTHORIZATION;
     }
 }
