@@ -2,17 +2,17 @@
 
 namespace NetsCore\Auth;
 
-use NetsCore\Configuration\NextAcceptConfiguration;
+use NetsCore\Configuration\NetaxeptConfiguration;
 use NetsCore\Interfaces\APIAuthServiceInterface;
 
 class NetsEasyAPIAuthService implements APIAuthServiceInterface
 {
-    protected NextAcceptConfiguration $configuration;
+    protected NetaxeptConfiguration $configuration;
 
     /**
-     * @param  NextAcceptConfiguration  $configuration
+     * @param  NetaxeptConfiguration  $configuration
      */
-    public function __construct(NextAcceptConfiguration $configuration)
+    public function __construct(NetaxeptConfiguration $configuration)
     {
         $this->configuration = $configuration;
     }
