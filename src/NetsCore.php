@@ -2,8 +2,8 @@
 
 namespace NetsCore;
 
-use NetsCore\Configuration\NetaxeptConfiguration;
-use NetsCore\Dto\Netaxept\CreatePaymentResponseDto;
+use NetsCore\Configuration\NextAcceptConfiguration;
+use NetsCore\Dto\NextAccept\CreatePaymentResponseDto;
 use NetsCore\Factory\APIClientFactory;
 use NetsCore\Factory\AuthFactory;
 use NetsCore\Factory\ClientFactory;
@@ -23,7 +23,7 @@ class NetsCore
      */
     public function setup(ConfigurationInterface $configuration = null)
     {
-        $this->configuration = $configuration ?: new NetaxeptConfiguration();
+        $this->configuration = $configuration ?: new NextAcceptConfiguration();
         $this->authService = (new AuthFactory())->getAuthenticationService($this->configuration, $this->configuration->getClientType());
     }
 
