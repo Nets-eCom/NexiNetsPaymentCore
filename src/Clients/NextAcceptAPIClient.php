@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 use NetsCore\Enums\ApiUrlsEnum;
 use NetsCore\Interfaces\APIClientInterface;
+use NetsCore\Interfaces\CapturePaymentInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 
 class NextAcceptAPIClient implements APIClientInterface
@@ -52,9 +53,12 @@ class NextAcceptAPIClient implements APIClientInterface
         return $res->getBody();
     }
 
-    public function capturePayment()
+    public function capturePayment(CapturePaymentInterface $capturePayment)
     {
-        //TODO: Implement capture payment request
+        $request = new Request('POST', ApiUrlsEnum::NEXT_ACCEPT_PAYMENT_SERVICE. $capturePayment->getPaymentId() . ApiUrlsEnum::NEXT_ACCEPT_API_CAPTURE, $this->generateHeader(), json_encode($capturePayment->getData()));
+        $res = $this->httpClient->sendAsync($request)->wait();
+
+        return $res->getBody();
     }
 
     public function getPaymentDetails()
