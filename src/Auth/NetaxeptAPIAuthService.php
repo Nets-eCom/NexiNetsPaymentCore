@@ -7,7 +7,7 @@ use NetsCore\Interfaces\APIAuthServiceInterface;
 use NetsCore\Interfaces\ConfigurationInterface;
 use NetsCore\Services\ApiService;
 
-class NextAcceptAPIAuthService implements APIAuthServiceInterface
+class NetaxeptAPIAuthService implements APIAuthServiceInterface
 {
     protected ConfigurationInterface $configuration;
     private ApiService $apiService;
