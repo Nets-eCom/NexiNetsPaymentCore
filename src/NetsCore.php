@@ -3,12 +3,14 @@
 namespace NetsCore;
 
 use NetsCore\Configuration\NextAcceptConfiguration;
-use NetsCore\Dto\NextAccept\CreatePaymentResponseDto;
+use NetsCore\Dto\NextAccept\Response\CapturePaymentResponseDto;
+use NetsCore\Dto\NextAccept\Response\CreatePaymentResponseDto;
 use NetsCore\Factory\APIClientFactory;
 use NetsCore\Factory\AuthFactory;
 use NetsCore\Factory\ClientFactory;
 use NetsCore\Interfaces\APIAuthServiceInterface;
 use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
+use NetsCore\Interfaces\CapturePaymentInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\ConfigurationInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
@@ -57,9 +59,9 @@ class NetsCore
         return $this->getClient()->authorizePayment($authorizationObject);
     }
 
-    public function capturePayment()
+    public function capturePayment(CapturePaymentInterface $capturePayment): CapturePaymentResponseDto
     {
-        //TODO: Create capture payment plugin api
+        return $this->getClient()->capturePayment($capturePayment);
     }
 
     public function refundPayment()

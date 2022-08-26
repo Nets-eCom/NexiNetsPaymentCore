@@ -11,6 +11,7 @@ class ApiUrlsEnum extends Enum
     const NEXT_ACCEPT_API_SCOPE_PAYMENT_SERVICE = 'https://unifiedcommercedev.onmicrosoft.com/unifiedapi/paymentservice/.default';
     const NEXT_ACCEPT_API_PAYMENT_CANCEL = '/Cancel';
     const NEXT_ACCEPT_API_PAYMENT_AUTHORIZATION = '/Authorize';
+    const NEXT_ACCEPT_API_CAPTURE = '/Capture';
 
     const NETS_EASY_O_AUTH_AUTHORIZATION = '';
 }
