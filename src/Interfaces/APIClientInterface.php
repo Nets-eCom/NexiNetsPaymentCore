@@ -12,7 +12,7 @@ interface APIClientInterface
     public function getPaymentDetails();
     public function cancelPayment(PaymentObjectInterface $paymentObject);
     public function authorizePayment();
-    public function capturePayment();
+    public function capturePayment(CapturePaymentInterface $capturePayment);
     public function refundPayment();
     public function salePayment();
 }
