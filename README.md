@@ -1,4 +1,4 @@
-# NetsCore - Payment Core for simple integration EasyNets and NextAccept API for plugins
+# NetsCore - Payment Core for simple integration EasyNets and Netaxept API for plugins
 ============================================
 
 | Core    | NetsCore - Payment Core |
