@@ -1,8 +1,8 @@
 <?php
 
-namespace NetsCore\Dto\NextAccept\Request\Transformer;
+namespace NetsCore\Dto\Netaxeptt\Request\Transformer;
 
-use NetsCore\Dto\NextAccept\Request\PaymentObject;
+use NetsCore\Dto\Netaxept\Request\PaymentObject;
 
 interface RequestDtoTransformerInterface
 {

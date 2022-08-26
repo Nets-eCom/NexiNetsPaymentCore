@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Dto\NextAccept\Customer\Transformer;
+namespace NetsCore\Dto\Netaxept\Customer\Transformer;
 
 abstract class AbstractCustomerDtoTransformer implements CustomerDtoTransformerInterface
 {

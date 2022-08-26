@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Dto\NextAccept\Request;
+namespace NetsCore\Dto\Netaxept\Request;
 
 use NetsCore\Interfaces\CapturePaymentInterface;
 

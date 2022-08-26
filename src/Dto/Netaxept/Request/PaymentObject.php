@@ -1,12 +1,12 @@
 <?php
 
-namespace NetsCore\Dto\NextAccept\Request;
+namespace NetsCore\Dto\Netaxept\Request;
 
 use Exception;
-use NetsCore\Dto\NextAccept\BasketItemDto;
+use NetsCore\Dto\Netaxept\BasketItemDto;
 use NetsCore\Enums\CurrencyCodeEnum;
-use NetsCore\Dto\NextAccept\PayPageConfigurationDto;
-use NetsCore\Dto\NextAccept\RedirectUrlDto;
+use NetsCore\Dto\Netaxept\PayPageConfigurationDto;
+use NetsCore\Dto\Netaxept\RedirectUrlDto;
 use NetsCore\Interfaces\CustomerInterface;
 use NetsCore\Interfaces\PaymentMethodDetailsInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;

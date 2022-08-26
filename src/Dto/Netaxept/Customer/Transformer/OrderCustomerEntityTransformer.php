@@ -1,10 +1,10 @@
 <?php
 
-namespace NetsCore\Dto\NextAccept\Customer\Transformer;
+namespace NetsCore\Dto\Netaxept\Customer\Transformer;
 
-use NetsCore\Dto\NextAccept\Customer\AddressDto;
-use NetsCore\Dto\NextAccept\Customer\CompanyCustomerDto;
-use NetsCore\Dto\NextAccept\Customer\IndividualCustomerDto;
+use NetsCore\Dto\Netaxept\Customer\AddressDto;
+use NetsCore\Dto\Netaxept\Customer\CompanyCustomerDto;
+use NetsCore\Dto\Netaxept\Customer\IndividualCustomerDto;
 use NetsCore\Enums\CustomerTypeEnum;
 use NetsCore\Interfaces\CustomerInterface;
 
