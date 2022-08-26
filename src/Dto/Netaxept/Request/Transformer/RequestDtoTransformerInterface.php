@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Dto\Netaxeptt\Request\Transformer;
+namespace NetsCore\Dto\Netaxept\Request\Transformer;
 
 use NetsCore\Dto\Netaxept\Request\PaymentObject;
 

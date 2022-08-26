@@ -2,9 +2,9 @@
 
 namespace NetsCore\Services;
 
-use NetsCore\Dto\NextAccept\Response\CancelPaymentResponseDto;
-use NetsCore\Dto\NextAccept\Response\CapturePaymentResponseDto;
-use NetsCore\Dto\NextAccept\Response\CreatePaymentResponseDto;
+use NetsCore\Dto\Netaxept\Response\CancelPaymentResponseDto;
+use NetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
+use NetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
 use NetsCore\Enums\ExceptionEnum;
 use NetsCore\Exception\CapturePaymentException;
 use NetsCore\Interfaces\APIClientInterface;

@@ -1,13 +1,13 @@
 <?php
 
-namespace NetsCore\Dto\NextAccept\Request\Transformer;
+namespace NetsCore\Dto\Netaxept\Request\Transformer;
 
 use Exception;
-use NetsCore\Dto\NextAccept\BasketItemDto;
-use NetsCore\Dto\NextAccept\Customer\AddressDto;
-use NetsCore\Dto\NextAccept\Customer\Transformer\OrderCustomerEntityTransformer;
-use NetsCore\Dto\NextAccept\RedirectUrlDto;
-use NetsCore\Dto\NextAccept\Request\PaymentObject;
+use NetsCore\Dto\Netaxept\BasketItemDto;
+use NetsCore\Dto\Netaxept\Customer\AddressDto;
+use NetsCore\Dto\Netaxept\Customer\Transformer\OrderCustomerEntityTransformer;
+use NetsCore\Dto\Netaxept\RedirectUrlDto;
+use NetsCore\Dto\Netaxept\Request\PaymentObject;
 use NetsCore\Enums\CountryCodeEnum;
 use NetsCore\Enums\PaymentTypeEnum;
 use Shopware\Core\Checkout\Payment\Cart\AsyncPaymentTransactionStruct;
