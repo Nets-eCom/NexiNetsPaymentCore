@@ -9,7 +9,7 @@ use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\CapturePaymentInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 
-class NextAcceptAPIClient implements APIClientInterface
+class NetaxeptAPIClient implements APIClientInterface
 {
     protected array $authData;
     private Client $httpClient;
