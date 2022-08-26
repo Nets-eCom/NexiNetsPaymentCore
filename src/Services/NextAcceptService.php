@@ -2,11 +2,16 @@
 
 namespace NetsCore\Services;
 
-use NetsCore\Dto\NextAccept\CreatePaymentResponseDto;
-use NetsCore\Dto\NextAccept\CancelPaymentResponseDto;
+use NetsCore\Dto\NextAccept\Response\CancelPaymentResponseDto;
+use NetsCore\Dto\NextAccept\Response\CapturePaymentResponseDto;
+use NetsCore\Dto\NextAccept\Response\CreatePaymentResponseDto;
+use NetsCore\Enums\ExceptionEnum;
+use NetsCore\Exception\CapturePaymentException;
 use NetsCore\Interfaces\APIClientInterface;
+use NetsCore\Interfaces\CapturePaymentInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
+use NetsCore\Validator\CapturePaymentValidator;
 
 class NextAcceptService implements ClientServiceInterface
 {
@@ -47,9 +52,17 @@ class NextAcceptService implements ClientServiceInterface
         // TODO: Implement authorizePayment() method.
     }
 
-    public function capturePayment()
+    /**
+     * @throws CapturePaymentException
+     */
+    public function capturePayment(CapturePaymentInterface $capturePayment): CapturePaymentResponseDto
     {
-        // TODO: Implement capturePayment() method.
+        $response = $this->apiClient->capturePayment($capturePayment);
+        $capturePaymentResponse = (new CapturePaymentResponseDto())->map($response);
+        if(!CapturePaymentValidator::validate($capturePaymentResponse)) {
+            throw new CapturePaymentException(ExceptionEnum::CAPTURE_PAYMENT_CRITICAL_ERROR, 500);
+        }
+        return $capturePaymentResponse;
     }
 
     public function refundPayment()
