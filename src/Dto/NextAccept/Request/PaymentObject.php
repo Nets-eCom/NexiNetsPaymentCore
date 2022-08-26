@@ -32,4 +32,8 @@ class PaymentObject implements PaymentObjectInterface
      */
     public array $basket;
 
+    public function getPaymentId()
+    {
+        // TODO: Implement getPaymentId() method.
+    }
 }
