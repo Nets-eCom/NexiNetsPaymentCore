@@ -30,7 +30,7 @@ class NetaxeptAPIClient implements APIClientInterface
      */
     public function createPayment(PaymentObjectInterface $paymentObject)
     {
-        $request = new Request('POST', ApiUrlsEnum::NEXT_ACCEPT_PAYMENT_SERVICE, $this->generateHeader(), json_encode($paymentObject));
+        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE, $this->generateHeader(), json_encode($paymentObject));
         $res = $this->httpClient->sendAsync($request)->wait();
 
         return $res->getBody();
@@ -48,14 +48,14 @@ class NetaxeptAPIClient implements APIClientInterface
     public function cancelPayment(PaymentObjectInterface  $paymentObject)
     {
         //TODO: Implement cancel payment request
-        $request = new Request('POST', ApiUrlsEnum::NEXT_ACCEPT_PAYMENT_SERVICE. $paymentObject->getPaymentId() .ApiUrlsEnum::NEXT_ACCEPT_API_CANCEL, $this->generateHeader(), json_encode($paymentObject));
+        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE. $paymentObject->getPaymentId() .ApiUrlsEnum::NETAXEPT_API_CANCEL, $this->generateHeader(), json_encode($paymentObject));
         $res = $this->httpClient->sendAsync($request)->wait();
         return $res->getBody();
     }
 
     public function capturePayment(CapturePaymentInterface $capturePayment)
     {
-        $request = new Request('POST', ApiUrlsEnum::NEXT_ACCEPT_PAYMENT_SERVICE. $capturePayment->getPaymentId() . ApiUrlsEnum::NEXT_ACCEPT_API_CAPTURE, $this->generateHeader(), json_encode($capturePayment->getData()));
+        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE. $capturePayment->getPaymentId() . ApiUrlsEnum::NETAXEPT_API_CAPTURE, $this->generateHeader(), json_encode($capturePayment->getData()));
         $res = $this->httpClient->sendAsync($request)->wait();
 
         return $res->getBody();

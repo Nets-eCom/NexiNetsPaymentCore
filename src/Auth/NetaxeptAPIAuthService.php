@@ -53,7 +53,7 @@ class NetaxeptAPIAuthService implements APIAuthServiceInterface
                 ],
                 [
                     'name' => 'scope',
-                    'contents' => ApiUrlsEnum::NEXT_ACCEPT_API_SCOPE_PAYMENT_SERVICE
+                    'contents' => ApiUrlsEnum::NETAXEPT_API_SCOPE_PAYMENT_SERVICE
                 ]
             ]
         ];

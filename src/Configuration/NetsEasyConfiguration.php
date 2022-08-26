@@ -8,7 +8,7 @@ use NetsCore\Interfaces\ConfigurationInterface;
 
 class NetsEasyConfiguration implements ConfigurationInterface
 {
-    protected string $clientType = ClientTypeEnum::NEXT_ACCEPT;
+    protected string $clientType = ClientTypeEnum::NETAXEPT;
     private string $username;
     private string $password;
 
