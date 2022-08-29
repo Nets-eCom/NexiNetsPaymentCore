@@ -1,18 +1,15 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept;
+namespace NetsCore\Dto\Netaxept\Response;
 
-class AuthorizePaymentResponseDto
+class RefundPaymentResponseDto
 {
     public string $paymentId;
-
-    public string $authorizationId;
 
     public function map($data): self
     {
         $data = json_decode($data);
         $this->paymentId = $data->paymentId;
-        $this->authorizationId = $data->authorizationId;
         return $this;
     }
 }
