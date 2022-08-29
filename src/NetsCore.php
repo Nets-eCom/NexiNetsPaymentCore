@@ -40,9 +40,10 @@ class NetsCore
         return $this->getClient()->createPayment($paymentObject);
     }
 
-    public function getPaymentDetails()
+    public function getPaymentDetails(string $paymentId):PaymentObjectInterface
     {
         //TODO: Create get payment plugin api
+        return new PaymentObject();
     }
 
     /**
