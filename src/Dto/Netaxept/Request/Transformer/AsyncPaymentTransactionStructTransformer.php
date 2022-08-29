@@ -8,18 +8,15 @@ use NetsCore\Dto\Netaxept\Customer\AddressDto;
 use NetsCore\Dto\Netaxept\Customer\Transformer\OrderCustomerEntityTransformer;
 use NetsCore\Dto\Netaxept\RedirectUrlDto;
 use NetsCore\Dto\Netaxept\Request\PaymentObject;
-use NetsCore\Enums\CountryCodeEnum;
+use NetsCore\Enums\PaymentProcessingTypeEnum;
 use NetsCore\Enums\PaymentTypeEnum;
-use Shopware\Core\Checkout\Payment\Cart\AsyncPaymentTransactionStruct;
-use Shopware\Core\Checkout\Payment\Exception\AsyncPaymentProcessException;
 
 class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransformer
 {
     /**
-     * @param AsyncPaymentTransactionStruct $object
+     * @param object $object
      *
      * @return PaymentObject
-     * @throws AsyncPaymentProcessException|Exception if the provided currency code is not valid
      *
      */
     public function transformFromObject($object): PaymentObject
@@ -30,40 +27,29 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
 
         $amount      = $object->getOrderTransaction()->getAmount()->getTotalPrice();
         $dto->amount = ceil($amount * 100);
-        $dto->type = PaymentTypeEnum::NETS_HOSTED_ECOM; // Its information where is the terminal -> NETS_HOSTED_ECOM redirect to terminal NETS_HOSTED_ECOM -> On the page without redirect
+        $dto->type   = PaymentTypeEnum::NETS_HOSTED_ECOM;
 
-        try {
-            $dto->currencyCode = $dto->validatedCurrencyCode(
-                $object->getOrder()->getCurrency()->getIsoCode()
-            );
-        } catch (Exception $e) {
-            throw new AsyncPaymentProcessException(
-                $object->getOrderTransaction()->getId(),
-                'Wrong currency code'
-            );
-        }
+        $currencyCode      = $object->getOrder()->getCurrency()->getIsoCode();
+        $dto->currencyCode = $currencyCode;
+
+        $dto->processing = PaymentProcessingTypeEnum::NONE;
+
         $dto->redirectUrls            = new RedirectUrlDto();
         $dto->redirectUrls->returnUrl = $object->getReturnUrl();
 
-        $customerTransformer         = new OrderCustomerEntityTransformer();
-        $dto->customer               = $customerTransformer->transformFromObject(
+        $customerTransformer          = new OrderCustomerEntityTransformer();
+        $dto->customer                = $customerTransformer->transformFromObject(
             $object->getOrder()->getOrderCustomer()
         );
-        $customerAddress             = new AddressDto();
-        $fetchedAddress              = $object->getOrder()->getBillingAddress();
-        $dto->customer->phone        = $fetchedAddress->getPhoneNumber() ?? '';
-        $customerAddress->address1   = $fetchedAddress->getStreet();
-        $customerAddress->city       = $fetchedAddress->getCity();
-        $customerAddress->postalCode = $fetchedAddress->getZipcode();
-        $countryCode                 = $fetchedAddress->getCountry()->getIso();
-        if (CountryCodeEnum::isValid($countryCode)) {
-            $customerAddress->countryCode = $countryCode;
-        } else {
-            throw new AsyncPaymentProcessException(
-                $object->getOrderTransaction()->getId(),
-                'Wrong country code'
-            );
-        }
+        $customerAddress              = new AddressDto();
+        $fetchedAddress               = $object->getOrder()->getBillingAddress();
+        $dto->customer->phone         = $fetchedAddress->getPhoneNumber() ?? '';
+        $customerAddress->address1    = $fetchedAddress->getStreet();
+        $customerAddress->city        = $fetchedAddress->getCity();
+        $customerAddress->postalCode  = $fetchedAddress->getZipcode();
+        $countryCode                  = $fetchedAddress->getCountry()->getIso();
+        $customerAddress->countryCode = $countryCode;
+
         $customerAddress->countryCode = $fetchedAddress->getCountry()->getIso();
         $dto->customer->address       = $customerAddress;
 

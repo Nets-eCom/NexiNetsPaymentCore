@@ -2,9 +2,7 @@
 
 namespace NetsCore\Dto\Netaxept\Request;
 
-use Exception;
 use NetsCore\Dto\Netaxept\BasketItemDto;
-use NetsCore\Enums\CurrencyCodeEnum;
 use NetsCore\Dto\Netaxept\PayPageConfigurationDto;
 use NetsCore\Dto\Netaxept\RedirectUrlDto;
 use NetsCore\Interfaces\CustomerInterface;
@@ -32,23 +30,7 @@ class PaymentObject implements PaymentObjectInterface
      */
     public array $basket;
 
-    /**
-     * @param $currencyCode
-     * @return mixed
-     * @throws Exception
-     */
-    public function validatedCurrencyCode($currencyCode)
-    {
-        if (CurrencyCodeEnum::isValid($currencyCode)) {
-            return $currencyCode;
-        } else {
-            throw new Exception(
-                'Wrong currency code'
-            );
-        }
-    }
-
-    public function getPaymentId() : string
+    public function getPaymentId()
     {
         // TODO: Implement getPaymentId() method.
     }
