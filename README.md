@@ -1,11 +1,12 @@
 # NetsCore - Payment Core for simple integration EasyNets and Netaxept API for plugins
 ============================================
 
-| Core    | NetsCore - Payment Core |
-|---------|-------------------------|
-| Author  | `Nets eCom`             |
-| Version | `0.0.3`                 |
-| License | `MIT License`           |
+| Core              | NetsCore - Payment Core |
+|-------------------|-------------------------|
+| Author            | `Nets eCom`             |
+| Version           | `0.0.3`                 |
+| License           | `MIT License`           |
+| Supporting System | `Netaxept`              |
 
 ## INSTALLATION
 

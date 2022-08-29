@@ -8,12 +8,13 @@ use NetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
 use NetsCore\Enums\ExceptionEnum;
 use NetsCore\Exception\CapturePaymentException;
 use NetsCore\Interfaces\APIClientInterface;
+use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
 use NetsCore\Interfaces\CapturePaymentInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 use NetsCore\Validator\CapturePaymentValidator;
 
-class  NextAcceptService implements ClientServiceInterface
+class  NetaxeptService implements ClientServiceInterface
 {
     private APIClientInterface $apiClient;
 
@@ -47,7 +48,7 @@ class  NextAcceptService implements ClientServiceInterface
         return (new CancelPaymentResponseDto())->map($response);
     }
 
-    public function authorizePayment()
+    public function authorizePayment(AuthorizePaymentRequestInterface $authorizationObject)
     {
         // TODO: Implement authorizePayment() method.
     }
