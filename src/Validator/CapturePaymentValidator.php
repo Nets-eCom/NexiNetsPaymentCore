@@ -2,7 +2,7 @@
 
 namespace NetsCore\Validator;
 
-use NetsCore\Dto\NextAccept\Response\CapturePaymentResponseDto;
+use NetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
 use NetsCore\Enums\ExceptionEnum;
 use NetsCore\Exception\CapturePaymentException;
 
