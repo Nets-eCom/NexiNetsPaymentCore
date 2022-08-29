@@ -2,7 +2,7 @@
 
 namespace NetsCore\Validator;
 
-use NetsCore\Dto\NextAccept\Request\PaymentObject;
+use NetsCore\Dto\Netaxept\Request\PaymentObject;
 use NetsCore\Enums\CurrencyCodeEnum;
 use NetsCore\Enums\ExceptionEnum;
 use NetsCore\Enums\LanguageEnum;
