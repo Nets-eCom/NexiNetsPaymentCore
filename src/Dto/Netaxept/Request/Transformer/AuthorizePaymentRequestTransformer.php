@@ -1,9 +1,9 @@
 <?php
 
-namespace NetsCore\Dto\NextAccept\Request\Transformer;
+namespace NetsCore\Dto\Netaxept\Request\Transformer;
 
-use NetsCore\Dto\NextAccept\Request\AuthorizePaymentRequest;
-use NetsCore\Dto\NextAccept\Request\PaymentObject;
+use NetsCore\Dto\Netaxept\Request\AuthorizePaymentRequest;
+use NetsCore\Dto\Netaxept\Request\PaymentObject;
 
 class AuthorizePaymentRequestTransformer extends AbstractRequestDtoTransformer
 {
