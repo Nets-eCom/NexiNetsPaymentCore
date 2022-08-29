@@ -48,7 +48,7 @@ class PaymentObject implements PaymentObjectInterface
         }
     }
 
-    public function getPaymentId()
+    public function getPaymentId() : string
     {
         // TODO: Implement getPaymentId() method.
     }

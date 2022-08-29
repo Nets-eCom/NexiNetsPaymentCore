@@ -13,7 +13,7 @@ use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 use NetsCore\Validator\CapturePaymentValidator;
 
-class NextAcceptService implements ClientServiceInterface
+class  NextAcceptService implements ClientServiceInterface
 {
     private APIClientInterface $apiClient;
 

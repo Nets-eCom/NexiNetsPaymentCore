@@ -9,6 +9,7 @@ use NetsCore\Factory\APIClientFactory;
 use NetsCore\Factory\AuthFactory;
 use NetsCore\Factory\ClientFactory;
 use NetsCore\Interfaces\APIAuthServiceInterface;
+use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
 use NetsCore\Interfaces\CapturePaymentInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\ConfigurationInterface;
@@ -50,10 +51,12 @@ class NetsCore
         //TODO: Create cancel payment plugin api
         return $this->getClient()->cancelPayment($paymentObject);
     }
-
-    public function authorizePayment()
+    /**
+     * @param  AuthorizePaymentRequestInterface $authorizationObject
+     */
+    public function authorizePayment(AuthorizePaymentRequestInterface $authorizationObject)
     {
-        //TODO: Create authorize payment plugin api
+        return $this->getClient()->authorizePayment($authorizationObject);
     }
 
     public function capturePayment(CapturePaymentInterface $capturePayment): CapturePaymentResponseDto
