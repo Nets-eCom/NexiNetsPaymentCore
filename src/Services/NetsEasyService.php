@@ -3,6 +3,7 @@
 namespace NetsCore\Services;
 
 use NetsCore\Interfaces\APIClientInterface;
+use NetsCore\Interfaces\CapturePaymentInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 
@@ -48,7 +49,7 @@ class NetsEasyService implements ClientServiceInterface
         // TODO: Implement authorizePayment() method.
     }
 
-    public function capturePayment()
+    public function capturePayment(CapturePaymentInterface $capturePayment)
     {
         // TODO: Implement capturePayment() method.
     }

@@ -14,4 +14,7 @@ class ExceptionEnum extends Enum
     const PAYPAGE_CONFIGURATION_LANGUAGE_ERROR = 'Language is invalid';
     const PAYPAGE_CONFIGURATION_PAGETYPE_ERROR = 'PageType is invalid';
     const PAYPAGE_CONFIGURATION_ERROR = 'Pay Page cannot be empty';
+    const CAPTURE_PAYMENT_CRITICAL_ERROR = 'Capture Payment Validation Fail';
+    const CAPTURE_PAYMENT_BAD_REQUEST = 'Capture Payment Bad Request';
+    const CAPTURE_PAYMENT_CLIENT_ERROR = 'Capture Payment Client Error';
 }
