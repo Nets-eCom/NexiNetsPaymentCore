@@ -4,8 +4,10 @@ namespace NetsCore\Clients;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
+use NetsCore\Dto\Netaxept\Request\Transformer\AuthorizePaymentRequestTransformer;
 use NetsCore\Enums\ApiUrlsEnum;
 use NetsCore\Interfaces\APIClientInterface;
+use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
 use NetsCore\Interfaces\CapturePaymentInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 
@@ -36,9 +38,15 @@ class NetaxeptAPIClient implements APIClientInterface
         return $res->getBody();
     }
 
-    public function authorizePayment()
+    /**
+     * @param  AuthorizePaymentRequestInterface  $authorizationObject
+     * @return mixed
+     */
+    public function authorizePayment(AuthorizePaymentRequestInterface  $authorizationObject)
     {
-        //TODO: Implement authorize payment request
+        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE. $authorizationObject->getPaymentId() . ApiUrlsEnum::NEXT_ACCEPT_API_PAYMENT_AUTHORIZATION, $this->generateHeader(), json_encode($authorizationObject->getBodyRequest()));
+        $res = $this->httpClient->sendAsync($request)->wait();
+        return $res->getBody();
     }
 
     /**
@@ -47,7 +55,6 @@ class NetaxeptAPIClient implements APIClientInterface
      */
     public function cancelPayment(PaymentObjectInterface  $paymentObject)
     {
-        //TODO: Implement cancel payment request
         $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE. $paymentObject->getPaymentId() .ApiUrlsEnum::NETAXEPT_API_CANCEL, $this->generateHeader(), json_encode($paymentObject));
         $res = $this->httpClient->sendAsync($request)->wait();
         return $res->getBody();

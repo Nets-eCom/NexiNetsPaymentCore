@@ -2,9 +2,7 @@
 
 namespace NetsCore\Dto\Netaxept\Request;
 
-use Exception;
 use NetsCore\Dto\Netaxept\BasketItemDto;
-use NetsCore\Enums\CurrencyCodeEnum;
 use NetsCore\Dto\Netaxept\PayPageConfigurationDto;
 use NetsCore\Dto\Netaxept\RedirectUrlDto;
 use NetsCore\Interfaces\CustomerInterface;
