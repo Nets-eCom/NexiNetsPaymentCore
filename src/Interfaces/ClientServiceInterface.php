@@ -13,6 +13,6 @@ interface ClientServiceInterface
     public function cancelPayment(PaymentObjectInterface $paymentObject);
     public function authorizePayment(AuthorizePaymentRequestInterface $authorizationObject);
     public function capturePayment(CapturePaymentInterface $capturePayment);
-    public function refundPayment(PaymentObjectInterface $paymentObject);
+    public function refundPayment(RefundPaymentRequestInterface $refundObject);
     public function salePayment();
 }

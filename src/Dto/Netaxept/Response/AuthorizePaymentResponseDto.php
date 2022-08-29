@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept;
+namespace NetsCore\Dto\Netaxept\Response;
 
 class AuthorizePaymentResponseDto
 {

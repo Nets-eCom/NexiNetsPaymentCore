@@ -11,6 +11,7 @@ class ApiUrlsEnum extends Enum
     const NETAXEPT_API_SCOPE_PAYMENT_SERVICE = 'https://unifiedcommercedev.onmicrosoft.com/unifiedapi/paymentservice/.default';
     const NETAXEPT_API_CANCEL = '/Cancel';
     const NETAXEPT_API_CAPTURE = '/Capture';
+    const NETAXEPT_API_REFUND = '/Refund';
     const NETAXEPT_API_PAYMENT_AUTHORIZATION = '/Authorize';
 
     const NETS_EASY_O_AUTH_AUTHORIZATION = '';

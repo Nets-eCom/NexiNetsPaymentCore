@@ -4,12 +4,12 @@ namespace NetsCore\Clients;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
-use NetsCore\Dto\Netaxept\Request\Transformer\AuthorizePaymentRequestTransformer;
 use NetsCore\Enums\ApiUrlsEnum;
 use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
 use NetsCore\Interfaces\CapturePaymentInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
+use NetsCore\Interfaces\RefundPaymentRequestInterface;
 
 class NetaxeptAPIClient implements APIClientInterface
 {
@@ -44,7 +44,7 @@ class NetaxeptAPIClient implements APIClientInterface
      */
     public function authorizePayment(AuthorizePaymentRequestInterface  $authorizationObject)
     {
-        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE. $authorizationObject->getPaymentId() . ApiUrlsEnum::NEXT_ACCEPT_API_PAYMENT_AUTHORIZATION, $this->generateHeader(), json_encode($authorizationObject->getBodyRequest()));
+        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE. $authorizationObject->getPaymentId() . ApiUrlsEnum::NETAXEPT_API_PAYMENT_AUTHORIZATION, $this->generateHeader(), json_encode($authorizationObject->getBodyRequest()));
         $res = $this->httpClient->sendAsync($request)->wait();
         return $res->getBody();
     }
@@ -73,10 +73,14 @@ class NetaxeptAPIClient implements APIClientInterface
         //TODO: Implement get  payment details request
     }
 
-    public function refundPayment(PaymentObjectInterface  $paymentObject)
+    /**
+     * @param RefundPaymentRequestInterface $refundObject
+     *
+     * @return mixed
+     */
+    public function refundPayment(RefundPaymentRequestInterface  $refundObject)
     {
-        //TODO: Implement refund payment request
-        $request = new Request('POST', ApiUrlsEnum::NEXT_ACCEPT_PAYMENT_SERVICE.$paymentObject->getPaymentId().ApiUrlsEnum::NEXT_ACCEPT_API_REFUND, $this->generateHeader(), json_encode($paymentObject));
+        $request = new Request('POST', ApiUrlsEnum::NEXT_ACCEPT_PAYMENT_SERVICE.$refundObject->getPaymentId().ApiUrlsEnum::NETAXEPT_API_REFUND, $this->generateHeader(), json_encode($refundObject->getBodyRequest()));
         $res = $this->httpClient->sendAsync($request)->wait();
         return $res->getBody();
     }
