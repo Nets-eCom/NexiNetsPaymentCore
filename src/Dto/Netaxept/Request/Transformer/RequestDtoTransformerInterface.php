@@ -2,8 +2,6 @@
 
 namespace NetsCore\Dto\Netaxept\Request\Transformer;
 
-use NetsCore\Dto\Netaxept\Request\PaymentObject;
-
 interface RequestDtoTransformerInterface
 {
     /**

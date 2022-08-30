@@ -6,8 +6,8 @@ use MyCLabs\Enum\Enum;
 
 class PaymentMethodCardOriginEnum extends Enum
 {
-    const INTERNATIONAL = 'International';
-    const DOMESTIC = 'Domestic';
-    const EU = 'EU';
-    const NON_EU = 'NonEU';
+    public const INTERNATIONAL = 'International';
+    public const DOMESTIC = 'Domestic';
+    public const EU = 'EU';
+    public const NON_EU = 'NonEU';
 }
