@@ -21,6 +21,5 @@ class AuthorizePaymentRequestTransformer extends AbstractRequestDtoTransformer
         $dto->description = $object->description;
 
         return $dto;
-
     }
 }

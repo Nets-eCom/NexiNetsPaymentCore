@@ -6,6 +6,6 @@ use MyCLabs\Enum\Enum;
 
 class PaymentMethodActionEnum extends Enum
 {
-    const ALLOW = 'Allow';
-    const REJECT = 'Reject';
+    public const ALLOW = 'Allow';
+    public const REJECT = 'Reject';
 }

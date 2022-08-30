@@ -13,12 +13,15 @@ use NetsCore\Exceptions\PaymentObjectException;
 
 class PaymentObjectValidator
 {
+    /**
+     * @throws PaymentObjectException
+     */
     public static function isPaymentObjectValid(PaymentObject $paymentObject): bool
     {
         if (empty($paymentObject->redirectUrls)) {
             throw new PaymentObjectException(ExceptionEnum::REDIRECTURLS_CANNOT_BE_EMPTY);
         }
-        if ( ! PaymentTypeEnum::isValid($paymentObject->type)) {
+        if (! PaymentTypeEnum::isValid($paymentObject->type)) {
             throw new PaymentObjectException(ExceptionEnum::PAYMENT_TYPE_IS_INVALID);
         }
 
@@ -26,15 +29,15 @@ class PaymentObjectValidator
             throw new PaymentObjectException(ExceptionEnum::PAYMENT_AMOUNT_CANNOT_BE_EMPTY);
         }
 
-        if ( ! PaymentProcessingTypeEnum::isValid($paymentObject->processing)) {
+        if (! PaymentProcessingTypeEnum::isValid($paymentObject->processing)) {
             throw new PaymentObjectException(ExceptionEnum::PAYMENT_PROCESSING_TYPE_ERROR);
         }
 
-        if ( ! CurrencyCodeEnum::isValid($paymentObject->currencyCode)) {
+        if (! CurrencyCodeEnum::isValid($paymentObject->currencyCode)) {
             throw new PaymentObjectException(ExceptionEnum::PAYMENT_CURRENCY_CODE_ERROR);
         }
 
-        if ( ! empty($paymentObject->payPageConfiguration)) {
+        if (! empty($paymentObject->payPageConfiguration)) {
             if (LanguageEnum::isValid($paymentObject->payPageConfiguration->language)) {
                 throw new PaymentObjectException(ExceptionEnum::PAYPAGE_CONFIGURATION_LANGUAGE_ERROR);
             } elseif (PageTypeEnum::isValid($paymentObject->payPageConfiguration->pageType)) {

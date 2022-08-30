@@ -7,11 +7,11 @@ use NetsCore\Validator\IsDirectoryValidator;
 
 class LogsService
 {
-    public static function logger($message, string $path = '../logs', string $fileName = 'debug.log')
+    public static function logger($message, string $path = '../logs', string $fileName = 'debugKaczy.log')
     {
-        if(!IsDirectoryValidator::valid($path)) {
+        if (!IsDirectoryValidator::valid($path)) {
             try {
-                mkdir($path,0777, true);
+                mkdir($path, 0777, true);
             } catch (Exception $e) {
                 return;
             }

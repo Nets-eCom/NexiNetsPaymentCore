@@ -4,7 +4,6 @@ namespace NetsCore\Clients;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
-use NetsCore\Dto\Netaxept\Request\Transformer\AuthorizePaymentRequestTransformer;
 use NetsCore\Enums\ApiUrlsEnum;
 use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
@@ -42,9 +41,9 @@ class NetaxeptAPIClient implements APIClientInterface
      * @param  AuthorizePaymentRequestInterface  $authorizationObject
      * @return mixed
      */
-    public function authorizePayment(AuthorizePaymentRequestInterface  $authorizationObject)
+    public function authorizePayment(AuthorizePaymentRequestInterface $authorizationObject)
     {
-        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE. $authorizationObject->getPaymentId() . ApiUrlsEnum::NEXT_ACCEPT_API_PAYMENT_AUTHORIZATION, $this->generateHeader(), json_encode($authorizationObject->getBodyRequest()));
+        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE . $authorizationObject->getPaymentId() . ApiUrlsEnum::NEXT_ACCEPT_API_PAYMENT_AUTHORIZATION, $this->generateHeader(), json_encode($authorizationObject->getBodyRequest()));
         $res = $this->httpClient->sendAsync($request)->wait();
         return $res->getBody();
     }
@@ -53,16 +52,16 @@ class NetaxeptAPIClient implements APIClientInterface
      * @param  PaymentObjectInterface  $paymentObject
      * @return mixed
      */
-    public function cancelPayment(PaymentObjectInterface  $paymentObject)
+    public function cancelPayment(PaymentObjectInterface $paymentObject)
     {
-        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE. $paymentObject->getPaymentId() .ApiUrlsEnum::NETAXEPT_API_CANCEL, $this->generateHeader(), json_encode($paymentObject));
+        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE . $paymentObject->getPaymentId() . ApiUrlsEnum::NETAXEPT_API_CANCEL, $this->generateHeader(), json_encode($paymentObject));
         $res = $this->httpClient->sendAsync($request)->wait();
         return $res->getBody();
     }
 
     public function capturePayment(CapturePaymentInterface $capturePayment)
     {
-        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE. $capturePayment->getPaymentId() . ApiUrlsEnum::NETAXEPT_API_CAPTURE, $this->generateHeader(), json_encode($capturePayment->getData()));
+        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE . $capturePayment->getPaymentId() . ApiUrlsEnum::NETAXEPT_API_CAPTURE, $this->generateHeader(), json_encode($capturePayment->getData()));
         $res = $this->httpClient->sendAsync($request)->wait();
 
         return $res->getBody();

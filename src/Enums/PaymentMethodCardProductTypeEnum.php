@@ -6,7 +6,7 @@ use MyCLabs\Enum\Enum;
 
 class PaymentMethodCardProductTypeEnum extends Enum
 {
-    const ALL = 'All';
-    const PRIVATE = 'Private';
-    const CORPORATE = 'Corporate';
+    public const ALL = 'All';
+    public const PRIVATE = 'Private';
+    public const CORPORATE = 'Corporate';
 }

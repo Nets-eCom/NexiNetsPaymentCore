@@ -6,7 +6,7 @@ use MyCLabs\Enum\Enum;
 
 class PageTypeEnum extends Enum
 {
-    const MULTIPAGE = 'Multipage';
-    const SINGLEPAGE = 'Singlepage';
-    const CUSTOM  = 'Custom';
+    public const MULTIPAGE = 'Multipage';
+    public const SINGLEPAGE = 'Singlepage';
+    public const CUSTOM  = 'Custom';
 }

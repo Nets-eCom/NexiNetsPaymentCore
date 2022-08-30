@@ -6,8 +6,8 @@ use MyCLabs\Enum\Enum;
 
 class PaymentProcessingTypeEnum extends Enum
 {
-    const NONE = 'None';
-    const VERIFY = 'Verify';
-    const AUTHORIZE = 'Authorize';
-    const SALE = 'Sale';
+    public const NONE = 'None';
+    public const VERIFY = 'Verify';
+    public const AUTHORIZE = 'Authorize';
+    public const SALE = 'Sale';
 }
