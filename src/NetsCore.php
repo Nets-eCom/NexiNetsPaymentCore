@@ -4,8 +4,8 @@ namespace NetsCore;
 
 use NetsCore\Configuration\NetaxeptConfiguration;
 use NetsCore\Dto\Netaxept\Response\RefundPaymentResponseDto;
-use NetsCore\Dto\NextAccept\Response\CapturePaymentResponseDto;
-use NetsCore\Dto\NextAccept\Response\CreatePaymentResponseDto;
+use NetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
+use NetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
 use NetsCore\Factory\APIClientFactory;
 use NetsCore\Factory\AuthFactory;
 use NetsCore\Factory\ClientFactory;
@@ -40,10 +40,9 @@ class NetsCore
         return $this->getClient()->createPayment($paymentObject);
     }
 
-    public function getPaymentDetails(string $paymentId):PaymentObjectInterface
+    public function getPaymentDetails()
     {
         //TODO: Create get payment plugin api
-        return new PaymentObject();
     }
 
     /**

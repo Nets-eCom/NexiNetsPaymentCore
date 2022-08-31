@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Exception;
+namespace NetsCore\Exceptions;
 
 use Exception;
 use Throwable;

@@ -7,15 +7,16 @@ use NetsCore\Dto\Netaxept\Response\CancelPaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
 use NetsCore\Enums\ExceptionEnum;
-use NetsCore\Exception\CapturePaymentException;
+use NetsCore\Exceptions\CapturePaymentException;
 use NetsCore\Interfaces\APIClientInterface;
+use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
 use NetsCore\Interfaces\CapturePaymentInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 use NetsCore\Interfaces\RefundPaymentRequestInterface;
 use NetsCore\Validator\CapturePaymentValidator;
 
-class  NetaxeptService implements ClientServiceInterface
+class NetaxeptService implements ClientServiceInterface
 {
     private APIClientInterface $apiClient;
 
@@ -44,12 +45,11 @@ class  NetaxeptService implements ClientServiceInterface
 
     public function cancelPayment(PaymentObjectInterface $paymentObject): CancelPaymentResponseDto
     {
-        // TODO: Implement cancelPayment() method.
         $response = $this->apiClient->cancelPayment($paymentObject);
         return (new CancelPaymentResponseDto())->map($response);
     }
 
-    public function authorizePayment()
+    public function authorizePayment(AuthorizePaymentRequestInterface $authorizationObject)
     {
         // TODO: Implement authorizePayment() method.
     }
@@ -61,7 +61,7 @@ class  NetaxeptService implements ClientServiceInterface
     {
         $response = $this->apiClient->capturePayment($capturePayment);
         $capturePaymentResponse = (new CapturePaymentResponseDto())->map($response);
-        if(!CapturePaymentValidator::validate($capturePaymentResponse)) {
+        if (!CapturePaymentValidator::validate($capturePaymentResponse)) {
             throw new CapturePaymentException(ExceptionEnum::CAPTURE_PAYMENT_CRITICAL_ERROR, 500);
         }
         return $capturePaymentResponse;

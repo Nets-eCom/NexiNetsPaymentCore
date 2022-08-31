@@ -14,21 +14,21 @@ class CapturePaymentResponseDto
     public function map($data): CapturePaymentResponseDto
     {
         $data = json_decode($data);
-        if(isset($data->paymentId)) {
+        if (isset($data->paymentId)) {
             $this->paymentId = $data->paymentId;
         }
-        if(isset($data->type)){
+        if (isset($data->type)) {
             $this->type = $data->type;
         }
-        if(isset($data->title)){
+        if (isset($data->title)) {
             $this->title = $data->title;
         }
-        if(isset($data->status)){
+        if (isset($data->status)) {
             $this->status = $data->status;
         }
-        foreach ($data as $key=>$value) {
-            if(preg_match('/additional/i', $key)!== false) {
-                $this->problems += [$key=>$value];
+        foreach ($data as $key => $value) {
+            if (preg_match('/additional/i', $key) !== false) {
+                $this->problems += [$key => $value];
             }
         }
         return $this;

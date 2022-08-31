@@ -2,7 +2,6 @@
 
 namespace NetsCore\Dto\Netaxept\Request;
 
-
 use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
 
 class AuthorizePaymentRequest implements AuthorizePaymentRequestInterface
