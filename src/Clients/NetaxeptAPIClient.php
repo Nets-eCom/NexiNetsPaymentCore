@@ -80,7 +80,7 @@ class NetaxeptAPIClient implements APIClientInterface
      */
     public function refundPayment(RefundPaymentRequestInterface  $refundObject)
     {
-        $request = new Request('POST', ApiUrlsEnum::NEXT_ACCEPT_PAYMENT_SERVICE.$refundObject->getPaymentId().ApiUrlsEnum::NETAXEPT_API_REFUND, $this->generateHeader(), json_encode($refundObject->getBodyRequest()));
+        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE . $refundObject->getPaymentId(). ApiUrlsEnum::NETAXEPT_API_REFUND, $this->generateHeader(), json_encode($refundObject->getBodyRequest()));
         $res = $this->httpClient->sendAsync($request)->wait();
         return $res->getBody();
     }
