@@ -2,6 +2,7 @@
 
 namespace NetsCore\Services;
 
+use NetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
 use NetsCore\Dto\Netaxept\Response\RefundPaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CancelPaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
@@ -38,9 +39,10 @@ class NetaxeptService implements ClientServiceInterface
         return (new CreatePaymentResponseDto())->map($response);
     }
 
-    public function getPaymentDetails()
+    public function getPaymentDetails(string $paymentId): PaymentDetailResponseDto
     {
-        // TODO: Implement getPaymentDetails() method.
+        $response = $this->apiClient->getPaymentDetails($paymentId);
+        return (new PaymentDetailResponseDto())->map($response);
     }
 
     public function cancelPayment(PaymentObjectInterface $paymentObject): CancelPaymentResponseDto

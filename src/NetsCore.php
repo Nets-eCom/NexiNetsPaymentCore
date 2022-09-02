@@ -4,6 +4,7 @@ namespace NetsCore;
 
 use NetsCore\Configuration\NetaxeptConfiguration;
 use NetsCore\Dto\Netaxept\Request\PaymentObject;
+use NetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
 use NetsCore\Dto\Netaxept\Response\RefundPaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
@@ -41,10 +42,9 @@ class NetsCore
         return $this->getClient()->createPayment($paymentObject);
     }
 
-    public function getPaymentDetails(string $paymentId): PaymentObjectInterface
+    public function getPaymentDetails(string $paymentId): PaymentDetailResponseDto
     {
-        //TODO: Create get payment plugin api
-        return new PaymentObject();
+        return $this->getClient()->getPaymentDetails($paymentId);
     }
 
     /**
