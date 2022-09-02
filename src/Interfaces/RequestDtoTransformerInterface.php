@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept\Request\Transformer;
+namespace NetsCore\Interfaces;
 
 interface RequestDtoTransformerInterface
 {
