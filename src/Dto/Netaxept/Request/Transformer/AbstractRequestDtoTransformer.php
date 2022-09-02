@@ -2,6 +2,8 @@
 
 namespace NetsCore\Dto\Netaxept\Request\Transformer;
 
+use NetsCore\Interfaces\RequestDtoTransformerInterface;
+
 abstract class AbstractRequestDtoTransformer implements RequestDtoTransformerInterface
 {
     /**
