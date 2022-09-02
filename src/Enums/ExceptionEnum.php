@@ -17,4 +17,5 @@ class ExceptionEnum extends Enum
     public const CAPTURE_PAYMENT_CRITICAL_ERROR = 'Capture Payment Validation Fail';
     public const CAPTURE_PAYMENT_BAD_REQUEST = 'Capture Payment Bad Request';
     public const CAPTURE_PAYMENT_CLIENT_ERROR = 'Capture Payment Client Error';
+    public const CART_VALUE_EXCEPTION = 'Cart value does not equal to the actual payload of PSP';
 }
