@@ -6,20 +6,20 @@ use MyCLabs\Enum\Enum;
 
 class LanguageEnum extends Enum
 {
-    const EN = 'EN';
-    const DK = 'DK';
-    const NL = 'NL';
-    const ET = 'ET';
-    const FI = 'FI';
-    const FR = 'FR';
-    const DE = 'DE';
-    const IT = 'IT';
-    const LV = 'LV';
-    const LT = 'LT';
-    const NO = 'NO';
-    const PL = 'PL';
-    const PT = 'PT';
-    const RU = 'RU';
-    const ES = 'ES';
-    const SE = 'SE';
+    public const EN = 'EN';
+    public const DK = 'DK';
+    public const NL = 'NL';
+    public const ET = 'ET';
+    public const FI = 'FI';
+    public const FR = 'FR';
+    public const DE = 'DE';
+    public const IT = 'IT';
+    public const LV = 'LV';
+    public const LT = 'LT';
+    public const NO = 'NO';
+    public const PL = 'PL';
+    public const PT = 'PT';
+    public const RU = 'RU';
+    public const ES = 'ES';
+    public const SE = 'SE';
 }

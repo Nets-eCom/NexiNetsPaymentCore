@@ -2,9 +2,9 @@
 
 namespace NetsCore\Validator;
 
-use NetsCore\Dto\NextAccept\Response\CapturePaymentResponseDto;
+use NetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
 use NetsCore\Enums\ExceptionEnum;
-use NetsCore\Exception\CapturePaymentException;
+use NetsCore\Exceptions\CapturePaymentException;
 
 class CapturePaymentValidator
 {
@@ -13,11 +13,11 @@ class CapturePaymentValidator
      */
     public static function validate(CapturePaymentResponseDto $responseDto): bool
     {
-        if(isset($responseDto->paymentId)) {
+        if (isset($responseDto->paymentId)) {
             return true;
         }
 
-        if(!isset($responseDto->status)){
+        if (!isset($responseDto->status)) {
             throw new CapturePaymentException(ExceptionEnum::CAPTURE_PAYMENT_CRITICAL_ERROR, 500);
         }
 
