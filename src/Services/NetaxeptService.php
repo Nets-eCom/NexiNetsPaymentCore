@@ -2,6 +2,7 @@
 
 namespace NetsCore\Services;
 
+use NetsCore\Dto\Netaxept\Response\RefundPaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CancelPaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
@@ -12,6 +13,7 @@ use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
 use NetsCore\Interfaces\CapturePaymentInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
+use NetsCore\Interfaces\RefundPaymentRequestInterface;
 use NetsCore\Validator\CapturePaymentValidator;
 
 class NetaxeptService implements ClientServiceInterface
@@ -65,9 +67,15 @@ class NetaxeptService implements ClientServiceInterface
         return $capturePaymentResponse;
     }
 
-    public function refundPayment()
+    /**
+     * @param RefundPaymentRequestInterface $refundObject
+     *
+     * @return RefundPaymentResponseDto
+     */
+    public function refundPayment(RefundPaymentRequestInterface $refundObject):RefundPaymentResponseDto
     {
-        // TODO: Implement refundPayment() method.
+        $response = $this->apiClient->refundPayment($refundObject);
+        return (new RefundPaymentResponseDto())->map($response);
     }
 
     public function salePayment()

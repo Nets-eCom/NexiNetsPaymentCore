@@ -37,7 +37,7 @@ class BaseAPIClient implements APIClientInterface
     {
     }
 
-    public function refundPayment()
+    public function refundPayment(PaymentObjectInterface $paymentObject)
     {
     }
 
