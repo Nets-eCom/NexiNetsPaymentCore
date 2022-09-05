@@ -25,6 +25,7 @@ class NetsCore
     private APIAuthServiceInterface $authService;
 
     /**
+     *
      * @param  ConfigurationInterface|null  $configuration
      */
     public function setup(ConfigurationInterface $configuration = null)
