@@ -34,6 +34,7 @@ class PaymentDetailResponseDto
         $this->refunds = (new PaymentTransaction())->map($body->refunds);
         $this->captures = (new PaymentTransaction())->map($body->captures);
         return $this;
+
     }
 
 }
