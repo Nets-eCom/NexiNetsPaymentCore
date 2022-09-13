@@ -20,5 +20,8 @@
         "myclabs/php-enum": "dev-master",
         "ext-json": "*"
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
 }
