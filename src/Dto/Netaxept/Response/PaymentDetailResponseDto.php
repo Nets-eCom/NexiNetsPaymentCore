@@ -33,8 +33,8 @@ class PaymentDetailResponseDto
         $this->authorizations = (new PaymentTransaction())->map($body->authorizations);
         $this->refunds = (new PaymentTransaction())->map($body->refunds);
         $this->captures = (new PaymentTransaction())->map($body->captures);
-        return $this;
 
+        return $this;
     }
 
 }
