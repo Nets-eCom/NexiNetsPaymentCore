@@ -68,9 +68,12 @@ class NetaxeptAPIClient implements APIClientInterface
         return $res->getBody();
     }
 
-    public function getPaymentDetails()
+    public function getPaymentDetails(string $paymentId)
     {
-        //TODO: Implement get  payment details request
+        $request = new Request('GET', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE . $paymentId, $this->generateHeader());
+        $res = $this->httpClient->sendAsync($request)->wait();
+
+        return $res->getBody();
     }
 
     /**

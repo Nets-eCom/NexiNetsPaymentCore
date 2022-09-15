@@ -9,7 +9,7 @@ interface APIClientInterface
      * @return mixed
      */
     public function createPayment(PaymentObjectInterface $paymentObject);
-    public function getPaymentDetails();
+    public function getPaymentDetails(string $paymentId);
     public function cancelPayment(PaymentObjectInterface $paymentObject);
     public function authorizePayment(AuthorizePaymentRequestInterface $authorizationObject);
     public function capturePayment(CapturePaymentInterface $capturePayment);
