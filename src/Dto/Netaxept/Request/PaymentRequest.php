@@ -2,9 +2,9 @@
 
 namespace NetsCore\Dto\Netaxept\Request;
 
-use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
+use NetsCore\Interfaces\PaymentRequestInterface;
 
-class AuthorizePaymentRequest implements AuthorizePaymentRequestInterface
+class PaymentRequest implements PaymentRequestInterface
 {
     public string $paymentId;
     public int $amount;
