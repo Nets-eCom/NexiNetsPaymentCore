@@ -2,19 +2,19 @@
 
 namespace NetsCore\Services;
 
-use NetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
-use NetsCore\Dto\Netaxept\Response\RefundPaymentResponseDto;
+use NetsCore\Dto\Netaxept\Response\AuthorizePaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CancelPaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
+use NetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
+use NetsCore\Dto\Netaxept\Response\RefundPaymentResponseDto;
 use NetsCore\Enums\ExceptionEnum;
+use NetsCore\Exceptions\ApiResponseException;
 use NetsCore\Exceptions\CapturePaymentException;
 use NetsCore\Interfaces\APIClientInterface;
-use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
-use NetsCore\Interfaces\CapturePaymentInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
-use NetsCore\Interfaces\RefundPaymentRequestInterface;
+use NetsCore\Interfaces\PaymentRequestInterface;
 use NetsCore\Validator\CapturePaymentValidator;
 
 class NetaxeptService implements ClientServiceInterface
@@ -22,7 +22,7 @@ class NetaxeptService implements ClientServiceInterface
     private APIClientInterface $apiClient;
 
     /**
-     * @param  APIClientInterface  $apiClient
+     * @param APIClientInterface $apiClient
      */
     public function __construct(APIClientInterface $apiClient)
     {
@@ -30,7 +30,7 @@ class NetaxeptService implements ClientServiceInterface
     }
 
     /**
-     * @param  PaymentObjectInterface  $paymentObject
+     * @param PaymentObjectInterface $paymentObject
      * @return mixed
      */
     public function createPayment(PaymentObjectInterface $paymentObject): CreatePaymentResponseDto
@@ -45,23 +45,38 @@ class NetaxeptService implements ClientServiceInterface
         return (new PaymentDetailResponseDto())->map($response);
     }
 
-    public function cancelPayment(PaymentObjectInterface $paymentObject): CancelPaymentResponseDto
+    public function cancelPayment(PaymentRequestInterface $paymentObject): CancelPaymentResponseDto
     {
         $response = $this->apiClient->cancelPayment($paymentObject);
         return (new CancelPaymentResponseDto())->map($response);
     }
 
-    public function authorizePayment(AuthorizePaymentRequestInterface $authorizationObject)
+    /**
+     * @throws ApiResponseException
+     */
+    public function authorizePayment(PaymentRequestInterface $authorizationObject): AuthorizePaymentResponseDto
     {
-        // TODO: Implement authorizePayment() method.
+        try {
+            $response = $this->apiClient->authorizePayment($authorizationObject);
+        } catch (ApiResponseException $e) {
+            throw new ApiResponseException();
+        }
+
+        return (new AuthorizePaymentResponseDto())->map($response);
     }
 
     /**
      * @throws CapturePaymentException
+     * @throws ApiResponseException
      */
-    public function capturePayment(CapturePaymentInterface $capturePayment): CapturePaymentResponseDto
+    public function capturePayment(PaymentRequestInterface $capturePayment): CapturePaymentResponseDto
     {
-        $response = $this->apiClient->capturePayment($capturePayment);
+        try {
+            $response = $this->apiClient->capturePayment($capturePayment);
+
+        } catch (ApiResponseException $e) {
+            throw new ApiResponseException();
+        }
         $capturePaymentResponse = (new CapturePaymentResponseDto())->map($response);
         if (!CapturePaymentValidator::validate($capturePaymentResponse)) {
             throw new CapturePaymentException(ExceptionEnum::CAPTURE_PAYMENT_CRITICAL_ERROR, 500);
@@ -70,11 +85,11 @@ class NetaxeptService implements ClientServiceInterface
     }
 
     /**
-     * @param RefundPaymentRequestInterface $refundObject
+     * @param PaymentRequestInterface $refundObject
      *
      * @return RefundPaymentResponseDto
      */
-    public function refundPayment(RefundPaymentRequestInterface $refundObject):RefundPaymentResponseDto
+    public function refundPayment(PaymentRequestInterface $refundObject): RefundPaymentResponseDto
     {
         $response = $this->apiClient->refundPayment($refundObject);
         return (new RefundPaymentResponseDto())->map($response);

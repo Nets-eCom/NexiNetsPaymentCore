@@ -9,7 +9,7 @@ class CapturePaymentResponseDto
     public string $title;
     public string $status;
     public string $instance;
-    public array $problems;
+    public array $problems = [];
 
     public function map($data): CapturePaymentResponseDto
     {

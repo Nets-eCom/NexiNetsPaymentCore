@@ -3,21 +3,21 @@
 namespace NetsCore;
 
 use NetsCore\Configuration\NetaxeptConfiguration;
-use NetsCore\Dto\Netaxept\Request\PaymentObject;
-use NetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
-use NetsCore\Dto\Netaxept\Response\RefundPaymentResponseDto;
+use NetsCore\Dto\Netaxept\Response\AuthorizePaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
+use NetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
+use NetsCore\Dto\Netaxept\Response\RefundPaymentResponseDto;
+use NetsCore\Exceptions\ApiResponseException;
+use NetsCore\Exceptions\CapturePaymentException;
 use NetsCore\Factory\APIClientFactory;
 use NetsCore\Factory\AuthFactory;
 use NetsCore\Factory\ClientFactory;
 use NetsCore\Interfaces\APIAuthServiceInterface;
-use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
-use NetsCore\Interfaces\CapturePaymentInterface;
 use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\ConfigurationInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
-use NetsCore\Interfaces\RefundPaymentRequestInterface;
+use NetsCore\Interfaces\PaymentRequestInterface;
 use NetsCore\Services\AuthService;
 
 class NetsCore
@@ -26,7 +26,7 @@ class NetsCore
     private APIAuthServiceInterface $authService;
 
     /**
-     * @param  ConfigurationInterface|null  $configuration
+     * @param ConfigurationInterface|null $configuration
      */
     public function setup(ConfigurationInterface $configuration = null)
     {
@@ -35,7 +35,8 @@ class NetsCore
     }
 
     /**
-     * @param  PaymentObjectInterface  $paymentObject
+     * @param PaymentObjectInterface $paymentObject
+     * @return CreatePaymentResponseDto
      */
     public function createPayment(PaymentObjectInterface $paymentObject): CreatePaymentResponseDto
     {
@@ -48,27 +49,39 @@ class NetsCore
     }
 
     /**
-     * @param  PaymentObjectInterface  $paymentObject
+     * @param PaymentRequestInterface $paymentObject
      */
-    public function cancelPayment(PaymentObjectInterface $paymentObject)
+    public function cancelPayment(PaymentRequestInterface $paymentObject)
     {
-        //TODO: Create cancel payment plugin api
         return $this->getClient()->cancelPayment($paymentObject);
     }
+
     /**
-     * @param  AuthorizePaymentRequestInterface $authorizationObject
+     * @param PaymentRequestInterface $authorizationObject
+     * @throws ApiResponseException
      */
-    public function authorizePayment(AuthorizePaymentRequestInterface $authorizationObject)
+    public function authorizePayment(PaymentRequestInterface $authorizationObject): AuthorizePaymentResponseDto
     {
-        return $this->getClient()->authorizePayment($authorizationObject);
+        try {
+            return $this->getClient()->authorizePayment($authorizationObject);
+        } catch (ApiResponseException $e) {
+            throw new ApiResponseException();
+        }
     }
 
-    public function capturePayment(CapturePaymentInterface $capturePayment): CapturePaymentResponseDto
+    /**
+     * @throws ApiResponseException
+     */
+    public function capturePayment(PaymentRequestInterface $capturePayment): CapturePaymentResponseDto
     {
-        return $this->getClient()->capturePayment($capturePayment);
+        try {
+            return $this->getClient()->capturePayment($capturePayment);
+        } catch (ApiResponseException $e) {
+            throw new ApiResponseException();
+        }
     }
 
-    public function refundPayment(RefundPaymentRequestInterface $refundObject) : RefundPaymentResponseDto
+    public function refundPayment(PaymentRequestInterface $refundObject): RefundPaymentResponseDto
     {
         return $this->getClient()->refundPayment($refundObject);
     }
