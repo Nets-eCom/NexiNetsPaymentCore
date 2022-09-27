@@ -18,8 +18,7 @@ class PaymentDetail
         $this->paymentMethodType = $stdClass->paymentMethodType ?: null;
         $this->paymentMethod = $stdClass->paymentMethod ?: null;
         $this->paymentMethodDescription = $stdClass->paymentMethodDescription ?: null;
-        $this->cardDetails = $stdClass->cardDetails ?: null;
-
+        $this->cardDetails = $stdClass->cardDetails ? (new CardDetails())->map($stdClass->cardDetails) : null;
         return $this;
     }
 }
