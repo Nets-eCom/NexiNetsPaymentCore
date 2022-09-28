@@ -23,7 +23,7 @@ class AsyncPaymentTransactionStructTransformer extends AbstractRequestDtoTransfo
     {
         $dto = new PaymentObject();
 
-        $dto->orderNumber = $object->getOrder()->getOrderNumber();
+        $dto->paymentNumber = $object->getOrder()->getOrderNumber();
 
         $amount      = $object->getOrderTransaction()->getAmount()->getTotalPrice();
         $dto->amount = ceil($amount * 100);

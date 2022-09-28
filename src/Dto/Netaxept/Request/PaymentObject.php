@@ -12,8 +12,8 @@ use NetsCore\Interfaces\PaymentObjectInterface;
 class PaymentObject implements PaymentObjectInterface
 {
     public string $type;
-    public string $orderNumber;
-    public string $orderDescription;
+    public string $paymentNumber;
+    public string $checkoutText;
     public string $reconciliationReference;
     public int $amount;
     public string $currencyCode;
