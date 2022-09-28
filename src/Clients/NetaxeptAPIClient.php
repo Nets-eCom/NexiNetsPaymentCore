@@ -2,7 +2,6 @@
 
 namespace NetsCore\Clients;
 
-use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
@@ -18,8 +17,8 @@ class NetaxeptAPIClient implements APIClientInterface
     private Client $httpClient;
 
     /**
-     * @param  array  $authData
-     * @param  Client|null  $client
+     * @param array $authData
+     * @param Client|null $client
      */
     public function __construct(array $authData, Client $client = null)
     {
@@ -114,7 +113,7 @@ class NetaxeptAPIClient implements APIClientInterface
      * @return mixed
      * @throws ApiResponseException
      */
-    public function refundPayment(PaymentRequestInterface  $refundObject)
+    public function refundPayment(PaymentRequestInterface $refundObject)
     {
         $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE . $refundObject->getPaymentId() . ApiUrlsEnum::NETAXEPT_API_REFUND, $this->generateHeader(), json_encode($refundObject->getBodyRequest()));
         try {

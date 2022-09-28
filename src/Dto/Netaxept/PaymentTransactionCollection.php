@@ -7,7 +7,7 @@ class PaymentTransactionCollection
     /**
      * @var PaymentTransaction[]
      */
-    public array $transactions;
+    public array $transactions = [];
 
     public function map($transactionsArray): PaymentTransactionCollection
     {
