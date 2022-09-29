@@ -3,9 +3,9 @@
 namespace NetsCore\Dto\Netaxept\Request;
 
 use NetsCore\Dto\Netaxept\BasketItemDto;
-use NetsCore\Interfaces\RefundPaymentRequestInterface;
+use NetsCore\Interfaces\PaymentRequestInterface;
 
-class RefundPaymentRequest implements RefundPaymentRequestInterface
+class RefundPaymentRequest implements PaymentRequestInterface
 {
     public string $paymentId;
     public int $amount;

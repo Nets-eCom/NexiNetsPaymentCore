@@ -12,6 +12,7 @@ class RefundPaymentResponseDto
         $data = json_decode($data);
         $this->paymentId = $data->paymentId;
         $this->transactionRef = $data->transactionRef;
+
         return $this;
     }
 }

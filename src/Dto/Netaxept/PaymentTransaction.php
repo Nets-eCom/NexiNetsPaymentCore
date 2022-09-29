@@ -16,7 +16,7 @@ class PaymentTransaction
             return $this;
         }
         $this->amount = $stdClass->amount;
-        $this->dateTime = $stdClass->dateTime;
+        $this->dateTime = $stdClass->dateTime ? (new DateTime($stdClass->dateTime)) : null;
         $this->description = $stdClass->description;
 
         return $this;
