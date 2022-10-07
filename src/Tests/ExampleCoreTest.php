@@ -2,9 +2,9 @@
 
 namespace NetsCore\Tests;
 
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
-class ExampleCoreTest extends TestCase
+class ExampleCoreTest extends MockeryTestCase
 {
     public function testIfPhpUnitWorks() : void {
         $this->assertTrue(true);
