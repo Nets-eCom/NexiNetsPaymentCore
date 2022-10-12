@@ -2,7 +2,7 @@
 
 namespace NetsCore\Interfaces;
 
-interface AuthorizePaymentRequestInterface
+interface PaymentRequestInterface
 {
     public function getPaymentId(): string;
     public function getBodyRequest(): array;

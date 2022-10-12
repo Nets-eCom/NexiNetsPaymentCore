@@ -5,17 +5,21 @@ namespace NetsCore\Dto\Netaxept\Response;
 class CapturePaymentResponseDto
 {
     public string $paymentId;
+    public string $transactionRef;
     public string $type;
     public string $title;
     public string $status;
     public string $instance;
-    public array $problems;
+    public array $problems = [];
 
     public function map($data): CapturePaymentResponseDto
     {
         $data = json_decode($data);
         if (isset($data->paymentId)) {
             $this->paymentId = $data->paymentId;
+        }
+        if (isset($data->transactionRef)) {
+            $this->transactionRef = $data->transactionRef;
         }
         if (isset($data->type)) {
             $this->type = $data->type;

@@ -23,11 +23,11 @@ class CapturePaymentValidator
 
         switch ($responseDto->status) {
             case 400:
-                throw new CapturePaymentException(ExceptionEnum::CAPTURE_PAYMENT_BAD_REQUEST, $responseDto->status, json_encode($responseDto->problems));
+                throw new CapturePaymentException(ExceptionEnum::CAPTURE_PAYMENT_BAD_REQUEST, $responseDto->status, json_encode($responseDto->problems ?: []));
             case 422:
-                throw new CapturePaymentException(ExceptionEnum::CAPTURE_PAYMENT_CLIENT_ERROR, $responseDto->status, json_encode($responseDto->problems));
+                throw new CapturePaymentException(ExceptionEnum::CAPTURE_PAYMENT_CLIENT_ERROR, $responseDto->status, json_encode($responseDto->problems ?: []));
             default:
-                throw new CapturePaymentException(ExceptionEnum::CAPTURE_PAYMENT_CRITICAL_ERROR, $responseDto->status, json_encode($responseDto->problems));
+                throw new CapturePaymentException(ExceptionEnum::CAPTURE_PAYMENT_CRITICAL_ERROR, $responseDto->status, json_encode($responseDto->problems ?: []));
         }
     }
 }

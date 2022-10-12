@@ -3,13 +3,13 @@
 namespace NetsCore\Clients;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use NetsCore\Enums\ApiUrlsEnum;
+use NetsCore\Exceptions\ApiResponseException;
 use NetsCore\Interfaces\APIClientInterface;
-use NetsCore\Interfaces\AuthorizePaymentRequestInterface;
-use NetsCore\Interfaces\CapturePaymentInterface;
+use NetsCore\Interfaces\PaymentRequestInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
-use NetsCore\Interfaces\RefundPaymentRequestInterface;
 
 class NetaxeptAPIClient implements APIClientInterface
 {
@@ -17,8 +17,8 @@ class NetaxeptAPIClient implements APIClientInterface
     private Client $httpClient;
 
     /**
-     * @param  array  $authData
-     * @param  Client|null  $client
+     * @param array $authData
+     * @param Client|null $client
      */
     public function __construct(array $authData, Client $client = null)
     {
@@ -27,62 +27,102 @@ class NetaxeptAPIClient implements APIClientInterface
     }
 
     /**
-     * @param  PaymentObjectInterface  $paymentObject
+     * @param PaymentObjectInterface $paymentObject
      * @return mixed
+     * @throws ApiResponseException
      */
     public function createPayment(PaymentObjectInterface $paymentObject)
     {
         $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE, $this->generateHeader(), json_encode($paymentObject));
-        $res = $this->httpClient->sendAsync($request)->wait();
+        try {
+            $res = $this->httpClient->sendAsync($request)->wait();
 
-        return $res->getBody();
+            return $res->getBody();
+        } catch (RequestException $e) {
+            throw new ApiResponseException();
+        }
     }
 
     /**
-     * @param  AuthorizePaymentRequestInterface  $authorizationObject
+     * @param PaymentRequestInterface $authorizationObject
      * @return mixed
+     * @throws ApiResponseException
      */
-    public function authorizePayment(AuthorizePaymentRequestInterface $authorizationObject)
+    public function authorizePayment(PaymentRequestInterface $authorizationObject)
     {
         $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE . $authorizationObject->getPaymentId() . ApiUrlsEnum::NETAXEPT_API_PAYMENT_AUTHORIZATION, $this->generateHeader(), json_encode($authorizationObject->getBodyRequest()));
-        $res = $this->httpClient->sendAsync($request)->wait();
-        return $res->getBody();
+        try {
+            $res = $this->httpClient->sendAsync($request)->wait();
+
+            return $res->getBody();
+        } catch (RequestException $e) {
+            throw new ApiResponseException();
+        }
     }
 
     /**
-     * @param  PaymentObjectInterface  $paymentObject
+     * @param PaymentRequestInterface $paymentObject
      * @return mixed
+     * @throws ApiResponseException
      */
-    public function cancelPayment(PaymentObjectInterface $paymentObject)
+    public function cancelPayment(PaymentRequestInterface $paymentObject)
     {
-        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE . $paymentObject->getPaymentId() . ApiUrlsEnum::NETAXEPT_API_CANCEL, $this->generateHeader(), json_encode($paymentObject));
-        $res = $this->httpClient->sendAsync($request)->wait();
-        return $res->getBody();
-    }
+        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE . $paymentObject->getPaymentId() . ApiUrlsEnum::NETAXEPT_API_CANCEL, $this->generateHeader(), json_encode($paymentObject->getBodyRequest()));
+        try {
+            $res = $this->httpClient->sendAsync($request)->wait();
 
-    public function capturePayment(CapturePaymentInterface $capturePayment)
-    {
-        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE . $capturePayment->getPaymentId() . ApiUrlsEnum::NETAXEPT_API_CAPTURE, $this->generateHeader(), json_encode($capturePayment->getData()));
-        $res = $this->httpClient->sendAsync($request)->wait();
-
-        return $res->getBody();
-    }
-
-    public function getPaymentDetails()
-    {
-        //TODO: Implement get  payment details request
+            return $res->getBody();
+        } catch (RequestException $e) {
+            throw new ApiResponseException();
+        }
     }
 
     /**
-     * @param RefundPaymentRequestInterface $refundObject
+     * @throws ApiResponseException
+     */
+    public function capturePayment(PaymentRequestInterface $capturePayment)
+    {
+        $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE . $capturePayment->getPaymentId() . ApiUrlsEnum::NETAXEPT_API_CAPTURE, $this->generateHeader(), json_encode($capturePayment->getBodyRequest()));
+        try {
+            $res = $this->httpClient->sendAsync($request)->wait();
+
+            return $res->getBody();
+        } catch (RequestException $e) {
+            throw new ApiResponseException();
+        }
+    }
+
+    /**
+     * @throws ApiResponseException
+     */
+    public function getPaymentDetails(string $paymentId)
+    {
+        $request = new Request('GET', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE . $paymentId, $this->generateHeader());
+        try {
+            $res = $this->httpClient->sendAsync($request)->wait();
+
+            return $res->getBody();
+        } catch (RequestException $e) {
+            throw new ApiResponseException();
+        }
+    }
+
+    /**
+     * @param PaymentRequestInterface $refundObject
      *
      * @return mixed
+     * @throws ApiResponseException
      */
-    public function refundPayment(RefundPaymentRequestInterface  $refundObject)
+    public function refundPayment(PaymentRequestInterface $refundObject)
     {
         $request = new Request('POST', ApiUrlsEnum::NETAXEPT_PAYMENT_SERVICE . $refundObject->getPaymentId() . ApiUrlsEnum::NETAXEPT_API_REFUND, $this->generateHeader(), json_encode($refundObject->getBodyRequest()));
-        $res = $this->httpClient->sendAsync($request)->wait();
-        return $res->getBody();
+        try {
+            $res = $this->httpClient->sendAsync($request)->wait();
+
+            return $res->getBody();
+        } catch (RequestException $e) {
+            throw new ApiResponseException();
+        }
     }
 
     public function salePayment()
