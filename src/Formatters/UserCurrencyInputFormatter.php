@@ -6,7 +6,9 @@ class UserCurrencyInputFormatter
 {
     public static function format(string $input): int
     {
-        $input = str_replace(',', '.', $input);
-        return round((float)$input, 2) * 100;
+        $input = ltrim($input, '0');
+        $input = floatval($input);
+        $input = round($input, 2) * 100;
+        return (int)$input;
     }
 }
