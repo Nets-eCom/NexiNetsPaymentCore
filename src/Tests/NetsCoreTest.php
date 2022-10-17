@@ -15,8 +15,6 @@ class NetsCoreTest extends MockeryTestCase
         $paymentId = TestHelper::paymentId;
         $paypageURL =  TestHelper::paypageURL;
 
-
-
         //Mock Object
 
         $paymentObjectInterfaceMock = \Mockery::mock(PaymentObjectInterface::class);
@@ -37,4 +35,35 @@ class NetsCoreTest extends MockeryTestCase
         $this->assertEquals($paypageURL,$test->paypageURL);
 
     }
+    /**@test**/
+    public function testGetPaymentDetails(): void
+    {
+        //arrange
+        $paymentId = TestHelper::paymentId;
+        $paypageURL =  TestHelper::paypageURL;
+
+
+
+        //Mock Object
+
+        $paymentObjectInterfaceMock = \Mockery::mock(PaymentObjectInterface::class);
+
+        $createPaymentResponseDtoMock = \Mockery::mock(CreatePaymentResponseDto::class) -> makePartial();
+        $createPaymentResponseDtoMock -> paymentId =$paymentId;
+        $createPaymentResponseDtoMock -> paypageURL =$paypageURL ;
+
+        //Assets
+        $systemConfigServiceMock = \Mockery::mock(NetsCore::class);
+        $systemConfigServiceMock->shouldReceive('getPaymentDetails')
+            ->with($paymentObjectInterfaceMock)
+            ->andReturn($createPaymentResponseDtoMock);
+
+        $test = $systemConfigServiceMock->getPaymentDetails($paymentObjectInterfaceMock);
+
+        $this->assertEquals($paymentId,$test->paymentId);
+        $this->assertEquals($paypageURL,$test->paypageURL);
+
+    }
+
+
 }
