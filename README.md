@@ -4,7 +4,7 @@
 | Core              | NetsCore - Payment Core |
 |-------------------|-------------------------|
 | Author            | `Nets eCom`             |
-| Version           | `0.0.3`                 |
+| Version           | `1.0.0`                 |
 | License           | `MIT License`           |
 | Supporting System | `Netaxept`              |
 
