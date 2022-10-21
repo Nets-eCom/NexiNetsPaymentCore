@@ -1,9 +1,9 @@
 {
     "name": "nets-ecom-integrations/paymentcore",
-    "description": "Core for EasyNets and NextAccept payments plugin",
+    "description": "Core for NextAccept payments plugin",
     "type": "library",
     "license": "MIT",
-    "version": "0.0.3",
+    "version": "1.0.0",
     "autoload": {
         "psr-4": {
             "NetsCore\\": "src/"
@@ -11,7 +11,7 @@
     },
     "authors": [
         {
-            "name": "Piotr Staszewski"
+            "name": "Nets-eCom"
         }
     ],
     "require": {
