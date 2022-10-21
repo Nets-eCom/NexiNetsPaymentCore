@@ -1,5 +1,5 @@
 {
-    "name": "nets-ecom/paymentcore",
+    "name": "nets-ecom-integrations/paymentcore",
     "description": "Core for EasyNets and NextAccept payments plugin",
     "type": "library",
     "license": "MIT",
