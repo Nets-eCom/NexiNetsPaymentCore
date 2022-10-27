@@ -93,7 +93,7 @@ class NetsCore
     /**
      * @return ClientServiceInterface
      */
-    private function getClient(): ClientServiceInterface
+    protected function getClient(): ClientServiceInterface
     {
         $authService = new AuthService($this->configuration, $this->authService);
         $apiClient = (new APIClientFactory())->getClient($authService->getAuthData(), $this->configuration->getClientType());
