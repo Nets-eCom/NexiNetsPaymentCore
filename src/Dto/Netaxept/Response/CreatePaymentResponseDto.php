@@ -6,13 +6,14 @@ class CreatePaymentResponseDto
 {
     public string $paymentId;
 
-    public string $paypageURL;
+    public string $payPageUrl;
 
     public function map($data): self
     {
-        $data = json_decode($data);
-        $this->paymentId = $data->paymentId;
-        $this->paypageURL = $data->paypageURL;
+        $data             = json_decode($data);
+        $this->paymentId  = $data->paymentId;
+        $this->payPageUrl = $data->payPageUrl;
+
         return $this;
     }
 }

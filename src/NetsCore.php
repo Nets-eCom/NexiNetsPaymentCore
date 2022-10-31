@@ -9,7 +9,6 @@ use NetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
 use NetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
 use NetsCore\Dto\Netaxept\Response\RefundPaymentResponseDto;
 use NetsCore\Exceptions\ApiResponseException;
-use NetsCore\Exceptions\CapturePaymentException;
 use NetsCore\Factory\APIClientFactory;
 use NetsCore\Factory\AuthFactory;
 use NetsCore\Factory\ClientFactory;
@@ -94,7 +93,7 @@ class NetsCore
     /**
      * @return ClientServiceInterface
      */
-    private function getClient(): ClientServiceInterface
+    protected function getClient(): ClientServiceInterface
     {
         $authService = new AuthService($this->configuration, $this->authService);
         $apiClient = (new APIClientFactory())->getClient($authService->getAuthData(), $this->configuration->getClientType());
