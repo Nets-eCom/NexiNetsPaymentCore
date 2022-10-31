@@ -25,7 +25,7 @@ class NetsCoreTest extends MockeryTestCase
     }
     public function testGetPaymentDetails(): void
     {
-        $paymentId = TestHelper::PAYMENT_ID;
+        $paymentId = '11111';
         $netsCoreMock = \Mockery::mock(NetsCore::class)->makePartial();
         $netsCoreMock->shouldAllowMockingProtectedMethods();
         $netsCoreMock->shouldReceive('getClient->getPaymentDetails')->with($paymentId)->andReturn(
