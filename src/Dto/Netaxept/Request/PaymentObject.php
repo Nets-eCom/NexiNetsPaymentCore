@@ -5,6 +5,7 @@ namespace NetsCore\Dto\Netaxept\Request;
 use NetsCore\Dto\Netaxept\BasketItemDto;
 use NetsCore\Dto\Netaxept\PayPageConfigurationDto;
 use NetsCore\Dto\Netaxept\RedirectUrlDto;
+use NetsCore\Enums\LanguageEnum;
 use NetsCore\Interfaces\CustomerInterface;
 use NetsCore\Interfaces\PaymentMethodDetailsInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
@@ -30,8 +31,19 @@ class PaymentObject implements PaymentObjectInterface
      */
     public array $basket;
 
-    public function getPaymentId()
+    public function setLanguage(string $language)
     {
-        // TODO: Implement getPaymentId() method.
+        $this->payPageConfiguration = new PayPageConfigurationDto();
+        switch ($language)
+        {
+            case 'English':
+                $this->payPageConfiguration->language = LanguageEnum::EN;
+                break;
+            case 'Deutsch':
+                $this->payPageConfiguration->language = LanguageEnum::DE;
+                break;
+            default:
+                $this->payPageConfiguration->language = LanguageEnum::EN;
+        }
     }
 }

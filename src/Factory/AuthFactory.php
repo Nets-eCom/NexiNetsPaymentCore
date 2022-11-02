@@ -2,7 +2,7 @@
 
 namespace NetsCore\Factory;
 
-use NetsCore\Configuration\NetaxeptConfiguration;
+use NetsCore\Interfaces\ConfigurationInterface;
 
 class AuthFactory
 {
@@ -12,7 +12,7 @@ class AuthFactory
      *
      * @return mixed
      */
-    public function getAuthenticationService(NetaxeptConfiguration $configuration, string $clientType)
+    public function getAuthenticationService(ConfigurationInterface $configuration, string $clientType)
     {
         $class = '\NetsCore\Auth\\' . $clientType . 'APIAuthService';
 

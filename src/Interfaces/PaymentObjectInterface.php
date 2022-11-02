@@ -4,5 +4,5 @@ namespace NetsCore\Interfaces;
 
 interface PaymentObjectInterface
 {
-    public function getPaymentId();
+    public function setLanguage(string $language);
 }
