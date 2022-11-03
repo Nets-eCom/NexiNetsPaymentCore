@@ -39,21 +39,4 @@ class NetsCoreTest extends MockeryTestCase
             $netsCoreMock->getPaymentDetails($paymentId)
         );
     }
-
-        public function testCreatePayment(): void
-    {
-        $netsCoreMock = \Mockery::mock(NetsCore::class)->makePartial();
-        $netsCoreMock->shouldAllowMockingProtectedMethods();
-        $netsCoreMock->shouldReceive('getClient->createPayment')->with(PaymentObjectInterface::class)->andReturn(
-            new CreatePaymentResponseDto()
-        );
-
-        $mockInterface=$this->createMock(PaymentObjectInterface::class);
-
-        $this->assertInstanceOf(
-            CreatePaymentResponseDto::class ,
-            $netsCoreMock->createPayment($mockInterface)
-        );
-    }
-
 }
