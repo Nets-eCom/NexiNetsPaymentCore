@@ -10,6 +10,12 @@ class PaymentTransaction
     public ?DateTime $dateTime;
     public ?string $description;
 
+    /**
+     * @param $stdClass
+     *
+     * @return $this
+     * @throws \Exception
+     */
     public function map($stdClass): PaymentTransaction
     {
         if(empty($stdClass)) {

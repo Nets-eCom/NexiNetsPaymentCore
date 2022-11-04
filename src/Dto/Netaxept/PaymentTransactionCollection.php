@@ -9,6 +9,12 @@ class PaymentTransactionCollection
      */
     public array $transactions = [];
 
+    /**
+     * @param $transactionsArray
+     *
+     * @return $this
+     * @throws \Exception
+     */
     public function map($transactionsArray): PaymentTransactionCollection
     {
         if (empty($transactionsArray)) {
