@@ -75,6 +75,9 @@ class PaymentCaptureObject implements CapturePaymentInterface
         $this->basket = $basket;
     }
 
+    /**
+     * @return array
+     */
     public function getData(): array
     {
         return [

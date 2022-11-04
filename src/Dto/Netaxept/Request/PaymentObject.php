@@ -31,6 +31,11 @@ class PaymentObject implements PaymentObjectInterface
      */
     public array $basket;
 
+    /**
+     * @param string $language
+     *
+     * @return void
+     */
     public function setLanguage(string $language)
     {
         $this->payPageConfiguration = new PayPageConfigurationDto();
