@@ -9,10 +9,11 @@ use NetsCore\Exceptions\CartValueException;
 class CartValueValidator
 {
     /**
-     * @param BasketItemDto[] $basket
+     * @param array $basket
      * @param int $requestAmount
      *
      * @return bool
+     * @throws CartValueException
      */
     public static function cartValueValidator(array $basket, int $requestAmount): bool
     {
