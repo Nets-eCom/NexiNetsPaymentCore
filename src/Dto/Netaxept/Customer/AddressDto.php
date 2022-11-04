@@ -10,6 +10,11 @@ class AddressDto
     public string $postalCode;
     public string $countryCode;
 
+    /**
+     * @param $stdClass
+     *
+     * @return $this
+     */
     public function map($stdClass): AddressDto
     {
         $this->address1 = $stdClass->address1;

@@ -12,6 +12,7 @@ class OrderCustomerEntityTransformer extends AbstractCustomerDtoTransformer
 {
     /**
      * @param $object
+     *
      * @return CustomerInterface
      */
     public function transformFromObject($object): CustomerInterface
