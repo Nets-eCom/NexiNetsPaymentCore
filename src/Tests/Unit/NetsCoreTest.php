@@ -5,6 +5,9 @@ namespace NetsCore\Tests;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 use NetsCore\Dto\Netaxept\Request\PaymentRequest;
 use NetsCore\Dto\Netaxept\Response\AuthorizePaymentResponseDto;
+use NetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
+use NetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
+use NetsCore\Interfaces\PaymentObjectInterface;
 use NetsCore\NetsCore;
 
 class NetsCoreTest extends MockeryTestCase
@@ -20,6 +23,20 @@ class NetsCoreTest extends MockeryTestCase
         $this->assertInstanceOf(
             AuthorizePaymentResponseDto::class,
             $netsCoreMock->authorizePayment(new PaymentRequest())
+        );
+    }
+    public function testGetPaymentDetails(): void
+    {
+        $paymentId = TestHelper::paymentId;
+        $netsCoreMock = \Mockery::mock(NetsCore::class)->makePartial();
+        $netsCoreMock->shouldAllowMockingProtectedMethods();
+        $netsCoreMock->shouldReceive('getClient->getPaymentDetails')->with($paymentId)->andReturn(
+            new PaymentDetailResponseDto()
+        );
+
+        $this->assertInstanceOf(
+            PaymentDetailResponseDto::class,
+            $netsCoreMock->getPaymentDetails($paymentId)
         );
     }
 }
