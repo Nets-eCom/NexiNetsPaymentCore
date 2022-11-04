@@ -20,6 +20,12 @@ class PaymentDetailResponseDto
     public ?PaymentTransactionCollection $refunds;
     public ?PaymentTransactionCollection $captures;
 
+    /**
+     * @param $response
+     *
+     * @return $this
+     * @throws \Exception
+     */
     public function map($response): PaymentDetailResponseDto
     {
         $body = json_decode($response);

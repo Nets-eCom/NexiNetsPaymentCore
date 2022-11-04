@@ -8,6 +8,11 @@ class AuthorizePaymentResponseDto
 
     public string $transactionRef;
 
+    /**
+     * @param $data
+     *
+     * @return $this
+     */
     public function map($data): self
     {
         $data = json_decode($data);

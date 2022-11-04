@@ -8,6 +8,11 @@ class CreatePaymentResponseDto
 
     public string $payPageUrl;
 
+    /**
+     * @param $data
+     *
+     * @return $this
+     */
     public function map($data): self
     {
         $data             = json_decode($data);
