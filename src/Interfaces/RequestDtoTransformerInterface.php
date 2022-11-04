@@ -10,5 +10,10 @@ interface RequestDtoTransformerInterface
      */
     public function transformFromObject($object): object;
 
+    /**
+     * @param iterable $objects
+     *
+     * @return iterable
+     */
     public function transformFromObjects(iterable $objects): iterable;
 }
