@@ -26,6 +26,8 @@ class NetsCore
 
     /**
      * @param ConfigurationInterface|null $configuration
+     *
+     * @return void
      */
     public function setup(ConfigurationInterface $configuration = null)
     {
@@ -35,6 +37,7 @@ class NetsCore
 
     /**
      * @param PaymentObjectInterface $paymentObject
+     *
      * @return CreatePaymentResponseDto
      */
     public function createPayment(PaymentObjectInterface $paymentObject): CreatePaymentResponseDto
@@ -42,6 +45,11 @@ class NetsCore
         return $this->getClient()->createPayment($paymentObject);
     }
 
+    /**
+     * @param string $paymentId
+     *
+     * @return PaymentDetailResponseDto
+     */
     public function getPaymentDetails(string $paymentId): PaymentDetailResponseDto
     {
         return $this->getClient()->getPaymentDetails($paymentId);
@@ -49,6 +57,8 @@ class NetsCore
 
     /**
      * @param PaymentRequestInterface $paymentObject
+     *
+     * @return mixed
      */
     public function cancelPayment(PaymentRequestInterface $paymentObject)
     {
@@ -57,6 +67,8 @@ class NetsCore
 
     /**
      * @param PaymentRequestInterface $authorizationObject
+     *
+     * @return AuthorizePaymentResponseDto
      * @throws ApiResponseException
      */
     public function authorizePayment(PaymentRequestInterface $authorizationObject): AuthorizePaymentResponseDto
@@ -69,6 +81,9 @@ class NetsCore
     }
 
     /**
+     * @param PaymentRequestInterface $capturePayment
+     *
+     * @return CapturePaymentResponseDto
      * @throws ApiResponseException
      */
     public function capturePayment(PaymentRequestInterface $capturePayment): CapturePaymentResponseDto
@@ -80,6 +95,11 @@ class NetsCore
         }
     }
 
+    /**
+     * @param PaymentRequestInterface $refundObject
+     *
+     * @return RefundPaymentResponseDto
+     */
     public function refundPayment(PaymentRequestInterface $refundObject): RefundPaymentResponseDto
     {
         return $this->getClient()->refundPayment($refundObject);
