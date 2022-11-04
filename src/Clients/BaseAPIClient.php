@@ -10,8 +10,9 @@ class BaseAPIClient implements APIClientInterface
     private string $host;
 
     /**
-     * @param  PaymentObjectInterface  $paymentObject
-     * @return void
+     * @param PaymentObjectInterface $paymentObject
+     *
+     * @return mixed|void
      */
     public function createPayment(PaymentObjectInterface $paymentObject)
     {
@@ -22,7 +23,8 @@ class BaseAPIClient implements APIClientInterface
     }
 
     /**
-     * @param  PaymentObjectInterface  $paymentObject
+     * @param PaymentObjectInterface $paymentObject
+     *
      * @return void
      */
     public function cancelPayment(PaymentObjectInterface $paymentObject)
@@ -55,7 +57,9 @@ class BaseAPIClient implements APIClientInterface
     }
 
     /**
-     * @param  string  $host
+     * @param string $host
+     *
+     * @return void
      */
     public function setHost(string $host): void
     {
