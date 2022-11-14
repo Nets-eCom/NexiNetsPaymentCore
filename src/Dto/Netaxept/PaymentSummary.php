@@ -13,7 +13,7 @@ class PaymentSummary
     /**
      * @param $sdtClass
      *
-     * @return $this
+     * @return PaymentSummary
      */
     public function map($sdtClass): PaymentSummary
     {

@@ -12,7 +12,7 @@ class CardDetails
     /**
      * @param $stdClass
      *
-     * @return $this
+     * @return CardDetails
      */
     public function map($stdClass): CardDetails
     {

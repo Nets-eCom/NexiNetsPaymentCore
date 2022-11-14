@@ -12,7 +12,7 @@ class PaymentDetail
     /**
      * @param $stdClass
      *
-     * @return $this
+     * @return PaymentDetail
      */
     public function map($stdClass): PaymentDetail
     {

@@ -11,7 +11,7 @@ class RefundPaymentRequest implements PaymentRequestInterface
     public int $amount;
     public string $description;
     /**
-     * @var array
+     * @var BasketItemDto[]
      */
     public array $basket;
 

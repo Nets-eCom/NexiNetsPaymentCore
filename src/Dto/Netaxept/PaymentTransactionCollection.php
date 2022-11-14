@@ -12,7 +12,7 @@ class PaymentTransactionCollection
     /**
      * @param $transactionsArray
      *
-     * @return $this
+     * @return PaymentTransactionCollection
      * @throws \Exception
      */
     public function map($transactionsArray): PaymentTransactionCollection

@@ -13,7 +13,7 @@ class PaymentTransaction
     /**
      * @param $stdClass
      *
-     * @return $this
+     * @return PaymentTransaction
      * @throws \Exception
      */
     public function map($stdClass): PaymentTransaction
