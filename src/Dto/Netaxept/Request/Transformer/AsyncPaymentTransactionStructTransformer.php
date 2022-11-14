@@ -2,7 +2,6 @@
 
 namespace NetsCore\Dto\Netaxept\Request\Transformer;
 
-use Exception;
 use NetsCore\Dto\Netaxept\BasketItemDto;
 use NetsCore\Dto\Netaxept\Customer\AddressDto;
 use NetsCore\Dto\Netaxept\Customer\Transformer\OrderCustomerEntityTransformer;
