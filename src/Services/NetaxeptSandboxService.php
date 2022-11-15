@@ -16,6 +16,7 @@ use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 use NetsCore\Interfaces\PaymentRequestInterface;
 use NetsCore\Validator\CapturePaymentValidator;
+use Exception;
 
 class NetaxeptSandboxService implements ClientServiceInterface
 {
@@ -45,7 +46,7 @@ class NetaxeptSandboxService implements ClientServiceInterface
      * @param string $paymentId
      *
      * @return PaymentDetailResponseDto
-     * @throws \Exception
+     * @throws Exception
      */
     public function getPaymentDetails(string $paymentId): PaymentDetailResponseDto
     {

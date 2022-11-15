@@ -3,6 +3,7 @@
 namespace NetsCore\Dto\Netaxept;
 
 use DateTime;
+use Exception;
 
 class PaymentTransaction
 {
@@ -14,7 +15,7 @@ class PaymentTransaction
      * @param $stdClass
      *
      * @return PaymentTransaction
-     * @throws \Exception
+     * @throws Exception
      */
     public function map($stdClass): PaymentTransaction
     {
