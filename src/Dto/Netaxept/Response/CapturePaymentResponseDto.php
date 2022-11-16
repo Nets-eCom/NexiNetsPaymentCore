@@ -15,7 +15,7 @@ class CapturePaymentResponseDto
     /**
      * @param $data
      *
-     * @return $this
+     * @return CapturePaymentResponseDto
      */
     public function map($data): CapturePaymentResponseDto
     {

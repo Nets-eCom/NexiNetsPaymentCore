@@ -11,7 +11,7 @@ class AuthorizePaymentResponseDto
     /**
      * @param $data
      *
-     * @return $this
+     * @return AuthorizePaymentResponseDto
      */
     public function map($data): self
     {

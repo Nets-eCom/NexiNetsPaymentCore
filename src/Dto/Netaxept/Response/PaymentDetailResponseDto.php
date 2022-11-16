@@ -24,7 +24,7 @@ class PaymentDetailResponseDto
     /**
      * @param $response
      *
-     * @return $this
+     * @return PaymentDetailResponseDto
      * @throws Exception
      */
     public function map($response): PaymentDetailResponseDto

@@ -10,7 +10,7 @@ class RefundPaymentResponseDto
     /**
      * @param $data
      *
-     * @return $this
+     * @return RefundPaymentResponseDto
      */
     public function map($data): self
     {

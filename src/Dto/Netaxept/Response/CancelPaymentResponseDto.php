@@ -10,7 +10,7 @@ class CancelPaymentResponseDto
     /**
      * @param $data
      *
-     * @return $this
+     * @return CancelPaymentResponseDto
      */
     public function map($data): self
     {
