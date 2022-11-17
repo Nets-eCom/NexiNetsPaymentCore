@@ -2,6 +2,8 @@
 
 namespace NetsCore\Dto\Netaxept;
 
+use NetsCore\Enums\PageTypeEnum;
+
 class PayPageConfigurationDto
 {
     /**
@@ -36,7 +38,11 @@ class PayPageConfigurationDto
      */
     public function setPageType(string $pageType): PayPageConfigurationDto
     {
-        $this->pageType = $pageType;
+        if (strlen($pageType) == 0){
+            $this->pageType = PageTypeEnum::MULTIPAGE;
+        }else{
+            $this->pageType = $pageType;
+        }
         return $this;
     }
 
