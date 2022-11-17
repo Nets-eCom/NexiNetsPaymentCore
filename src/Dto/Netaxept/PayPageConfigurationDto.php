@@ -40,7 +40,8 @@ class PayPageConfigurationDto
     {
         if (strlen($pageType) == 0){
             $this->pageType = PageTypeEnum::MULTIPAGE;
-        }else{
+        }
+        else{
             $this->pageType = $pageType;
         }
         return $this;
