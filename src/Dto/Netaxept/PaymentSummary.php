@@ -10,6 +10,11 @@ class PaymentSummary
     public ?int $refundedAmount;
     public ?int $fee;
 
+    /**
+     * @param $sdtClass
+     *
+     * @return PaymentSummary
+     */
     public function map($sdtClass): PaymentSummary
     {
         $body = $sdtClass;

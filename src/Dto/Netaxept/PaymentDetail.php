@@ -9,6 +9,11 @@ class PaymentDetail
     public ?string $paymentMethodDescription;
     public ?CardDetails $cardDetails;
 
+    /**
+     * @param $stdClass
+     *
+     * @return PaymentDetail
+     */
     public function map($stdClass): PaymentDetail
     {
         if(empty($stdClass)) {

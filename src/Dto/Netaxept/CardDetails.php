@@ -9,6 +9,11 @@ class CardDetails
     public ?string $expiryYear;
     public ?string $expiryMonth;
 
+    /**
+     * @param $stdClass
+     *
+     * @return CardDetails
+     */
     public function map($stdClass): CardDetails
     {
         if(empty($stdClass)) {

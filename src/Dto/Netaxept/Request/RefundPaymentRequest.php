@@ -23,6 +23,9 @@ class RefundPaymentRequest implements PaymentRequestInterface
         return $this->paymentId;
     }
 
+    /**
+     * @return array
+     */
     public function getBodyRequest(): array
     {
         return array('amount' => $this->amount, 'description' => $this->description, 'basket'=> $this->basket);

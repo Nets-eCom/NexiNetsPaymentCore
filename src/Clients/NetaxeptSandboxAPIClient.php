@@ -98,6 +98,9 @@ class NetaxeptSandboxAPIClient implements APIClientInterface
     }
 
     /**
+     * @param PaymentRequestInterface $capturePayment
+     *
+     * @return mixed
      * @throws ApiResponseException
      */
     public function capturePayment(PaymentRequestInterface $capturePayment)
@@ -119,6 +122,9 @@ class NetaxeptSandboxAPIClient implements APIClientInterface
     }
 
     /**
+     * @param string $paymentId
+     *
+     * @return mixed
      * @throws ApiResponseException
      */
     public function getPaymentDetails(string $paymentId)

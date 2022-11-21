@@ -7,6 +7,13 @@ use NetsCore\Validator\IsDirectoryValidator;
 
 class LogsService
 {
+    /**
+     * @param $message
+     * @param string $path
+     * @param string $fileName
+     *
+     * @return void
+     */
     public static function logger($message, string $path = '../logs', string $fileName = 'debug.log')
     {
         if (!IsDirectoryValidator::valid($path)) {

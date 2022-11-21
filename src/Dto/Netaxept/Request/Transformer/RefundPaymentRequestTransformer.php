@@ -6,6 +6,11 @@ use NetsCore\Dto\Netaxept\Request\RefundPaymentRequest;
 
 class RefundPaymentRequestTransformer extends AbstractRequestDtoTransformer
 {
+    /**
+     * @param $object
+     *
+     * @return RefundPaymentRequest
+     */
     public function transformFromObject($object) : RefundPaymentRequest
     {
         $dto = new RefundPaymentRequest();

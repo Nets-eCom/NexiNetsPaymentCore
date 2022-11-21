@@ -4,6 +4,11 @@ namespace NetsCore\Formatters;
 
 class UserCurrencyInputFormatter
 {
+    /**
+     * @param string $input
+     *
+     * @return int
+     */
     public static function format(string $input): int
     {
         $input = ltrim($input, '0');

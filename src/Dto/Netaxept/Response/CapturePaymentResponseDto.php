@@ -12,6 +12,11 @@ class CapturePaymentResponseDto
     public string $instance;
     public array $problems = [];
 
+    /**
+     * @param $data
+     *
+     * @return CapturePaymentResponseDto
+     */
     public function map($data): CapturePaymentResponseDto
     {
         $data = json_decode($data);

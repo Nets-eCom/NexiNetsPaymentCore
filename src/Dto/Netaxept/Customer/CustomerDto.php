@@ -14,6 +14,11 @@ class CustomerDto implements CustomerInterface
     public ?string $email;
     public ?string $phone;
 
+    /**
+     * @param $stdClass
+     *
+     * @return $this
+     */
     public function map($stdClass): CustomerDto
     {
         $this->firstName = $stdClass->firstName;

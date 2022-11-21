@@ -24,7 +24,7 @@ class AuthService
     }
 
     /**
-     *
+     * @return void
      */
     public function authorize()
     {
