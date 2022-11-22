@@ -14,7 +14,7 @@ class LogsService
      * The Singleton's constructor should always be private to prevent direct
      * construction calls with the `new` operator.
      */
-    protected function __construct($name = 'origin') {
+    protected function __construct($name = 'netaxept') {
         $this->logger = new Logger($name);
         $this->logger->pushHandler(new StreamHandler('../var/log/' . $name . '.log'));
     }
@@ -33,6 +33,10 @@ class LogsService
         throw new Exception("Cannot unserialize a singleton.");
     }
 
+    public function getLogger(): Logger {
+        return $this->logger;
+    }
+
     public static function getInstance(): LogsService
     {
         $cls = static::class;
@@ -43,13 +47,13 @@ class LogsService
         return self::$instances[$cls];
     }
 
-    public static function info(string $key, string $message )
+    public function info(string $key, string $message)
     {
-        static::getInstance()->logger->info('[ ' . $key . ' ]' . $message);
+        static::getInstance()->logger->info('[ ' . $key . ' ]: ' . $message);
     }
 
     public function error(string $key, string $message)
     {
-        static::getInstance()->logger->error('[ ' . $key . ' ]' . $message);
+        static::getInstance()->logger->error('[ ' . $key . ' ]: ' . $message);
     }
 }
