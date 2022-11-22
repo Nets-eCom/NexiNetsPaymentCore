@@ -14,7 +14,7 @@ class LogsService
      * The Singleton's constructor should always be private to prevent direct
      * construction calls with the `new` operator.
      */
-    protected function __construct($name = 'netaxept') {
+    protected function __construct($name = 'nets') {
         $this->logger = new Logger($name);
         $this->logger->pushHandler(new StreamHandler('../var/log/' . $name . '.log'));
     }
