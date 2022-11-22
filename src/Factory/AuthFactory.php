@@ -2,6 +2,7 @@
 
 namespace NetsCore\Factory;
 
+use NetsCore\Configuration\NetaxeptConfiguration;
 use NetsCore\Interfaces\ConfigurationInterface;
 
 class AuthFactory
