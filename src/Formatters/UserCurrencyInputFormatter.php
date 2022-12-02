@@ -14,6 +14,6 @@ class UserCurrencyInputFormatter
         $input = ltrim($input, '0');
         $input = floatval($input);
         $input = round($input, 2) * 100;
-        return (int)$input;
+        return (int)round($input, 0);
     }
 }
