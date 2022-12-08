@@ -2,9 +2,7 @@
 
 namespace NetsCore\Enums;
 
-use MyCLabs\Enum\Enum;
-
-final class ClientTypeEnum extends Enum
+enum ClientTypeEnum
 {
     public const EASY_NETS = 'NetsEasy';
     public const NETAXEPT = 'Netaxept';

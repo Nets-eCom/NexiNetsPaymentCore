@@ -2,11 +2,9 @@
 
 namespace NetsCore\Enums;
 
-use MyCLabs\Enum\Enum;
-
-class PageTypeEnum extends Enum
+enum PageTypeEnum
 {
-    public const MULTIPAGE = 'Multipage';
-    public const SINGLEPAGE = 'Singlepage';
-    public const CUSTOM  = 'Custom';
+    public const MULTIPAGE = 'multipage';
+    public const SINGLEPAGE = 'singlepage';
+    public const CUSTOM  = 'custom';
 }

@@ -2,9 +2,7 @@
 
 namespace NetsCore\Enums;
 
-use MyCLabs\Enum\Enum;
-
-class PaymentProcessingTypeEnum extends Enum
+enum PaymentProcessingTypeEnum
 {
     public const NONE = 'None';
     public const VERIFY = 'Verify';
