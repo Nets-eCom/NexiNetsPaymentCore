@@ -2,9 +2,7 @@
 
 namespace NetsCore\Enums;
 
-use MyCLabs\Enum\Enum;
-
-class ApiUrlsEnum extends Enum
+enum ApiUrlsEnum
 {
     public const NETAXEPT_SANDBOX_PAYMENT_SERVICE = 'https://sandbox.unifiedapi.nets.eu/api/v1/Payments/';
     public const NETAXEPT_PAYMENT_SERVICE = 'https://unifiedapi.netsdev.eu/api/v1/Payments/';

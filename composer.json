@@ -3,7 +3,7 @@
     "description": "Core for NextAccept payments plugin",
     "type": "library",
     "license": "MIT",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "autoload": {
         "psr-4": {
             "NetsCore\\": "src/"
@@ -15,12 +15,11 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.1",
         "guzzlehttp/guzzle": "^7.4.5",
-        "myclabs/php-enum": "^1.8.4",
         "ext-json": "*",
-        "psr/log": "1.1.4",
-        "monolog/monolog": "2.x-dev"
+        "psr/log": "3.0.0",
+        "monolog/monolog": "3.*"
     },
     "minimum-stability": "dev",
     "require-dev": {

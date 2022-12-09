@@ -2,9 +2,7 @@
 
 namespace NetsCore\Enums;
 
-use MyCLabs\Enum\Enum;
-
-class ExceptionEnum extends Enum
+enum ExceptionEnum
 {
     public const REDIRECTURLS_CANNOT_BE_EMPTY = 'redirectUrls must be RedirectUrls object';
     public const PAYMENT_TYPE_IS_INVALID = 'Payment type that was used to process a payment is not valid';

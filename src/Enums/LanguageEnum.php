@@ -2,9 +2,7 @@
 
 namespace NetsCore\Enums;
 
-use MyCLabs\Enum\Enum;
-
-class LanguageEnum extends Enum
+enum LanguageEnum
 {
     public const EN = 'EN';
     public const DK = 'DK';

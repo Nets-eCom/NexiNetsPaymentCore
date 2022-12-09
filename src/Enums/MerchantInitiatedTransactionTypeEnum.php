@@ -2,9 +2,7 @@
 
 namespace NetsCore\Enums;
 
-use MyCLabs\Enum\Enum;
-
-class MerchantInitiatedTransactionTypeEnum extends Enum
+enum MerchantInitiatedTransactionTypeEnum
 {
     public const UNSCHEDULED_CARD_ON_FILE = 'UnscheduledCardOnFile';
     public const DELAYED_CHARGE = 'DelayedCharge';
