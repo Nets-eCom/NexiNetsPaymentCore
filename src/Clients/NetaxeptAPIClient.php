@@ -10,6 +10,7 @@ use NetsCore\Exceptions\ApiResponseException;
 use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\PaymentRequestInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
+use NetsCore\Services\LogsService;
 
 class NetaxeptAPIClient implements APIClientInterface
 {
@@ -40,6 +41,7 @@ class NetaxeptAPIClient implements APIClientInterface
 
             return $res->getBody();
         } catch (RequestException $e) {
+            LogsService::getInstance()->error('NETAXEPT PAYMENT SERVICE URL ERROR', json_encode($e, $paymentObject));
             throw new ApiResponseException();
         }
     }
@@ -58,6 +60,7 @@ class NetaxeptAPIClient implements APIClientInterface
 
             return $res->getBody();
         } catch (RequestException $e) {
+            LogsService::getInstance()->error('NETAXEPT AUTHORIZE PAYMENT ERROR', json_encode($e, $authorizationObject));
             throw new ApiResponseException();
         }
     }
@@ -76,6 +79,7 @@ class NetaxeptAPIClient implements APIClientInterface
 
             return $res->getBody();
         } catch (RequestException $e) {
+            LogsService::getInstance()->error('ERROR ON CANCEL PAYMENT', json_encode($e, $paymentObject->getPaymentId(), $paymentObject->getBodyRequest()));
             throw new ApiResponseException();
         }
     }
@@ -94,6 +98,7 @@ class NetaxeptAPIClient implements APIClientInterface
 
             return $res->getBody();
         } catch (RequestException $e) {
+            LogsService::getInstance()->error('ERROR WHILE CAPTURING PAYMENT ', json_encode($e, $capturePayment->getPaymentId(), $capturePayment->getBodyRequest()));
             throw new ApiResponseException();
         }
     }
@@ -112,6 +117,7 @@ class NetaxeptAPIClient implements APIClientInterface
 
             return $res->getBody();
         } catch (RequestException $e) {
+            LogsService::getInstance()->error('GETTING PAYMENT DETAILS ERROR', json_encode($e, $paymentId));
             throw new ApiResponseException();
         }
     }
@@ -130,6 +136,7 @@ class NetaxeptAPIClient implements APIClientInterface
 
             return $res->getBody();
         } catch (RequestException $e) {
+            LogsService::getInstance()->error('REFUND PAYMENT ERROR', json_encode($e, $refundObject->getPaymentId() ));
             throw new ApiResponseException();
         }
     }
