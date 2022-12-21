@@ -1,6 +1,6 @@
 {
     "name": "nets-ecom-integrations/paymentcore",
-    "description": "Core for NextAccept payments plugin",
+    "description": "Core for Netaxept payments plugin",
     "type": "library",
     "license": "MIT",
     "version": "1.0.2",
@@ -18,8 +18,8 @@
         "php": ">=8.1",
         "guzzlehttp/guzzle": "^7.4.5",
         "ext-json": "*",
-        "psr/log": "3.0.0",
-        "monolog/monolog": "3.*"
+        "psr/log": "*",
+        "monolog/monolog": "*"
     },
     "minimum-stability": "dev",
     "require-dev": {
