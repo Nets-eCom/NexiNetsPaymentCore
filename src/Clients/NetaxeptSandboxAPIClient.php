@@ -10,6 +10,7 @@ use NetsCore\Exceptions\ApiResponseException;
 use NetsCore\Interfaces\APIClientInterface;
 use NetsCore\Interfaces\PaymentRequestInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
+use NetsCore\Services\LogsService;
 
 class NetaxeptSandboxAPIClient implements APIClientInterface
 {
@@ -41,10 +42,15 @@ class NetaxeptSandboxAPIClient implements APIClientInterface
             json_encode($paymentObject)
         );
         try {
+            LogsService::getInstance()->info('Netaxept payment was created successfully (sandbox)', json_encode($paymentObject));
             $res = $this->httpClient->sendAsync($request)->wait();
 
             return $res->getBody();
         } catch (RequestException $e) {
+            LogsService::getInstance()->error(
+                'Netaxept payment was NOT created successfully (sandbox)',
+                json_encode($e)
+            );
             throw new ApiResponseException();
         }
     }
@@ -65,10 +71,18 @@ class NetaxeptSandboxAPIClient implements APIClientInterface
             json_encode($authorizationObject->getBodyRequest())
         );
         try {
+            LogsService::getInstance()->info(
+                'Netaxept authorize payment (sandbox)',
+                json_encode($authorizationObject)
+            );
             $res = $this->httpClient->sendAsync($request)->wait();
 
             return $res->getBody();
         } catch (RequestException $e) {
+            LogsService::getInstance()->error(
+                'Netaxept authorize payment error (sandbox)',
+                json_encode($e)
+            );
             throw new ApiResponseException();
         }
     }
@@ -89,10 +103,15 @@ class NetaxeptSandboxAPIClient implements APIClientInterface
             json_encode($paymentObject->getBodyRequest())
         );
         try {
+            LogsService::getInstance()->error('Netaxept cancel Payment (sandbox)', json_encode($paymentObject));
             $res = $this->httpClient->sendAsync($request)->wait();
 
             return $res->getBody();
         } catch (RequestException $e) {
+            LogsService::getInstance()->error(
+                'Error on cancel Payment (sandbox)',
+                json_encode($e)
+            );
             throw new ApiResponseException();
         }
     }
@@ -117,6 +136,10 @@ class NetaxeptSandboxAPIClient implements APIClientInterface
 
             return $res->getBody();
         } catch (RequestException $e) {
+            LogsService::getInstance()->error(
+                'Error while capturing Payment (sandbox)',
+                json_encode($e)
+            );
             throw new ApiResponseException();
         }
     }
@@ -139,6 +162,7 @@ class NetaxeptSandboxAPIClient implements APIClientInterface
 
             return $res->getBody();
         } catch (RequestException $e) {
+            LogsService::getInstance()->error('Get Payment details Error (sandbox)', json_encode($e));
             throw new ApiResponseException();
         }
     }
@@ -163,6 +187,7 @@ class NetaxeptSandboxAPIClient implements APIClientInterface
 
             return $res->getBody();
         } catch (RequestException $e) {
+            LogsService::getInstance()->error('Refund Payment error (sandbox)', json_encode($e));
             throw new ApiResponseException();
         }
     }
