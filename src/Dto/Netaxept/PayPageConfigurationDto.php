@@ -39,7 +39,7 @@ class PayPageConfigurationDto
      */
     public function setPageType(string $pageType): PayPageConfigurationDto
     {
-        if (IsNullOrEmptyString($pageType)) {
+        if ($this->IsNullOrEmptyString($pageType)) {
             $this->pageType = PageTypeEnum::MULTIPAGE;
         } else {
             $this->pageType = $pageType;
