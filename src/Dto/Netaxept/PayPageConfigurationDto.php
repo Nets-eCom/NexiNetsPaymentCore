@@ -21,6 +21,7 @@ class PayPageConfigurationDto
     public function setLanguage(string $language): PayPageConfigurationDto
     {
         $this->language = $language;
+
         return $this;
     }
 
@@ -38,12 +39,12 @@ class PayPageConfigurationDto
      */
     public function setPageType(string $pageType): PayPageConfigurationDto
     {
-        if (strlen($pageType) == 0){
+        if (IsNullOrEmptyString($pageType)) {
             $this->pageType = PageTypeEnum::MULTIPAGE;
-        }
-        else{
+        } else {
             $this->pageType = $pageType;
         }
+
         return $this;
     }
 
@@ -62,6 +63,7 @@ class PayPageConfigurationDto
     public function setTemplateName(string $templateName): PayPageConfigurationDto
     {
         $this->templateName = $templateName;
+
         return $this;
     }
 
@@ -72,4 +74,10 @@ class PayPageConfigurationDto
     {
         return $this->templateName;
     }
+
+    private function IsNullOrEmptyString($str)
+    {
+        return ($str === null || trim($str) === '');
+    }
 }
+
