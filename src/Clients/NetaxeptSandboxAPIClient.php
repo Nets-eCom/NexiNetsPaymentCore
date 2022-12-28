@@ -2,9 +2,12 @@
 
 namespace NetsCore\Clients;
 
+use Exception;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
+use LogicException;
 use NetsCore\Enums\ApiUrlsEnum;
 use NetsCore\Exceptions\ApiResponseException;
 use NetsCore\Interfaces\APIClientInterface;
