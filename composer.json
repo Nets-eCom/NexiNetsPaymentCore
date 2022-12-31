@@ -1,9 +1,9 @@
 {
-    "name": "nets/paymentcore",
-    "description": "Core for EasyNets and NextAccept payments plugin",
+    "name": "nets-ecom-integrations/paymentcore",
+    "description": "Core for Netaxept payments plugin",
     "type": "library",
     "license": "MIT",
-    "version": "0.0.3",
+    "version": "1.0.2",
     "autoload": {
         "psr-4": {
             "NetsCore\\": "src/"
@@ -11,14 +11,15 @@
     },
     "authors": [
         {
-            "name": "Piotr Staszewski"
+            "name": "Nets-eCom"
         }
     ],
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.1",
         "guzzlehttp/guzzle": "^7.4.5",
-        "myclabs/php-enum": "^1.8.4",
-        "ext-json": "*"
+        "ext-json": "*",
+        "psr/log": "*",
+        "monolog/monolog": "*"
     },
     "minimum-stability": "dev",
     "require-dev": {

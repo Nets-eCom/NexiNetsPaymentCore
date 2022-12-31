@@ -2,9 +2,7 @@
 
 namespace NetsCore\Enums;
 
-use MyCLabs\Enum\Enum;
-
-class PaymentMethodCardOriginEnum extends Enum
+enum PaymentMethodCardOriginEnum
 {
     public const INTERNATIONAL = 'International';
     public const DOMESTIC = 'Domestic';

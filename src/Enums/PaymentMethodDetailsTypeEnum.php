@@ -2,9 +2,7 @@
 
 namespace NetsCore\Enums;
 
-use MyCLabs\Enum\Enum;
-
-class PaymentMethodDetailsTypeEnum extends Enum
+enum PaymentMethodDetailsTypeEnum
 {
     public const PAYMENT_WITH_TOKEN = 'PaymentWithToken';
     public const INITIAL_PAYMENT_METHOD_TOKENIZATION_DETAILS = 'InitialPaymentMethodTokenizationDetails';

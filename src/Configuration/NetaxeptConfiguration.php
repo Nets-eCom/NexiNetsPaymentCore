@@ -30,7 +30,8 @@ class NetaxeptConfiguration implements ConfigurationInterface
     }
 
     /**
-     * @param  string  $username
+     * @param string $username
+     *
      * @return $this
      */
     public function setUsername(string $username): NetaxeptConfiguration
@@ -49,7 +50,8 @@ class NetaxeptConfiguration implements ConfigurationInterface
     }
 
     /**
-     * @param  string  $password
+     * @param string $password
+     *
      * @return $this
      */
     public function setPassword(string $password): NetaxeptConfiguration
