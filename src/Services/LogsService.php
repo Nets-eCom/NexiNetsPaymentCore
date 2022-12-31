@@ -52,8 +52,11 @@ class LogsService
         static::getInstance()->logger->info('[ ' . $key . ' ]: ' . $message);
     }
 
-    public function error(string $key, string $message)
+
+    public function error(string $key, string $message, bool $displayOnProd = false)
     {
-        static::getInstance()->logger->error('[ ' . $key . ' ]: ' . $message);
+        if (getenv('APP_ENV') === 'dev' || $displayOnProd) {
+            static::getInstance()->logger->error('[ ' . $key . ' ]: ' . $message);
+        }
     }
 }
