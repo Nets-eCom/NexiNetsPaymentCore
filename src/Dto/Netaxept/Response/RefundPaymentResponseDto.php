@@ -7,6 +7,11 @@ class RefundPaymentResponseDto
     public string $paymentId;
     public string $transactionRef;
 
+    /**
+     * @param $data
+     *
+     * @return RefundPaymentResponseDto
+     */
     public function map($data): self
     {
         $data = json_decode($data);

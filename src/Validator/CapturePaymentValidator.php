@@ -9,6 +9,9 @@ use NetsCore\Exceptions\CapturePaymentException;
 class CapturePaymentValidator
 {
     /**
+     * @param CapturePaymentResponseDto $responseDto
+     *
+     * @return bool
      * @throws CapturePaymentException
      */
     public static function validate(CapturePaymentResponseDto $responseDto): bool

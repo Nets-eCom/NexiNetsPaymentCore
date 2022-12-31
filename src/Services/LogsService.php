@@ -3,22 +3,57 @@
 namespace NetsCore\Services;
 
 use Exception;
-use NetsCore\Validator\IsDirectoryValidator;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 class LogsService
 {
-    public static function logger($message, string $path = '../logs', string $fileName = 'debug.log')
+    private Logger $logger;
+    private static array $instances = [];
+    /**
+     * The Singleton's constructor should always be private to prevent direct
+     * construction calls with the `new` operator.
+     */
+    protected function __construct($name = 'nets') {
+        $this->logger = new Logger($name);
+        $this->logger->pushHandler(new StreamHandler('../var/log/' . $name . '.log'));
+    }
+
+    /**
+     * Singletons should not be cloneable.
+     */
+    protected function __clone() { }
+
+    /**
+     * Singletons should not be restorable from strings.
+     * @throws Exception
+     */
+    public function __wakeup()
     {
-        if (!IsDirectoryValidator::valid($path)) {
-            try {
-                mkdir($path, 0777, true);
-            } catch (Exception $e) {
-                return;
-            }
+        throw new Exception("Cannot unserialize a singleton.");
+    }
+
+    public function getLogger(): Logger {
+        return $this->logger;
+    }
+
+    public static function getInstance(): LogsService
+    {
+        $cls = static::class;
+        if (!isset(self::$instances[$cls])) {
+            self::$instances[$cls] = new static();
         }
 
-        $message .= PHP_EOL;
+        return self::$instances[$cls];
+    }
 
-        file_put_contents($path . '/' . $fileName, $message, FILE_APPEND);
+    public function info(string $key, string $message)
+    {
+        static::getInstance()->logger->info('[ ' . $key . ' ]: ' . $message);
+    }
+
+    public function error(string $key, string $message)
+    {
+        static::getInstance()->logger->error('[ ' . $key . ' ]: ' . $message);
     }
 }

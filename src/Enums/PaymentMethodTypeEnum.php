@@ -2,9 +2,7 @@
 
 namespace NetsCore\Enums;
 
-use MyCLabs\Enum\Enum;
-
-class PaymentMethodTypeEnum extends Enum
+enum PaymentMethodTypeEnum
 {
     public const CARD = 'Card';
     public const DIRECT_BANK_TRANSFER = 'DirectBankTransfer';

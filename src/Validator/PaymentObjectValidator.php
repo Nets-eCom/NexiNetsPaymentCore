@@ -14,6 +14,9 @@ use NetsCore\Exceptions\PaymentObjectException;
 class PaymentObjectValidator
 {
     /**
+     * @param PaymentObject $paymentObject
+     *
+     * @return bool
      * @throws PaymentObjectException
      */
     public static function isPaymentObjectValid(PaymentObject $paymentObject): bool

@@ -2,9 +2,7 @@
 
 namespace NetsCore\Enums;
 
-use MyCLabs\Enum\Enum;
-
-class PaymentMethodActionEnum extends Enum
+enum PaymentMethodActionEnum
 {
     public const ALLOW = 'Allow';
     public const REJECT = 'Reject';

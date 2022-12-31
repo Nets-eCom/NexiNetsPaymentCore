@@ -2,6 +2,8 @@
 
 namespace NetsCore\Dto\Netaxept;
 
+use Exception;
+
 class PaymentTransactionCollection
 {
     /**
@@ -9,6 +11,12 @@ class PaymentTransactionCollection
      */
     public array $transactions = [];
 
+    /**
+     * @param $transactionsArray
+     *
+     * @return PaymentTransactionCollection
+     * @throws Exception
+     */
     public function map($transactionsArray): PaymentTransactionCollection
     {
         if (empty($transactionsArray)) {

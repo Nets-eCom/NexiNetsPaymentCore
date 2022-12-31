@@ -16,6 +16,7 @@ use NetsCore\Interfaces\ClientServiceInterface;
 use NetsCore\Interfaces\PaymentObjectInterface;
 use NetsCore\Interfaces\PaymentRequestInterface;
 use NetsCore\Validator\CapturePaymentValidator;
+use Exception;
 
 class NetaxeptSandboxService implements ClientServiceInterface
 {
@@ -41,6 +42,12 @@ class NetaxeptSandboxService implements ClientServiceInterface
         return (new CreatePaymentResponseDto())->map($response);
     }
 
+    /**
+     * @param string $paymentId
+     *
+     * @return PaymentDetailResponseDto
+     * @throws Exception
+     */
     public function getPaymentDetails(string $paymentId): PaymentDetailResponseDto
     {
         $response = $this->apiClient->getPaymentDetails($paymentId);
@@ -48,6 +55,11 @@ class NetaxeptSandboxService implements ClientServiceInterface
         return (new PaymentDetailResponseDto())->map($response);
     }
 
+    /**
+     * @param PaymentRequestInterface $paymentObject
+     *
+     * @return CancelPaymentResponseDto
+     */
     public function cancelPayment(PaymentRequestInterface $paymentObject): CancelPaymentResponseDto
     {
         $response = $this->apiClient->cancelPayment($paymentObject);

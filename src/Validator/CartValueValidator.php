@@ -13,6 +13,7 @@ class CartValueValidator
      * @param int $requestAmount
      *
      * @return bool
+     * @throws CartValueException
      */
     public static function cartValueValidator(array $basket, int $requestAmount): bool
     {

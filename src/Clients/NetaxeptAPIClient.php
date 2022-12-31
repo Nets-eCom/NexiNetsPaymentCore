@@ -28,6 +28,7 @@ class NetaxeptAPIClient implements APIClientInterface
 
     /**
      * @param PaymentObjectInterface $paymentObject
+     *
      * @return mixed
      * @throws ApiResponseException
      */
@@ -45,6 +46,7 @@ class NetaxeptAPIClient implements APIClientInterface
 
     /**
      * @param PaymentRequestInterface $authorizationObject
+     *
      * @return mixed
      * @throws ApiResponseException
      */
@@ -62,6 +64,7 @@ class NetaxeptAPIClient implements APIClientInterface
 
     /**
      * @param PaymentRequestInterface $paymentObject
+     *
      * @return mixed
      * @throws ApiResponseException
      */
@@ -78,6 +81,9 @@ class NetaxeptAPIClient implements APIClientInterface
     }
 
     /**
+     * @param PaymentRequestInterface $capturePayment
+     *
+     * @return mixed
      * @throws ApiResponseException
      */
     public function capturePayment(PaymentRequestInterface $capturePayment)
@@ -93,6 +99,9 @@ class NetaxeptAPIClient implements APIClientInterface
     }
 
     /**
+     * @param string $paymentId
+     *
+     * @return mixed
      * @throws ApiResponseException
      */
     public function getPaymentDetails(string $paymentId)

@@ -13,8 +13,8 @@ class NetaxeptAPIAuthService implements APIAuthServiceInterface
     private ApiService $apiService;
 
     /**
-     * @param  ConfigurationInterface  $configuration
-     * @param  ApiService|null  $apiService
+     * @param ConfigurationInterface $configuration
+     * @param ApiService|null $apiService
      */
     public function __construct(ConfigurationInterface $configuration, ApiService $apiService = null)
     {

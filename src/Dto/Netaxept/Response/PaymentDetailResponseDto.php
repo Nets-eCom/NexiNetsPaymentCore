@@ -7,6 +7,7 @@ use NetsCore\Dto\Netaxept\PaymentDetail;
 use NetsCore\Dto\Netaxept\PaymentSummary;
 use NetsCore\Dto\Netaxept\PaymentTransactionCollection;
 use NetsCore\Interfaces\CustomerInterface;
+use Exception;
 
 class PaymentDetailResponseDto
 {
@@ -20,6 +21,12 @@ class PaymentDetailResponseDto
     public ?PaymentTransactionCollection $refunds;
     public ?PaymentTransactionCollection $captures;
 
+    /**
+     * @param $response
+     *
+     * @return PaymentDetailResponseDto
+     * @throws Exception
+     */
     public function map($response): PaymentDetailResponseDto
     {
         $body = json_decode($response);

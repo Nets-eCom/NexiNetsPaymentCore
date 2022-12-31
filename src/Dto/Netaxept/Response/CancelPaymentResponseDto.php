@@ -7,6 +7,11 @@ class CancelPaymentResponseDto
     public string $paymentId;
     public string $transactionRef;
 
+    /**
+     * @param $data
+     *
+     * @return CancelPaymentResponseDto
+     */
     public function map($data): self
     {
         $data = json_decode($data);

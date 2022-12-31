@@ -10,7 +10,6 @@ class AuthService
     protected APIAuthServiceInterface $APIAuthService;
     private ConfigurationInterface $configuration;
     private array $authData;
-    private LogsService $logg;
 
     /**
      * @param  ConfigurationInterface  $configuration
@@ -24,12 +23,12 @@ class AuthService
     }
 
     /**
-     *
+     * @return void
      */
     public function authorize()
     {
         $this->authData = json_decode($this->APIAuthService->authorize(), true);
-        LogsService::logger(json_encode($this->authData));
+        LogsService::getInstance()->info('Authorize object', json_encode($this->authData));
     }
 
     /**
