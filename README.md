@@ -1,26 +1,20 @@
-# NetsCore - Payment Core for simple integration EasyNets and Netaxept API for plugins
+# NetsPaymentCore - Payment Core for simple integration Netaxept API for plugins
 ============================================
 
-| Core              | NetsCore - Payment Core |
-|-------------------|-------------------------|
-| Author            | `Nets eCom`             |
-| Version           | `0.0.3`                 |
-| License           | `MIT License`           |
-| Supporting System | `Netaxept`              |
-
-## INSTALLATION
-
-### Download / Installation
-
- TODO: Finish this
+| Core              | NetsCore - Payment Core 
+|-------------------|-------------------------
+| Author            | `Nets eCom LAKA`             
+| Version           | `1.2`                 
+| License           | `MIT License`           
+| Supporting System | `Nets eCom LAKA plugins`              
 
 
-## Guide
+### What is it
+SDK for payment plug-ins. These can be updated separately from the payment plugins themselves.
 
-### Init core
+### Updating SDK
 
-TODO: Finish this
-
-### Logs
-
-Logs are very simple to use. You must only use ``LogsService::logger("Message");`` and that's all.
+* If the latest SDK package has been released and you don't have it in your plugin then all you need to do is 
+  * composer update nets-ecom-integrations/paymentcore 
+  * if manualy added via composer just use
+    * composer reinstall nets-ecom-integrations/paymentcore 
