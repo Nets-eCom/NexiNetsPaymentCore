@@ -1,12 +1,11 @@
 # NexiNetsPaymentCore - Payment Core for simple integration with Netaxept API for plugins
 ============================================
 
-| Core              | NetsCore - Payment Core 
+| Core              | NexiNetsCore - Payment Core 
 |-------------------|-------------------------
 | Author            | `Nexi/Nets eCom LAKA`             
 | Version           | `1.2`                 
-| License           | `MIT License`           
-| Supporting System | `Nets eCom LAKA plugins`              
+| License           | `MIT License`                 
 
 
 ### What it is
