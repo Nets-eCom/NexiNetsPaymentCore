@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept\Customer;
+namespace NexiNetsCore\Dto\Netaxept\Customer;
 
 class AddressDto
 {

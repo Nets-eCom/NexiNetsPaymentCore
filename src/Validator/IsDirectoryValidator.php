@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Validator;
+namespace NexiNetsCore\Validator;
 
 class IsDirectoryValidator
 {

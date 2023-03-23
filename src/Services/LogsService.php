@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Services;
+namespace NexiNetsCore\Services;
 
 use Exception;
 use Monolog\Handler\StreamHandler;

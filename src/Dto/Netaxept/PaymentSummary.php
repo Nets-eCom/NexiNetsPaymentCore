@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept;
+namespace NexiNetsCore\Dto\Netaxept;
 
 class PaymentSummary
 {

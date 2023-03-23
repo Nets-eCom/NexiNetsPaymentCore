@@ -1,9 +1,9 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept\Request;
+namespace NexiNetsCore\Dto\Netaxept\Request;
 
-use NetsCore\Dto\Netaxept\BasketItemDto;
-use NetsCore\Interfaces\PaymentRequestInterface;
+use NexiNetsCore\Dto\Netaxept\BasketItemDto;
+use NexiNetsCore\Interfaces\PaymentRequestInterface;
 
 class RefundPaymentRequest implements PaymentRequestInterface
 {

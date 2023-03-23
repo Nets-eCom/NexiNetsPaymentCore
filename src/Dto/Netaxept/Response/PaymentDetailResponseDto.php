@@ -1,12 +1,12 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept\Response;
+namespace NexiNetsCore\Dto\Netaxept\Response;
 
-use NetsCore\Dto\Netaxept\Customer\CustomerDto;
-use NetsCore\Dto\Netaxept\PaymentDetail;
-use NetsCore\Dto\Netaxept\PaymentSummary;
-use NetsCore\Dto\Netaxept\PaymentTransactionCollection;
-use NetsCore\Interfaces\CustomerInterface;
+use NexiNetsCore\Dto\Netaxept\Customer\CustomerDto;
+use NexiNetsCore\Dto\Netaxept\PaymentDetail;
+use NexiNetsCore\Dto\Netaxept\PaymentSummary;
+use NexiNetsCore\Dto\Netaxept\PaymentTransactionCollection;
+use NexiNetsCore\Interfaces\CustomerInterface;
 use Exception;
 
 class PaymentDetailResponseDto

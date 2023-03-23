@@ -1,10 +1,10 @@
 <?php
 
-namespace NetsCore\Configuration;
+namespace NexiNetsCore\Configuration;
 
-use NetsCore\Enums\ApiUrlsEnum;
-use NetsCore\Enums\ClientTypeEnum;
-use NetsCore\Interfaces\ConfigurationInterface;
+use NexiNetsCore\Enums\ApiUrlsEnum;
+use NexiNetsCore\Enums\ClientTypeEnum;
+use NexiNetsCore\Interfaces\ConfigurationInterface;
 
 class NetaxeptConfiguration implements ConfigurationInterface
 {

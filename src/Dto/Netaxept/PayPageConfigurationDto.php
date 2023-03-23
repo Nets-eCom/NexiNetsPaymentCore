@@ -1,8 +1,8 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept;
+namespace NexiNetsCore\Dto\Netaxept;
 
-use NetsCore\Enums\PageTypeEnum;
+use NexiNetsCore\Enums\PageTypeEnum;
 
 class PayPageConfigurationDto
 {

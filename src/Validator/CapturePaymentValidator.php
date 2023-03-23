@@ -1,10 +1,10 @@
 <?php
 
-namespace NetsCore\Validator;
+namespace NexiNetsCore\Validator;
 
-use NetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
-use NetsCore\Enums\ExceptionEnum;
-use NetsCore\Exceptions\CapturePaymentException;
+use NexiNetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
+use NexiNetsCore\Enums\ExceptionEnum;
+use NexiNetsCore\Exceptions\CapturePaymentException;
 
 class CapturePaymentValidator
 {

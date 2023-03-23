@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Clients;
+namespace NexiNetsCore\Clients;
 
 use Exception;
 use GuzzleHttp\Client;
@@ -8,12 +8,12 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use LogicException;
-use NetsCore\Enums\ApiUrlsEnum;
-use NetsCore\Exceptions\ApiResponseException;
-use NetsCore\Interfaces\APIClientInterface;
-use NetsCore\Interfaces\PaymentRequestInterface;
-use NetsCore\Interfaces\PaymentObjectInterface;
-use NetsCore\Services\LogsService;
+use NexiNetsCore\Enums\ApiUrlsEnum;
+use NexiNetsCore\Exceptions\ApiResponseException;
+use NexiNetsCore\Interfaces\APIClientInterface;
+use NexiNetsCore\Interfaces\PaymentRequestInterface;
+use NexiNetsCore\Interfaces\PaymentObjectInterface;
+use NexiNetsCore\Services\LogsService;
 
 class NetaxeptSandboxAPIClient implements APIClientInterface
 {

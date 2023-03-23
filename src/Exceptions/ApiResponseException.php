@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Exceptions;
+namespace NexiNetsCore\Exceptions;
 
 use Exception;
 

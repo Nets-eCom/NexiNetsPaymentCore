@@ -1,8 +1,8 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept\PaymentMethodDetails;
+namespace NexiNetsCore\Dto\Netaxept\PaymentMethodDetails;
 
-use NetsCore\Interfaces\PaymentMethodDetailsInterface;
+use NexiNetsCore\Interfaces\PaymentMethodDetailsInterface;
 
 class SofortDto implements PaymentMethodDetailsInterface
 {

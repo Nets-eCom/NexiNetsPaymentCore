@@ -1,10 +1,10 @@
 <?php
 
-namespace NetsCore\Validator;
+namespace NexiNetsCore\Validator;
 
-use NetsCore\Dto\Netaxept\BasketItemDto;
-use NetsCore\Enums\ExceptionEnum;
-use NetsCore\Exceptions\CartValueException;
+use NexiNetsCore\Dto\Netaxept\BasketItemDto;
+use NexiNetsCore\Enums\ExceptionEnum;
+use NexiNetsCore\Exceptions\CartValueException;
 
 class CartValueValidator
 {

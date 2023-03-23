@@ -1,9 +1,9 @@
 <?php
 
-namespace NetsCore\Factory;
+namespace NexiNetsCore\Factory;
 
-use NetsCore\Configuration\NetaxeptConfiguration;
-use NetsCore\Interfaces\ConfigurationInterface;
+use NexiNetsCore\Configuration\NetaxeptConfiguration;
+use NexiNetsCore\Interfaces\ConfigurationInterface;
 
 class AuthFactory
 {
@@ -15,7 +15,7 @@ class AuthFactory
      */
     public function getAuthenticationService(ConfigurationInterface $configuration, string $clientType)
     {
-        $class = '\NetsCore\Auth\\' . $clientType . 'APIAuthService';
+        $class = '\NexiNetsCore\Auth\\' . $clientType . 'APIAuthService';
 
         return new $class($configuration);
     }

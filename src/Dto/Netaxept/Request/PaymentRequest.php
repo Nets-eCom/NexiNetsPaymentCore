@@ -1,8 +1,8 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept\Request;
+namespace NexiNetsCore\Dto\Netaxept\Request;
 
-use NetsCore\Interfaces\PaymentRequestInterface;
+use NexiNetsCore\Interfaces\PaymentRequestInterface;
 
 class PaymentRequest implements PaymentRequestInterface
 {
