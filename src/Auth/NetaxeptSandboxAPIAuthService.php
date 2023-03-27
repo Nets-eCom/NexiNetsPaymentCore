@@ -1,11 +1,11 @@
 <?php
 
-namespace NetsCore\Auth;
+namespace NexiNetsCore\Auth;
 
-use NetsCore\Enums\ApiUrlsEnum;
-use NetsCore\Interfaces\APIAuthServiceInterface;
-use NetsCore\Interfaces\ConfigurationInterface;
-use NetsCore\Services\ApiService;
+use NexiNetsCore\Enums\ApiUrlsEnum;
+use NexiNetsCore\Interfaces\APIAuthServiceInterface;
+use NexiNetsCore\Interfaces\ConfigurationInterface;
+use NexiNetsCore\Services\ApiService;
 
 class NetaxeptSandboxAPIAuthService implements APIAuthServiceInterface
 {

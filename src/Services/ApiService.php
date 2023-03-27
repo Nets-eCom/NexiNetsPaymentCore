@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Services;
+namespace NexiNetsCore\Services;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;

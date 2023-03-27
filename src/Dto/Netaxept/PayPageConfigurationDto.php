@@ -1,15 +1,15 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept;
+namespace NexiNetsCore\Dto\Netaxept;
 
-use NetsCore\Enums\PageTypeEnum;
+use NexiNetsCore\Enums\PageTypeEnum;
 
 class PayPageConfigurationDto
 {
     /**
      * @var PaymentMethodActionInfoDto[]
      */
-    public ?array $paymentMethodActionInfo;
+    public ?array $paymentMethodActionInfoList;
     public string $language;
     public string $pageType;
     public string $templateName;

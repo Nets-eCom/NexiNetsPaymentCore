@@ -1,8 +1,8 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept\Customer;
+namespace NexiNetsCore\Dto\Netaxept\Customer;
 
-use NetsCore\Interfaces\CustomerInterface;
+use NexiNetsCore\Interfaces\CustomerInterface;
 
 class IndividualCustomerDto implements CustomerInterface
 {

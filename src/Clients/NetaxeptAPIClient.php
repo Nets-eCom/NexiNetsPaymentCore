@@ -1,16 +1,16 @@
 <?php
 
-namespace NetsCore\Clients;
+namespace NexiNetsCore\Clients;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
-use NetsCore\Enums\ApiUrlsEnum;
-use NetsCore\Exceptions\ApiResponseException;
-use NetsCore\Interfaces\APIClientInterface;
-use NetsCore\Interfaces\PaymentRequestInterface;
-use NetsCore\Interfaces\PaymentObjectInterface;
-use NetsCore\Services\LogsService;
+use NexiNetsCore\Enums\ApiUrlsEnum;
+use NexiNetsCore\Exceptions\ApiResponseException;
+use NexiNetsCore\Interfaces\APIClientInterface;
+use NexiNetsCore\Interfaces\PaymentRequestInterface;
+use NexiNetsCore\Interfaces\PaymentObjectInterface;
+use NexiNetsCore\Services\LogsService;
 
 class NetaxeptAPIClient implements APIClientInterface
 {

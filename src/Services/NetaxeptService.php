@@ -1,21 +1,21 @@
 <?php
 
-namespace NetsCore\Services;
+namespace NexiNetsCore\Services;
 
-use NetsCore\Dto\Netaxept\Response\AuthorizePaymentResponseDto;
-use NetsCore\Dto\Netaxept\Response\CancelPaymentResponseDto;
-use NetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
-use NetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
-use NetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
-use NetsCore\Dto\Netaxept\Response\RefundPaymentResponseDto;
-use NetsCore\Enums\ExceptionEnum;
-use NetsCore\Exceptions\ApiResponseException;
-use NetsCore\Exceptions\CapturePaymentException;
-use NetsCore\Interfaces\APIClientInterface;
-use NetsCore\Interfaces\ClientServiceInterface;
-use NetsCore\Interfaces\PaymentObjectInterface;
-use NetsCore\Interfaces\PaymentRequestInterface;
-use NetsCore\Validator\CapturePaymentValidator;
+use NexiNetsCore\Dto\Netaxept\Response\AuthorizePaymentResponseDto;
+use NexiNetsCore\Dto\Netaxept\Response\CancelPaymentResponseDto;
+use NexiNetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
+use NexiNetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
+use NexiNetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
+use NexiNetsCore\Dto\Netaxept\Response\RefundPaymentResponseDto;
+use NexiNetsCore\Enums\ExceptionEnum;
+use NexiNetsCore\Exceptions\ApiResponseException;
+use NexiNetsCore\Exceptions\CapturePaymentException;
+use NexiNetsCore\Interfaces\APIClientInterface;
+use NexiNetsCore\Interfaces\ClientServiceInterface;
+use NexiNetsCore\Interfaces\PaymentObjectInterface;
+use NexiNetsCore\Interfaces\PaymentRequestInterface;
+use NexiNetsCore\Validator\CapturePaymentValidator;
 use Exception;
 
 class NetaxeptService implements ClientServiceInterface

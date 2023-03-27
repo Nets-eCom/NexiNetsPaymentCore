@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept\Response;
+namespace NexiNetsCore\Dto\Netaxept\Response;
 
 class CancelPaymentResponseDto
 {

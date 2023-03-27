@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept\Customer\Transformer;
+namespace NexiNetsCore\Dto\Netaxept\Customer\Transformer;
 
 interface CustomerDtoTransformerInterface
 {

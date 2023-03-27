@@ -1,16 +1,16 @@
 <?php
 
-namespace NetsCore\Tests;
+namespace NexiNetsCore\Tests;
 
 use Mockery\Adapter\Phpunit\MockeryTestCase;
-use NetsCore\Dto\Netaxept\Request\PaymentRequest;
-use NetsCore\Dto\Netaxept\Response\AuthorizePaymentResponseDto;
-use NetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
-use NetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
-use NetsCore\Interfaces\PaymentObjectInterface;
-use NetsCore\NetsCore;
+use NexiNetsCore\Dto\Netaxept\Request\PaymentRequest;
+use NexiNetsCore\Dto\Netaxept\Response\AuthorizePaymentResponseDto;
+use NexiNetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
+use NexiNetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
+use NexiNetsCore\Interfaces\PaymentObjectInterface;
+use NexiNetsCore\NexiNetsCore;
 
-class NetsCoreTest extends MockeryTestCase
+class NexiNetsCoreTest extends MockeryTestCase
 {
     public function testAuthorizePayment(): void
     {

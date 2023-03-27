@@ -1,13 +1,13 @@
 <?php
 
-namespace NetsCore\Dto\Netaxept\Request;
+namespace NexiNetsCore\Dto\Netaxept\Request;
 
-use NetsCore\Dto\Netaxept\BasketItemDto;
-use NetsCore\Dto\Netaxept\PayPageConfigurationDto;
-use NetsCore\Dto\Netaxept\RedirectUrlDto;
-use NetsCore\Interfaces\CustomerInterface;
-use NetsCore\Interfaces\PaymentMethodDetailsInterface;
-use NetsCore\Interfaces\PaymentObjectInterface;
+use NexiNetsCore\Dto\Netaxept\BasketItemDto;
+use NexiNetsCore\Dto\Netaxept\PayPageConfigurationDto;
+use NexiNetsCore\Dto\Netaxept\RedirectUrlDto;
+use NexiNetsCore\Interfaces\CustomerInterface;
+use NexiNetsCore\Interfaces\PaymentMethodDetailsInterface;
+use NexiNetsCore\Interfaces\PaymentObjectInterface;
 
 class PaymentObject implements PaymentObjectInterface
 {

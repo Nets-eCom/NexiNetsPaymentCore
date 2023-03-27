@@ -1,18 +1,17 @@
 {
-    "name": "nets-ecom-integrations/paymentcore",
+    "name": "nexi-nets-ecom-integrations/paymentcore",
     "description": "Core for Netaxept payments plugin",
     "type": "library",
     "license": "MIT",
-    "version": "1.1.1",
-
+    "version": "1.2",
     "autoload": {
         "psr-4": {
-            "NetsCore\\": "src/"
+            "NexiNetsCore\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Nets-eCom"
+            "name": "Nexi/Nets-eCom"
         }
     ],
     "require": {

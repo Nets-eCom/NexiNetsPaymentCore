@@ -1,8 +1,8 @@
 <?php
 
-namespace NetsCore\Factory;
+namespace NexiNetsCore\Factory;
 
-use NetsCore\Interfaces\ConfigurationInterface;
+use NexiNetsCore\Interfaces\ConfigurationInterface;
 
 class ConfigurationFactory
 {
@@ -12,7 +12,7 @@ class ConfigurationFactory
      */
     public function getConfiguration(string $integrationType): ConfigurationInterface
     {
-        $configuration = '\NetsCore\Configuration\\' . $integrationType . 'Configuration';
+        $configuration = '\NexiNetsCore\Configuration\\' . $integrationType . 'Configuration';
 
         return new $configuration();
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Factory;
+namespace NexiNetsCore\Factory;
 
 class APIClientFactory
 {
@@ -11,7 +11,7 @@ class APIClientFactory
      */
     public function getClient(array $authData, string $clientType)
     {
-        $class = '\NetsCore\Clients\\' . $clientType . 'APIClient';
+        $class = '\NexiNetsCore\Clients\\' . $clientType . 'APIClient';
 
         return new $class($authData);
     }
