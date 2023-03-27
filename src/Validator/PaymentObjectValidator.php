@@ -1,15 +1,15 @@
 <?php
 
-namespace NetsCore\Validator;
+namespace NexiNetsCore\Validator;
 
-use NetsCore\Dto\Netaxept\Request\PaymentObject;
-use NetsCore\Enums\CurrencyCodeEnum;
-use NetsCore\Enums\ExceptionEnum;
-use NetsCore\Enums\LanguageEnum;
-use NetsCore\Enums\PageTypeEnum;
-use NetsCore\Enums\PaymentProcessingTypeEnum;
-use NetsCore\Enums\PaymentTypeEnum;
-use NetsCore\Exceptions\PaymentObjectException;
+use NexiNetsCore\Dto\Netaxept\Request\PaymentObject;
+use NexiNetsCore\Enums\CurrencyCodeEnum;
+use NexiNetsCore\Enums\ExceptionEnum;
+use NexiNetsCore\Enums\LanguageEnum;
+use NexiNetsCore\Enums\PageTypeEnum;
+use NexiNetsCore\Enums\PaymentProcessingTypeEnum;
+use NexiNetsCore\Enums\PaymentTypeEnum;
+use NexiNetsCore\Exceptions\PaymentObjectException;
 
 class PaymentObjectValidator
 {

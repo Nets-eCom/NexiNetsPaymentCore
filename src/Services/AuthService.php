@@ -1,9 +1,9 @@
 <?php
 
-namespace NetsCore\Services;
+namespace NexiNetsCore\Services;
 
-use NetsCore\Interfaces\APIAuthServiceInterface;
-use NetsCore\Interfaces\ConfigurationInterface;
+use NexiNetsCore\Interfaces\APIAuthServiceInterface;
+use NexiNetsCore\Interfaces\ConfigurationInterface;
 
 class AuthService
 {

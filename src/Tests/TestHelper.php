@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Tests;
+namespace NexiNetsCore\Tests;
 
 use MyCLabs\Enum\Enum;
 

@@ -1,25 +1,25 @@
 <?php
 
-namespace NetsCore;
+namespace NexiNetsCore;
 
-use NetsCore\Configuration\NetaxeptConfiguration;
-use NetsCore\Dto\Netaxept\Response\AuthorizePaymentResponseDto;
-use NetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
-use NetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
-use NetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
-use NetsCore\Dto\Netaxept\Response\RefundPaymentResponseDto;
-use NetsCore\Exceptions\ApiResponseException;
-use NetsCore\Factory\APIClientFactory;
-use NetsCore\Factory\AuthFactory;
-use NetsCore\Factory\ClientFactory;
-use NetsCore\Interfaces\APIAuthServiceInterface;
-use NetsCore\Interfaces\ClientServiceInterface;
-use NetsCore\Interfaces\ConfigurationInterface;
-use NetsCore\Interfaces\PaymentObjectInterface;
-use NetsCore\Interfaces\PaymentRequestInterface;
-use NetsCore\Services\AuthService;
+use NexiNetsCore\Configuration\NetaxeptConfiguration;
+use NexiNetsCore\Dto\Netaxept\Response\AuthorizePaymentResponseDto;
+use NexiNetsCore\Dto\Netaxept\Response\CapturePaymentResponseDto;
+use NexiNetsCore\Dto\Netaxept\Response\CreatePaymentResponseDto;
+use NexiNetsCore\Dto\Netaxept\Response\PaymentDetailResponseDto;
+use NexiNetsCore\Dto\Netaxept\Response\RefundPaymentResponseDto;
+use NexiNetsCore\Exceptions\ApiResponseException;
+use NexiNetsCore\Factory\APIClientFactory;
+use NexiNetsCore\Factory\AuthFactory;
+use NexiNetsCore\Factory\ClientFactory;
+use NexiNetsCore\Interfaces\APIAuthServiceInterface;
+use NexiNetsCore\Interfaces\ClientServiceInterface;
+use NexiNetsCore\Interfaces\ConfigurationInterface;
+use NexiNetsCore\Interfaces\PaymentObjectInterface;
+use NexiNetsCore\Interfaces\PaymentRequestInterface;
+use NexiNetsCore\Services\AuthService;
 
-class NetsCore
+class NexiNetsCore
 {
     private ConfigurationInterface $configuration;
     private APIAuthServiceInterface $authService;

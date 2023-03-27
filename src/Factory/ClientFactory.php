@@ -1,9 +1,9 @@
 <?php
 
-namespace NetsCore\Factory;
+namespace NexiNetsCore\Factory;
 
-use NetsCore\Interfaces\APIClientInterface;
-use NetsCore\Interfaces\ClientServiceInterface;
+use NexiNetsCore\Interfaces\APIClientInterface;
+use NexiNetsCore\Interfaces\ClientServiceInterface;
 
 class ClientFactory
 {
@@ -14,7 +14,7 @@ class ClientFactory
      */
     public function getService(APIClientInterface $clientFactory, string $integrationType): ClientServiceInterface
     {
-        $service = '\NetsCore\Services\\' . $integrationType . 'Service';
+        $service = '\NexiNetsCore\Services\\' . $integrationType . 'Service';
 
         return new $service($clientFactory);
     }

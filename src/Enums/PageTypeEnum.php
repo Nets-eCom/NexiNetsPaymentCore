@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Enums;
+namespace NexiNetsCore\Enums;
 
 enum PageTypeEnum
 {

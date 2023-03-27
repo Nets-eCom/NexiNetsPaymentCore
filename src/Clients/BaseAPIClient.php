@@ -1,9 +1,9 @@
 <?php
 
-namespace NetsCore\Clients;
+namespace NexiNetsCore\Clients;
 
-use NetsCore\Interfaces\APIClientInterface;
-use NetsCore\Interfaces\PaymentObjectInterface;
+use NexiNetsCore\Interfaces\APIClientInterface;
+use NexiNetsCore\Interfaces\PaymentObjectInterface;
 
 class BaseAPIClient implements APIClientInterface
 {

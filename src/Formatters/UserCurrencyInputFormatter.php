@@ -1,6 +1,6 @@
 <?php
 
-namespace NetsCore\Formatters;
+namespace NexiNetsCore\Formatters;
 
 class UserCurrencyInputFormatter
 {
